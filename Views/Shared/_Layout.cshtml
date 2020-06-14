@@ -41,7 +41,7 @@
             <nav class="nav-menu d-none d-lg-block">
 
                 <ul>
-                    <li class="active"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
                     <li><a asp-action="About" asp-controller="Home">About</a></li>
                     <li><a asp-action="Contact" asp-controller="Home">Contact</a></li>
                     <li><a asp-action="Papers" asp-controller="Home">Browse Papers</a></li>
@@ -82,7 +82,7 @@
     </section>*@
         <footer class="border-top footer text-muted">
             <div class="container">
-                &copy; 2020 - RipMyPaperToShreds.com - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                &copy; 2020 - RipMyPaperToShreds.com - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a> | Design by: bootstrapmade.com
             </div>
         </footer>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -102,7 +102,7 @@
         <script src="~/assets/vendor/aos/aos.js"></script>
 
         <!-- Template Main JS File -->
-        <script src="assets/js/main.js"></script>
+        <script src="~/assets/js/main.js"></script>
         @RenderSection("Scripts", required: false)
 </body>
 </html>
