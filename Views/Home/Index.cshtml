@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,9 +13,23 @@
             <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
                 <h1 data-aos="fade-up">Community Proof Reading</h1>
                 <h2 data-aos="fade-up" data-aos-delay="400">Submit your paper, blog, etc. and get help from the community on improving your grammer.</h2>
-                <div data-aos="fade-up" data-aos-delay="800">
-                    <a href="#about" class="btn-get-started scrollto">Get Started</a>
-                </div>
+                @if (SignInManager.IsSignedIn(User))
+                {
+
+                    <div class="p-2" data-aos="fade-up" data-aos-delay="800">
+                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Browse Papers</a>
+                    </div>
+                    <div  class="p-2" data-aos="fade-up" data-aos-delay="800">
+                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Submit Paper</a>
+                    </div>
+                }
+                else
+                {
+                    <div data-aos="fade-up" data-aos-delay="800">
+                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Get Started</a>
+                    </div>
+
+                }
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
                 <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
