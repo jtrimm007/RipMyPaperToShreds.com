@@ -33,20 +33,20 @@ namespace RipMyPaperToShreds.com.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Papers(List<string> hashTags)
-        {
-            return View();
-        }
+        //public async Task<IActionResult> Papers(List<string> hashTags)
+        //{
+        //    return View();
+        //}
 
-        public async Task<IActionResult> Papers(string tagsOrTitle)
-        {
-            return View();
-        }
+        //public async Task<IActionResult> Papers(string tagsOrTitle)
+        //{
+        //    return View();
+        //}
 
-        public async Task<IActionResult> Papers(List<string> hashTags, string title)
-        {
-            return View();
-        }
+        //public async Task<IActionResult> Papers(List<string> hashTags, string title)
+        //{
+        //    return View();
+        //}
 
         public IActionResult About()
         {
@@ -58,6 +58,12 @@ namespace RipMyPaperToShreds.com.Controllers
             return View();
         }
 
+        public IActionResult SubmitPaper()
+        {
+            return View();
+        }
+
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
