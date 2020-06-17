@@ -69,3 +69,20 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.ck-editor__editable_inline {
+    min-height: 500px;
+}
+
+.boarder-radius {
+    border-radius: 50px;
+}
+
+.red {
+    color: red;
+}
+
+.shred-fixed {
+    position: fixed;
+
+}

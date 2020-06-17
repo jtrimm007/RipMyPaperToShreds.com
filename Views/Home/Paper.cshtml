@@ -1,0 +1,269 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Paper";
+    var UserObj = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+   
+}
+
+<main id="main">
+    <section id="services" class="services mt-5">
+        <div class="container" >
+            <div class="section-title" data-aos="fade-up">
+                <h2>@ViewData["Title"]</h2>
+                <h3>@UserObj.ScreenName</h3>
+            </div>
+            <div id="holder" class="row content">
+
+                <!--Paper-->
+                <div id="quote" class="col-lg-8 select--highlight--active" data-aos="fade-up" data-aos-delay="150">
+                    <p><span style="color:gray;">Josh, I corrected a few scattered English errors, that would have cost you grade points. Like always you always have soul in your writing. Good teachers love that because it lets them give good writers extra scores. The few changes I made aren’t all that important but they are worth making for the extra grade you’ll get because of them.&nbsp; Love you, Josh.&nbsp; Grandpa</span></p><p><br data-cke-filler="true"></p><p>Studying computer science has not been an easy path. However, there are few things as rewarding. The reward of learning something complex, that few people in the world understand, has been a great boost to my mental ability to push through tough times. Knowing if time is spent studying and learning, there are very few goals that are not achievable in life. &nbsp;Without the disciplines I’ve learned in computer science, I’m not sure I would understand the concept that I was the only</p><p>thing keeping me from becoming better.&nbsp;</p><p><strong>Why Graduate School?</strong></p><p>There are several reasons for my desire to attend graduate school. The main reason, as rudimentary as it may be, I love computer science. This enjoyment gets me up every day and motivates me to learn something new. Whether it be, studying the newest version of Twitters API or watching YouTube videos learning more about software architecture. Computer Science is a part of me, and I could not be happier having the opportunity to study such a complex topic.&nbsp;</p><p>Apart from my love for Computer Science, I do enjoy teaching and helping people learn more about the topic.&nbsp;One of the best times I have had was helping Dr. Roach do lab check offs as a lab assistant.&nbsp; During the labs, I helped walk students through coding complications, helping them fix issues they were having problems with. This was super fun and opened me up to the idea that I could one day manage a team of developers or be a lecturer.&nbsp;</p><p>East Tennessee State University has become home for me. I enjoy being on campus, learning from my professors, and solving problems with my classmates. The atmosphere for learning on campus is awesome. If it was not, I probably would not be as interested in graduate school. Recently, ETSU tweeted an article about how they are a top institution for helping students with learning disabilities. I can attest to this. ETSU has made it possible for me, a person with dyslexia, to finish a degree. Therefore, I would like to continue my extended education on campus, because of the wonderful professors and their willingness to help.&nbsp;</p><p><strong>Career Goals</strong></p><p>As a computer science major, I have a few career goals. Some of my goals are simple and some more complex. A good summation for said goal would be, I want a steady job with a large corporation where I can learn to work with a team. While<a href="#_msocom_1">[JT1]</a> &nbsp;at said job, have side projects that generate revenue from something I have built with my software engineering skills. It has also crossed my mind that I could become a lecturer. However, I am thinking that the teaching job should come later in my career, but if the opportunity presents itself, I would evaluate the situation for consideration. &nbsp;</p><p>If a path for corporate work is opened, a graduate degree will help me become better equipped and well versed in the computer science field to help organizations solve their problems via Information Technology. With this knowledge, I can become well suited to manage a team of developers, helping them solve their problems.&nbsp;<a href="#_msocom_2">[JT2]</a>&nbsp;</p><p>Hopefully, my work experience at a good corporation combined with a graduate degree will give me the experience to one day start a tech company. I find it fascinating to build solutions for problems people did not know they had. I’ve always been the builder type, taking a mental concept and making it into a tangible product has an overwhelming appeal. Thus, my love for computer science</p><p>Simply put, I want to further my education because of my love for computer science and ETSU. Learning will always be a part of my profession but getting the opportunity to extend my education as a first-generation graduate student would be a great honor.&nbsp;Thank you for the consideration to allow me an opportunity to continue my education, studying my passion.&nbsp;</p><p><br data-cke-filler="true"></p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_1">[JT1]</a>Shorten area. Combine the corporate, tech, and teaching.</p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_2">[JT2]</a>Add this to the paragraph above about the corporate section.</p><p><br data-cke-filler="true"></p>
+                </div>
+
+                <!--Shred Section-->
+                <div id="shredSection" class="col-lg-4 pt-4 pt-lg-0 shred-fixed" data-aos="fade-up" data-aos-delay="300">
+                    <div id="addButton" class="col-12">
+                        <button class="btn btn-outline-primary" onclick="GetShredModual()">Shred Paper</button>
+                    </div>
+
+                    <!--Shreds-->
+                    <div id="shredCards" class="overflow-auto col-12 pb-5">
+                        <!--Start Shred Container-->
+
+                        <div class="shadow p-2 mt-5 container-fluid">
+
+                            <div class="row m-3 border-bottom">
+                                <!--Up and Down Vote Buttons-->
+                                <div id="rip-vote-container" class="col-2 pl-0 ml-0">
+                                    <p class="m-0 p-0">123</p>
+                                    <svg class="bi bi-arrow-up-square mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="Crimson" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="Crimson" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path fill="Crimson" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
+                                        <path fill="Crimson" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                    <svg class="bi bi-arrow-down-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
+                                    </svg>
+                                    <svg class="bi bi-check2-square mt-3 mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="LimeGreen" fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                        <path fill="LimeGreen" fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+                                    </svg>
+                                </div>
+                                <div class="col-10">
+                                    <blockquote class="blockquote text-right">
+                                        <p class="small"><em>"Good teachers love that because it lets them give good writers extra scores."</em></p>
+                                        <footer class="blockquote-footer"><cite title="Source Title">@UserObj.ScreenName</cite></footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+                            <div class="row  m-3">
+                                <div class="col"><p class="small">@UserObj.ScreenName</p></div>
+                                <div class="col"><p class="small">12/12/12 12:12 pm</p></div>
+                            </div>
+                            <div class="row mr-2 ml-2 border-bottom">
+                                <div class="col">
+                                    <p>I am thinking that he lets should be let's, with an apostrophe.</p>
+                                </div>
+                            </div>
+                            <div class="row m-3">
+                                <div>
+                                    <p class="small"><strong>Sub-Shreds</strong></p>
+                                </div>
+                            </div>
+                            <div class="row  mt-3 mr-3 ml-3 mb-0">
+                                <div class="col">
+                                    <p class="small"><em>Shreder</em></p>
+                                </div>
+                                <div class="col">
+                                    <p class="small">12/13/12 12:12 pm</p>
+                                </div>
+                            </div>
+                            <div class="row mr-3 ml-3">
+                                <div class="col">
+                                    <p class="small">I don't agree with putting an apostrophe there.</p>
+                                </div>
+                            </div>
+                            <div class="row mr-3 ml-3">
+                                <div class="col">
+                                    <p class="small"><em>comment</em></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shadow p-2 mt-5 container-fluid">
+
+                            <div class="row m-3 border-bottom">
+                                <!--Up and Down Vote Buttons-->
+                                <div id="rip-vote-container" class="col-2 pl-0 ml-0">
+                                    <p class="m-0 p-0">123</p>
+                                    <svg class="bi bi-arrow-up-square mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="Crimson" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="Crimson" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path fill="Crimson" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
+                                        <path fill="Crimson" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
+                                    </svg>
+                                    <svg class="bi bi-arrow-down-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+                                        <path fill="Gainsboro" fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
+                                    </svg>
+                                    <svg class="bi bi-check2-square mt-3 mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill="LimeGreen" fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                                        <path fill="LimeGreen" fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+                                    </svg>
+                                </div>
+                                <div class="col-10">
+                                    <blockquote class="blockquote text-right">
+                                        <p class="small"><em>"Good teachers love that because it lets them give good writers extra scores."</em></p>
+                                        <footer class="blockquote-footer"><cite title="Source Title">@UserObj.ScreenName</cite></footer>
+                                    </blockquote>
+
+                                </div>
+                            </div>
+                            <div class="row  m-3">
+                                <div class="col"><p class="small">@UserObj.ScreenName</p></div>
+                                <div class="col"><p class="small">12/12/12 12:12 pm</p></div>
+                            </div>
+                            <div class="row mr-2 ml-2 border-bottom">
+                                <div class="col">
+                                    <p>I am thinking that he lets should be let's, with an apostrophe.</p>
+                                </div>
+                            </div>
+                            <div class="row m-3">
+                                <div>
+                                    <p class="small"><strong>Sub-Shreds</strong></p>
+                                </div>
+                            </div>
+                            <div class="row  mt-3 mr-3 ml-3 mb-0">
+                                <div class="col">
+                                    <p class="small"><em>Shreder</em>Shreder</p>
+                                </div>
+                                <div class="col">
+                                    <p class="small">12/13/12 12:12 pm</p>
+                                </div>
+                            </div>
+                            <div class="row mr-3 ml-3">
+                                <div class="col">
+                                    <p class="small">I don't agree with putting an apostrophe there.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                @*<div id="output" class="col-lg-4 pt-4 pt-lg-0 shred-fixed" data-aos="fade-up" data-aos-delay="300">
+            <p class="pt-5"><strong>Start Shredding:</strong></p><div contenteditable="true" class="border border-primary rounded p-3"></div>
+            <button class="btn btn-danger" type="reset">Clear</button><button class="btn btn-success" type="submit">Submit Shred</button>
+        </div>*@
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<script>
+
+
+
+    function GetShredModual() {
+
+        var count = 0;
+
+        var element = document.getElementById('addButton');
+        var parent = element.parentNode;
+
+        while (parent.firstChild) {
+            parent.removeChild(parent.firstChild);
+        }
+
+        var modual = document.getElementById('shredSection');
+        var adding = "<div id=\"output\" class=\"col pt-4 pt-lg-0 shred-fixed\" data-aos=\"fade-up\" data-aos-delay=\"300\"><p class=\"pt-5\" > <strong>Start Shredding:</strong></p > <div contenteditable=\"true\" class=\"border border-primary rounded p-3\"></div><button class=\"btn btn-danger\" type=\"reset\">Clear</button><button class=\"btn btn-success\" type=\"submit\">Submit Shred</button><button class=\"btn btn-outline-danger\" onclick=\"RemoveShredModual()\">Cancel Shred</button></div>";
+        
+        modual.innerHTML += adding;
+
+        var quotearea = document.getElementById('quote');
+        var output = document.getElementById('output');
+
+
+        quotearea.addEventListener('mouseup', function _getSelectedText() {
+
+            if (count < 1) {
+                if (document.getSelection().anchorNode != document.getSelection().focusNode) {
+                    alert("Please choose within one paragraph.");
+                } else if (document.getSelection && output.innerHTML != document.getSelection) {
+                    var selectedtext = document.getSelection();
+                    var anchorOffset = document.getSelection();
+                    var test = document.getElementById('quote').textContent.charAt(document.getSelection().anchorOffset + 1);
+                    output.prepend(selectedtext.toString());
+                    count++;
+                }
+            }
+
+            //if (document.getSelection && output.innerHTML != document.getSelection) { // check the user has selected some text inside field
+            //    var selectedtext = document.getSelection();
+            //    var anchorOffset = document.getSelection();
+            //    var test = document.getElementById('quote').textContent.charAt(document.getSelection().anchorOffset + 1);
+            //    output.prepend(selectedtext.toString());
+            //}
+
+
+        }, false);
+    }
+
+    function RemoveShredModual() {
+        var element = document.getElementById('output');
+        element.parentNode.removeChild(element);
+
+        var modual = document.getElementById('shredSection');
+        var adding = "<div id=\"addButton\" class=\"col-lg-4 pt-4 pt-lg-0 shred-fixed\" data-aos=\"fade-up\" data-aos-delay=\"300\"><button class=\"btn btn-outline-primary\" onclick=\"GetShredModual()\" >Shred Paper</button></div>";
+
+        modual.innerHTML += adding;
+    }
+
+
+    //$(window).scroll(function () {
+    //    $(".shred-fixed").css({ "margin-top": ($(window).scrollTop()) + "px", "margin-left": ($(window).scrollLeft()) + "px" });
+    //});
+
+
+        //thisRespondHightlightText(".select--highlight--active");
+
+
+        //function thisRespondHightlightText(thisDiv) {
+        //    $(thisDiv).on("mouseup", function () {
+        //        var selectedText = getSelectionText();
+        //        var selectedTextRegExp = new RegExp(selectedText, "g");
+        //        var text = $(this).text().replace(selectedTextRegExp, "<span class='red'>" + selectedText + "</span>");
+        //        $(this).html(text);
+        //    });
+        //}
+
+        //function getSelectionText() {
+        //    var text = "";
+        //    var test = "";
+        //    if (window.getSelection) {
+        //        text = window.getSelection().toString();
+        //    } else if (document.selection && document.selection.type != "Control") {
+        //        text = document.selection.createRange().html;
+        //        test = document.selection.html.createRange();
+        //    }
+        //    return text;
+        //}
+
+    //var testing = document.getElementById('quote').querySelectorAll('p');
+    //testing.addEventListener('mouseup', function () {
+    //    if (this.selectionStart != this.selectionEnd) { // check the user has selected some text inside field
+    //        var selectedtext = this.value.substring(this.selectionStart, this.selectionEnd)
+    //        output.innerHTML = selectedtext
+    //    }
+    //}, false)
+
+
+
+
+</script>

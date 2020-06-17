@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using RipMyPaperToShreds.com.Models;
@@ -47,6 +48,12 @@ namespace RipMyPaperToShreds.com.Controllers
         //{
         //    return View();
         //}
+
+        [Authorize]
+        public async Task<IActionResult> Paper()
+        {
+            return View();
+        }
 
         public IActionResult About()
         {

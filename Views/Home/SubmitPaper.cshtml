@@ -1,15 +1,95 @@
-﻿
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     ViewData["Title"] = "SubmitPaper";
 }
 
+
+
+
+
 <main id="main">
-    <section id="services" class="services">
+    <section id="services" class="services mt-5">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <h2>@ViewData["Title"]</h2>
-                <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fug</p>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <p>Submit your paper for shredding (proofreading).</p>
+
+                    <div class="row">
+                        <div class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
+                            <form action="" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                                <div class="form-group">
+                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- The toolbar will be rendered in this container. -->
+                                    <div id="toolbar-container"></div>
+                                    <div id="editor" class="border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></div>
+
+                                    <div class="validate"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" />
+                                    <div class="validate"></div>
+                                </div>
+
+                                <div class="text-center"><button type="submit" class="btn btn-success">Submit for Proofreading</button></div>
+                            </form>
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    <p>Please login or create an account to submit a paper for shredding (proofreading)</p>
+                    <div class="p-2" data-aos="fade-up" data-aos-delay="800">
+                        <a href="~/Identity/Account/Register" class="btn btn-success">Registar</a>
+                    </div>
+                    <div class="p-2" data-aos="fade-up" data-aos-delay="800">
+                        <a href="~/Identity/Account/Login" class="btn btn-success">Login</a>
+                    </div>
+                }
+
             </div>
-</div>
-        </section>
-        </main>
+        </div>
+
+
+    </section>
+
+
+</main>
+
+@if(SignInManager.IsSignedIn(User))
+{
+<script>
+
+    DecoupledEditor
+        .create(document.querySelector('#editor'))
+        .then(editor => {
+            const toolbarContainer = document.querySelector('#toolbar-container');
+
+            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+
+
+    function sConsole(event) {
+        event.preventDefault();
+        var data = document.getElementById('editor').innerHTML.toString();
+        console.log(data);
+
+    }
+
+
+
+</script>
+}
+
+
+
