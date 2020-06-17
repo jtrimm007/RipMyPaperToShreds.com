@@ -129,7 +129,6 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\D
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csprojAssemblyReference.cache
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.AssemblyInfoInputs.cache
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.AssemblyInfo.cs
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csproj.CoreCompileInputs.cache
@@ -177,3 +176,5 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\D
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.pdb
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.genruntimeconfig.cache
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csprojAssemblyReference.cache
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Razor\Views\Home\Paper.cshtml.g.cs
