@@ -8,21 +8,26 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
+    <main id="main">
+        <section id="services" class="services mt-5">
+            <div class="container-fluid">
 
-    <div>
-        <h2 style="text-align:center">Manage your account</h2>
-        <h4 style="text-align:center">Change your account settings</h4>
-        <hr />
-        <div class="row">
-            <div class="col-md-3">
-                <partial name="_ManageNav" />
+                <div class="section-title">
+                    <h2>@ViewData["Title"]</h2>
+                    
+                </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <partial name="_ManageNav" />
+                        </div>
+                        <div class="col-md-9">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-9">
-                @RenderBody()
-            </div>
-        </div>
-    </div>
-
-@section Scripts {
-    @RenderSection("Scripts", required: false)
-}
+        </section>
+    </main>
+                @section Scripts {
+                    @RenderSection("Scripts", required: false)
+                }

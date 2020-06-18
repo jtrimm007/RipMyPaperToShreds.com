@@ -4,15 +4,15 @@
 // Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
 // File Name: HomeController.cs
 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using RipMyPaperToShreds.com.Models;
+using System.Diagnostics;
+using System.Threading.Tasks;
+
 namespace RipMyPaperToShreds.com.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using RipMyPaperToShreds.com.Models;
-    using System.Diagnostics;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// Defines the <see cref="HomeController" />.
     /// </summary>
