@@ -12,6 +12,10 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
 
         public static string Email => "Email";
 
+        public static string MyPapers => "MyPapers";
+
+        public static string MyShreds => "MyShreds";
+
         public static string ChangePassword => "ChangePassword";
 
         public static string DownloadPersonalData => "DownloadPersonalData";
@@ -25,6 +29,10 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
         public static string IndexNavClass(ViewContext viewContext) => PageNavClass(viewContext, Index);
+
+        public static string PapersNavClass(ViewContext viewContext) => PageNavClass(viewContext, MyPapers);
+
+        public static string ShredsNavClass(ViewContext viewContext) => PageNavClass(viewContext, MyShreds);
 
         public static string EmailNavClass(ViewContext viewContext) => PageNavClass(viewContext, Email);
 
