@@ -1,28 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text.Encodings.Web;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using RipMyPaperToShreds.com.Models;
+﻿// Copywrite 2020 RipMyPaperToShreds.com - All rights reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Proprietary and confidential
+// Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
+// File Name: Login.cshtml.cs
 
 namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account
 {
+    using Microsoft.AspNetCore.Authentication;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+    using RipMyPaperToShreds.com.Models;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="LoginModel" />.
+    /// </summary>
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        #region Fields
+
+        /// <summary>
+        /// Defines the _logger.
+        /// </summary>
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, 
+        /// <summary>
+        /// Defines the _signInManager.
+        /// </summary>
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        /// <summary>
+        /// Defines the _userManager.
+        /// </summary>
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LoginModel"/> class.
+        /// </summary>
+        /// <param name="signInManager">The signInManager<see cref="SignInManager{ApplicationUser}"/>.</param>
+        /// <param name="logger">The logger<see cref="ILogger{LoginModel}"/>.</param>
+        /// <param name="userManager">The userManager<see cref="UserManager{ApplicationUser}"/>.</param>
+        public LoginModel(SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -31,32 +60,41 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account
             _logger = logger;
         }
 
-        [BindProperty]
-        public InputModel Input { get; set; }
+        #endregion
 
-        public IList<AuthenticationScheme> ExternalLogins { get; set; }
+        #region Properties
 
-        public string ReturnUrl { get; set; }
-
+        /// <summary>
+        /// Gets or sets the ErrorMessage.
+        /// </summary>
         [TempData]
         public string ErrorMessage { get; set; }
 
-        public class InputModel
-        {
-            [Required]
-            [EmailAddress]
-            public string Email { get; set; }
+        /// <summary>
+        /// Gets or sets the ExternalLogins.
+        /// </summary>
+        public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
-            [Required]
-            [DataType(DataType.Password)]
-            public string Password { get; set; }
+        /// <summary>
+        /// Gets or sets the Input.
+        /// </summary>
+        [BindProperty]
+        public InputModel Input { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ReturnUrl.
+        /// </summary>
+        public string ReturnUrl { get; set; }
 
+        #endregion
 
-            [Display(Name = "Remember me?")]
-            public bool RememberMe { get; set; }
-        }
+        #region Methods
 
+        /// <summary>
+        /// The OnGetAsync.
+        /// </summary>
+        /// <param name="returnUrl">The returnUrl<see cref="string"/>.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task OnGetAsync(string returnUrl = null)
         {
             if (!string.IsNullOrEmpty(ErrorMessage))
@@ -74,6 +112,11 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        /// <summary>
+        /// The OnPostAsync.
+        /// </summary>
+        /// <param name="returnUrl">The returnUrl<see cref="string"/>.</param>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl = returnUrl ?? Url.Content("~/");
@@ -107,6 +150,38 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account
 
             // If we got this far, something failed, redisplay form
             return Page();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Defines the <see cref="InputModel" />.
+        /// </summary>
+        public class InputModel
+        {
+            #region Properties
+
+            /// <summary>
+            /// Gets or sets the Email.
+            /// </summary>
+            [Required]
+            [EmailAddress]
+            public string Email { get; set; }
+
+            /// <summary>
+            /// Gets or sets the Password.
+            /// </summary>
+            [Required]
+            [DataType(DataType.Password)]
+            public string Password { get; set; }
+
+            /// <summary>
+            /// Gets or sets a value indicating whether RememberMe.
+            /// </summary>
+            [Display(Name = "Remember me?")]
+            public bool RememberMe { get; set; }
+
+            #endregion
         }
     }
 }

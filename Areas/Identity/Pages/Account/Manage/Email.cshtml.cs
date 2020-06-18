@@ -1,25 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Encodings.Web;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-using RipMyPaperToShreds.com.Models;
+﻿// Copywrite 2020 RipMyPaperToShreds.com - All rights reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Proprietary and confidential
+// Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
+// File Name: Email.cshtml.cs
 
 namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
 {
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.Services;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.AspNetCore.WebUtilities;
+    using RipMyPaperToShreds.com.Models;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+    using System.Text.Encodings.Web;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="EmailModel" />.
+    /// </summary>
     public partial class EmailModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        #region Fields
+
+        /// <summary>
+        /// Defines the _emailSender.
+        /// </summary>
         private readonly IEmailSender _emailSender;
 
+        /// <summary>
+        /// Defines the _signInManager.
+        /// </summary>
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        /// <summary>
+        /// Defines the _userManager.
+        /// </summary>
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailModel"/> class.
+        /// </summary>
+        /// <param name="userManager">The userManager<see cref="UserManager{ApplicationUser}"/>.</param>
+        /// <param name="signInManager">The signInManager<see cref="SignInManager{ApplicationUser}"/>.</param>
+        /// <param name="emailSender">The emailSender<see cref="IEmailSender"/>.</param>
         public EmailModel(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
@@ -30,39 +59,45 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
             _emailSender = emailSender;
         }
 
-        public string Username { get; set; }
+        #endregion
 
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the Email.
+        /// </summary>
         public string Email { get; set; }
 
-        public bool IsEmailConfirmed { get; set; }
-
-        [TempData]
-        public string StatusMessage { get; set; }
-
+        /// <summary>
+        /// Gets or sets the Input.
+        /// </summary>
         [BindProperty]
         public InputModel Input { get; set; }
 
-        public class InputModel
-        {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "New email")]
-            public string NewEmail { get; set; }
-        }
+        /// <summary>
+        /// Gets or sets a value indicating whether IsEmailConfirmed.
+        /// </summary>
+        public bool IsEmailConfirmed { get; set; }
 
-        private async Task LoadAsync(ApplicationUser user)
-        {
-            var email = await _userManager.GetEmailAsync(user);
-            Email = email;
+        /// <summary>
+        /// Gets or sets the StatusMessage.
+        /// </summary>
+        [TempData]
+        public string StatusMessage { get; set; }
 
-            Input = new InputModel
-            {
-                NewEmail = email,
-            };
+        /// <summary>
+        /// Gets or sets the Username.
+        /// </summary>
+        public string Username { get; set; }
 
-            IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
-        }
+        #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// The OnGetAsync.
+        /// </summary>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         public async Task<IActionResult> OnGetAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -75,6 +110,10 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
+        /// <summary>
+        /// The OnPostChangeEmailAsync.
+        /// </summary>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         public async Task<IActionResult> OnPostChangeEmailAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -112,6 +151,10 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
             return RedirectToPage();
         }
 
+        /// <summary>
+        /// The OnPostSendVerificationEmailAsync.
+        /// </summary>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -142,6 +185,44 @@ namespace RipMyPaperToShreds.com.Areas.Identity.Pages.Account.Manage
 
             StatusMessage = "Verification email sent. Please check your email.";
             return RedirectToPage();
+        }
+
+        /// <summary>
+        /// The LoadAsync.
+        /// </summary>
+        /// <param name="user">The user<see cref="ApplicationUser"/>.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
+        private async Task LoadAsync(ApplicationUser user)
+        {
+            var email = await _userManager.GetEmailAsync(user);
+            Email = email;
+
+            Input = new InputModel
+            {
+                NewEmail = email,
+            };
+
+            IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Defines the <see cref="InputModel" />.
+        /// </summary>
+        public class InputModel
+        {
+            #region Properties
+
+            /// <summary>
+            /// Gets or sets the NewEmail.
+            /// </summary>
+            [Required]
+            [EmailAddress]
+            [Display(Name = "New email")]
+            public string NewEmail { get; set; }
+
+            #endregion
         }
     }
 }

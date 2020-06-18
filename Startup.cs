@@ -1,48 +1,56 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
-using RipMyPaperToShreds.com.Data;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using RipMyPaperToShreds.com.Models;
+// Copywrite 2020 RipMyPaperToShreds.com - All rights reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Proprietary and confidential
+// Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
+// File Name: Startup.cs
 
 namespace RipMyPaperToShreds.com
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using RipMyPaperToShreds.com.Data;
+    using RipMyPaperToShreds.com.Models;
+    using RipMyPaperToShreds.com.Services.Hubs;
+
+    /// <summary>
+    /// Defines the <see cref="Startup" />.
+    /// </summary>
     public class Startup
     {
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Startup"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration<see cref="IConfiguration"/>.</param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets the Configuration.
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+        #endregion
 
-            //services.AddIdentityCore<ApplicationUser>(cfg => {
-            //    cfg.User.RequireUniqueEmail = true;
-            //}).AddEntityFrameworkStores<ApplicationDbContext>();
-
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-        }
+        #region Methods
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        /// <summary>
+        /// The Configure.
+        /// </summary>
+        /// <param name="app">The app<see cref="IApplicationBuilder"/>.</param>
+        /// <param name="env">The env<see cref="IWebHostEnvironment"/>.</param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -64,6 +72,8 @@ namespace RipMyPaperToShreds.com
             app.UseAuthentication();
             app.UseAuthorization();
 
+
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
@@ -75,7 +85,35 @@ namespace RipMyPaperToShreds.com
                    pattern: "{controller}/{action}");
 
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ShredsHub>("/shredHub");
+
+
             });
         }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// The ConfigureServices.
+        /// </summary>
+        /// <param name="services">The services<see cref="IServiceCollection"/>.</param>
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            //services.AddIdentityCore<ApplicationUser>(cfg => {
+            //    cfg.User.RequireUniqueEmail = true;
+            //}).AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+
+            services.AddSignalR();
+        }
+
+        #endregion
     }
 }

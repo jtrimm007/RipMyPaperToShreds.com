@@ -1,4 +1,22 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿"use strict";
 
-// Write your JavaScript code.
+//import { signalR } from "./signalr/dist/browser/signalr";
+
+$(document).ready(function _shred() {
+    let connection = new signalR
+        .HubConnectionBuilder()
+        .withUrl("/shredHub")
+        .build();
+    connection.start().catch(function _connectionStartError(err) {
+        console.error(err.toString());
+    });
+
+    connection.on("ShredUpdated", function _shredUpdated(message) {
+        let tokens = message.split(':');
+        let command = tokens[0];
+        let params = tokens[1];
+        if (command === "SHRED-ADDED") {
+            
+        }
+    })
+});
