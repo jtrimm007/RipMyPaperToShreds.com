@@ -15,6 +15,8 @@ namespace RipMyPaperToShreds.com
     using RipMyPaperToShreds.com.Data;
     using RipMyPaperToShreds.com.Models;
     using RipMyPaperToShreds.com.Services.Hubs;
+    using RipMyPaperToShreds.com.Services.Interfaces;
+    using RipMyPaperToShreds.com.Services.Repos;
 
     /// <summary>
     /// Defines the <see cref="Startup" />.
@@ -112,6 +114,14 @@ namespace RipMyPaperToShreds.com
             services.AddRazorPages();
 
             services.AddSignalR();
+
+            services.AddScoped<ISubShreds, Services.Repos.SubShreds>();
+            services.AddScoped<IShreds, Services.Repos.Shreds>();
+            services.AddScoped<IRips, Services.Repos.Rips>();
+            services.AddScoped<IPapers, Services.Repos.Papers>();
+            services.AddScoped<IPaperHashes, Services.Repos.PaperHashes>();
+            services.AddScoped<IHashTags, Services.Repos.HashTags>();
+
         }
 
         #endregion

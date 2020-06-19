@@ -6,6 +6,7 @@
 
 namespace RipMyPaperToShreds.com.Data
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using RipMyPaperToShreds.com.Models;
@@ -25,6 +26,25 @@ namespace RipMyPaperToShreds.com.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+
+            base.OnModelCreating(builder);
+            builder.Entity<PaperHashes>(ph =>
+            {
+                ph.HasNoKey();
+            });
+
+        }
+
+        public DbSet<SubShreds> SubShreds { get; set; }
+        public DbSet<Shreds> Shreds { get; set; }
+        public DbSet<Rips> Rips { get; set; }
+        public DbSet<Papers> Papers { get; set; }
+        public DbSet<HashTags> HashTags { get; set; }
+        public DbSet<PaperHashes> PaperHashes { get; set; }
+
 
         #endregion
     }
