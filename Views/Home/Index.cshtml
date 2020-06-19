@@ -17,22 +17,22 @@
                 {
 
                     <div class="p-2" data-aos="fade-up" data-aos-delay="800">
-                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Browse Papers</a>
+                        <a asp-action="Papers" asp-controller="Home" class="btn-get-started scrollto">Browse Papers</a>
                     </div>
                     <div  class="p-2" data-aos="fade-up" data-aos-delay="800">
-                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Submit Paper</a>
+                        <a asp-action="SubmitPaper" asp-controller="Home" class="btn-get-started scrollto">Submit Paper</a>
                     </div>
                 }
                 else
                 {
                     <div data-aos="fade-up" data-aos-delay="800">
-                        <a asp-action="" asp-controller="" class="btn-get-started scrollto">Get Started</a>
+                        <a asp-area="Identity" asp-page="/Account/Register" class="btn-get-started scrollto">Get Started</a>
                     </div>
 
                 }
             </div>
             <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
-                <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+                <img src="assets/img/art/education-3420037_1920.png" class="img-fluid animated" alt="">
             </div>
         </div>
     </div>

@@ -97,6 +97,7 @@
                         if (!document.getElementById('selectedText')) {
                             if (document.getSelection().anchorNode != document.getSelection().focusNode) {
                                 alert("Please choose within one paragraph.");
+                                document.getSelection().removeAllRanges();
                             } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
                                 var selectedtext = document.getSelection();
                                 //var anchorOffset = document.getSelection();
@@ -129,6 +130,7 @@
                 url: "/Home/ShredSection",
                 success: function _success(data) {
                     modual.innerHTML += data;
+                    document.getSelection().removeAllRanges();
 
                 }
             });
@@ -142,6 +144,30 @@
 
     function Comment() {
 
+        $(document).ready(function _ajax() {
+            $.ajax({
+                url: "/Home/Comment",
+                success: function _success(data) {
+                    //parent.innerHTML += data;
+                    document.getElementById('commentButton').remove();
+                    document.getElementById('commentHolder').innerHTML += data;
+                }
+            });
+        });
+    }
+
+    function GetCommentButton() {
+
+        $(document).ready(function _ajax() {
+            $.ajax({
+                url: "/Home/CommentButton",
+                success: function _success(data) {
+                    //parent.innerHTML += data;
+                    document.getElementById('commentInput').remove();
+                    document.getElementById('commentHolder').innerHTML += data;
+                }
+            });
+        });
     }
 
     //Window Scroll

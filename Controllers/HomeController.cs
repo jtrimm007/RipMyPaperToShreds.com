@@ -162,6 +162,11 @@ namespace RipMyPaperToShreds.com.Controllers
             return PartialView("_Comment");
         }
 
+        public async Task<IActionResult> CommentButton()
+        {
+            return PartialView("_CommentButton");
+        }
+
 
 
         #endregion

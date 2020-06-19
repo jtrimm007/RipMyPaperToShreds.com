@@ -5,7 +5,7 @@
 
 <!--Start Shred Card-->
 
-    <div class="shadow p-2 mt-5 container-fluid">
+    <div id="cardHolder" class="shadow p-2 mt-5 container-fluid">
 
         <div class="row m-3 border-bottom">
             <!--Up and Down Vote Buttons-->
@@ -68,10 +68,7 @@
                 <p class="small">I don't agree with putting an apostrophe there.</p>
             </div>
         </div>
-        <div id="comment" class="row mr-3 ml-3">
-            <partial name="_Comment" />
-            @*<div class="col">
-                <p class="small"><em><button class="small btn btn-sm btn-link" onclick="Comment()">comment</button></em></p>
-            </div>*@
+        <div id="commentHolder" class="row mr-3 ml-3">
+            <partial name="_CommentButton" />
         </div>
     </div>
