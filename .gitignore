@@ -125,3 +125,10 @@ obj/project.assets.json
 obj/project.nuget.cache
 obj/RipMyPaperToShreds.com.csproj.nuget.dgspec.json
 obj/RipMyPaperToShreds.com.csproj.nuget.g.props
+Data/Migrations/ApplicationDbContextModelSnapshot.cs
+obj/Debug/netcoreapp3.1/RipMyPaperToShreds.com.csproj.CoreCompileInputs.cache
+obj/Debug/netcoreapp3.1/RipMyPaperToShreds.com.csproj.FileListAbsolute.txt
+obj/Debug/netcoreapp3.1/RipMyPaperToShreds.com.csprojAssemblyReference.cache
+obj/Debug/netcoreapp3.1/RipMyPaperToShreds.com.dll
+obj/Debug/netcoreapp3.1/RipMyPaperToShreds.com.pdb
+RipMyPaperToShreds.com.csproj
