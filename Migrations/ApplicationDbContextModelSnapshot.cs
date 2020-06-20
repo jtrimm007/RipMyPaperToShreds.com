@@ -274,6 +274,9 @@ namespace RipMyPaperToShreds.com.Migrations
                     b.Property<string>("ShrederId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.ToTable("Papers");

@@ -16,7 +16,6 @@ namespace RipMyPaperToShreds.com
     using RipMyPaperToShreds.com.Models;
     using RipMyPaperToShreds.com.Services.Hubs;
     using RipMyPaperToShreds.com.Services.Interfaces;
-    using RipMyPaperToShreds.com.Services.Repos;
 
     /// <summary>
     /// Defines the <see cref="Startup" />.
@@ -47,7 +46,6 @@ namespace RipMyPaperToShreds.com
 
         #region Methods
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         /// <summary>
         /// The Configure.
         /// </summary>
@@ -93,7 +91,6 @@ namespace RipMyPaperToShreds.com
             });
         }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         /// <summary>
         /// The ConfigureServices.
         /// </summary>
@@ -121,7 +118,6 @@ namespace RipMyPaperToShreds.com
             services.AddScoped<IPapers, Services.Repos.Papers>();
             services.AddScoped<IPaperHashes, Services.Repos.PaperHashes>();
             services.AddScoped<IHashTags, Services.Repos.HashTags>();
-
         }
 
         #endregion

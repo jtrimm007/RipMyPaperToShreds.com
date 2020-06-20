@@ -4,15 +4,16 @@
 // Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
 // File Name: HomeController.cs
 
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using RipMyPaperToShreds.com.Models;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
 namespace RipMyPaperToShreds.com.Controllers
 {
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using RipMyPaperToShreds.com.Models;
+    using RipMyPaperToShreds.com.Services.Interfaces;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+
     /// <summary>
     /// Defines the <see cref="HomeController" />.
     /// </summary>
@@ -24,6 +25,7 @@ namespace RipMyPaperToShreds.com.Controllers
         /// Defines the _logger.
         /// </summary>
         private readonly ILogger<HomeController> _logger;
+        private readonly IPapers _paperRepo;
 
         #endregion
 
@@ -33,9 +35,10 @@ namespace RipMyPaperToShreds.com.Controllers
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="logger">The logger<see cref="ILogger{HomeController}"/>.</param>
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IPapers paperRepo)
         {
             _logger = logger;
+            _paperRepo = paperRepo;
         }
 
         #endregion
@@ -49,6 +52,24 @@ namespace RipMyPaperToShreds.com.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+        /// <summary>
+        /// The Comment.
+        /// </summary>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
+        public async Task<IActionResult> Comment()
+        {
+            return PartialView("_Comment");
+        }
+
+        /// <summary>
+        /// The CommentButton.
+        /// </summary>
+        /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
+        public async Task<IActionResult> CommentButton()
+        {
+            return PartialView("_CommentButton");
         }
 
         /// <summary>
@@ -79,20 +100,6 @@ namespace RipMyPaperToShreds.com.Controllers
             return View();
         }
 
-        //public async Task<IActionResult> Papers(List<string> hashTags)
-        //{
-        //    return View();
-        //}
-
-        //public async Task<IActionResult> Papers(string tagsOrTitle)
-        //{
-        //    return View();
-        //}
-
-        //public async Task<IActionResult> Papers(List<string> hashTags, string title)
-        //{
-        //    return View();
-        //}
         /// <summary>
         /// The Paper.
         /// </summary>
@@ -157,17 +164,17 @@ namespace RipMyPaperToShreds.com.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Comment()
+        [HttpPost]
+        public async Task<IActionResult> SubmitPaper(Papers papers)
         {
-            return PartialView("_Comment");
+            if(ModelState.IsValid)
+            {
+                await _paperRepo.Create(papers);
+
+                return PartialView("_PaperSubmitted");
+            }
+            return View(papers);
         }
-
-        public async Task<IActionResult> CommentButton()
-        {
-            return PartialView("_CommentButton");
-        }
-
-
 
         #endregion
     }

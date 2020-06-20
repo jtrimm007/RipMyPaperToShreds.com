@@ -6,7 +6,6 @@
 
 namespace RipMyPaperToShreds.com.Data
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using RipMyPaperToShreds.com.Models;
@@ -27,6 +26,48 @@ namespace RipMyPaperToShreds.com.Data
         {
         }
 
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the HashTags.
+        /// </summary>
+        public DbSet<HashTags> HashTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PaperHashes.
+        /// </summary>
+        public DbSet<PaperHashes> PaperHashes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Papers.
+        /// </summary>
+        public DbSet<Papers> Papers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Rips.
+        /// </summary>
+        public DbSet<Rips> Rips { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Shreds.
+        /// </summary>
+        public DbSet<Shreds> Shreds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubShreds.
+        /// </summary>
+        public DbSet<SubShreds> SubShreds { get; set; }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// The OnModelCreating.
+        /// </summary>
+        /// <param name="builder">The builder<see cref="ModelBuilder"/>.</param>
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
@@ -35,16 +76,7 @@ namespace RipMyPaperToShreds.com.Data
             {
                 ph.HasNoKey();
             });
-
         }
-
-        public DbSet<SubShreds> SubShreds { get; set; }
-        public DbSet<Shreds> Shreds { get; set; }
-        public DbSet<Rips> Rips { get; set; }
-        public DbSet<Papers> Papers { get; set; }
-        public DbSet<HashTags> HashTags { get; set; }
-        public DbSet<PaperHashes> PaperHashes { get; set; }
-
 
         #endregion
     }

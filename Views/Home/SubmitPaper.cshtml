@@ -1,7 +1,13 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿@model RipMyPaperToShreds.com.Models.Papers
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
+
+
 @{
     ViewData["Title"] = "SubmitPaper";
+    var UserObj = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
+
 }
 
 
@@ -19,10 +25,30 @@
 
                     <div class="row">
                         <div class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
-                            <form action="" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                            <form method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
-                                    <input type="text" name="title" class="form-control" id="title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <div class="validate"></div>
+                                    <label hidden asp-for="Date" class="control-label"></label>
+                                    <input hidden asp-for="Date" value="@DateTime.UtcNow" class="form-control" />
+                                    <span asp-validation-for="Date" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label hidden asp-for="ID" class="control-label"></label>
+                                    <input hidden asp-for="ID" value="0" class="form-control" />
+                                    <span asp-validation-for="ID" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label hidden asp-for="Title" class="control-label"></label>
+                                    <input type="text" name="title" class="form-control" id="title" asp-for="Title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label hidden asp-for="ShrederId" class="control-label"></label>
+                                    <input hidden asp-for="ShrederId" value="@UserObj.Id" class="form-control" />
+                                    <span asp-validation-for="ShrederId" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
                                     <!-- The toolbar will be rendered in this container. -->
@@ -31,12 +57,21 @@
 
                                     <div class="validate"></div>
                                 </div>
+
+                                <div class="form-group form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" asp-for="Draft" /> @Html.DisplayNameFor(model => model.Draft)
+                                    </label>
+                                </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" />
                                     <div class="validate"></div>
                                 </div>
 
-                                <div class="text-center"><button type="submit" class="btn btn-success">Submit for Proofreading</button></div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Submit for Proofreading</button>
+
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -62,33 +97,33 @@
 
 </main>
 
-@if(SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User))
 {
-<script>
+    <script>
 
-    DecoupledEditor
-        .create(document.querySelector('#editor'))
-        .then(editor => {
-            const toolbarContainer = document.querySelector('#toolbar-container');
+        DecoupledEditor
+            .create(document.querySelector('#editor'))
+            .then(editor => {
+                const toolbarContainer = document.querySelector('#toolbar-container');
 
-            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-        })
-        .catch(error => {
-            console.error(error);
-        });
-
-
-
-    function sConsole(event) {
-        event.preventDefault();
-        var data = document.getElementById('editor').innerHTML.toString();
-        console.log(data);
-
-    }
+                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
 
 
-</script>
+        function sConsole(event) {
+            event.preventDefault();
+            var data = document.getElementById('editor').innerHTML.toString();
+            console.log(data);
+
+        }
+
+
+
+    </script>
 }
 
 

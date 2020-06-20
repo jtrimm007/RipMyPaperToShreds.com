@@ -1,26 +1,56 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RipMyPaperToShreds.com.Data;
-using RipMyPaperToShreds.com.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Copywrite 2020 RipMyPaperToShreds.com - All rights reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Proprietary and confidential
+// Written by: Joshua Trimm <trimmj@etsu.edu>, 6/19/2020
+// File Name: Papers.cs
 
 namespace RipMyPaperToShreds.com.Services.Repos
 {
+    using Microsoft.EntityFrameworkCore;
+    using RipMyPaperToShreds.com.Data;
+    using RipMyPaperToShreds.com.Services.Interfaces;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="Papers" />.
+    /// </summary>
     public class Papers : IPapers
     {
-        private readonly ApplicationDbContext _db;
+        #region Fields
 
+        /// <summary>
+        /// Defines the _db.
+        /// </summary>
+        private ApplicationDbContext _db;
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Papers"/> class.
+        /// </summary>
+        /// <param name="db">The db<see cref="ApplicationDbContext"/>.</param>
         public Papers(ApplicationDbContext db)
         {
             _db = db;
         }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// The Create.
+        /// </summary>
+        /// <param name="paper">The paper<see cref="Models.Papers"/>.</param>
+        /// <returns>The <see cref="Task{Models.Papers}"/>.</returns>
         public async Task<Models.Papers> Create(Models.Papers paper)
         {
             var check = await Read(paper.ID);
 
-            if(check == null)
+            if (check == null)
             {
                 await _db.Papers.AddAsync(paper);
                 await _db.SaveChangesAsync();
@@ -29,33 +59,52 @@ namespace RipMyPaperToShreds.com.Services.Repos
             return paper;
         }
 
+        /// <summary>
+        /// The Delete.
+        /// </summary>
+        /// <param name="paper">The paper<see cref="Models.Papers"/>.</param>
+        /// <returns>The <see cref="Task"/>.</returns>
         public async Task Delete(Models.Papers paper)
         {
             var check = await Read(paper.ID);
 
-            if(check != null)
+            if (check != null)
             {
                 _db.Papers.Remove(paper);
                 await _db.SaveChangesAsync();
-                
+
             }
         }
 
+        /// <summary>
+        /// The Read.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Task{Models.Papers}"/>.</returns>
         public async Task<Models.Papers> Read(int id)
         {
             return await _db.Papers.FirstOrDefaultAsync(x => x.ID == id);
         }
 
+        /// <summary>
+        /// The ReadAll.
+        /// </summary>
+        /// <returns>The <see cref="Task{ICollection{Models.Papers}}"/>.</returns>
         public async Task<ICollection<Models.Papers>> ReadAll()
         {
             return await _db.Papers.ToListAsync();
         }
 
+        /// <summary>
+        /// The Update.
+        /// </summary>
+        /// <param name="paper">The paper<see cref="Models.Papers"/>.</param>
+        /// <returns>The <see cref="Task{Models.Papers}"/>.</returns>
         public async Task<Models.Papers> Update(Models.Papers paper)
         {
             var check = await Read(paper.ID);
 
-            if(check != null)
+            if (check != null)
             {
                 _db.Papers.Update(paper);
                 await _db.SaveChangesAsync();
@@ -63,5 +112,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
             }
             return paper;
         }
+
+        #endregion
     }
 }

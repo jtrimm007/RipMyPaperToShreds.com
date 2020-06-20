@@ -4,9 +4,7 @@
 // Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
 // File Name: IdentityHostingStartup.cs
 
-using Microsoft.AspNetCore.Hosting;
-
-[assembly: HostingStartup(typeof(RipMyPaperToShreds.com.Areas.Identity.IdentityHostingStartup))]
+[assembly: Microsoft.AspNetCore.Hosting.HostingStartup(typeof(RipMyPaperToShreds.com.Areas.Identity.IdentityHostingStartup))]
 namespace RipMyPaperToShreds.com.Areas.Identity
 {
     using Microsoft.AspNetCore.Hosting;
