@@ -24,8 +24,8 @@
                     <p>Submit your paper for shredding (proofreading).</p>
 
                     <div class="row">
-                        <div class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
-                            <form method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                        <div id="formDiv" class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
+                            <form id="form" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
                                     <label hidden asp-for="Date" class="control-label"></label>
@@ -42,7 +42,7 @@
 
                                 <div class="form-group">
                                     <label hidden asp-for="Title" class="control-label"></label>
-                                    <input type="text" name="title" class="form-control" id="title" asp-for="Title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <input type="text" name="Title" class="form-control" id="title" asp-for="Title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <span asp-validation-for="Title" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -54,17 +54,17 @@
                                     <!-- The toolbar will be rendered in this container. -->
                                     <div id="toolbar-container"></div>
                                     <div id="editor" class="border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></div>
-
+                                    <input hidden name="Paper" id="Paper" value="" />
                                     <div class="validate"></div>
                                 </div>
 
                                 <div class="form-group form-check">
                                     <label class="form-check-label">
-                                        <input class="form-check-input" asp-for="Draft" /> @Html.DisplayNameFor(model => model.Draft)
+                                        <input id="Draft" class="form-check-input" name="Draft" type="checkbox" value="true"/> @Html.DisplayNameFor(model => model.Draft)
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" />
+                                    <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" oninput="HashTagGenerator()"/>
                                     <div class="validate"></div>
                                 </div>
 
@@ -112,12 +112,47 @@
                 console.error(error);
             });
 
+        $('form').on('submit', function _submitForm(submitEvent) {
+            event.preventDefault();
+
+            let $form = $(this);
+
+            $.ajax({
+                url: $form.attr('action'),
+                type: $form.attr('method'),
+                data: $form.serialize(),
+                success: function _success(response) {
+                    console.log(response);
+                    document.getElementById('form').remove();
+                    document.getElementById('formDiv').innerHTML = response;
+                },
+                error: function _error() {
+                    console.log(_error);
+
+                }
+            }).done(console.log($form.serialize()));
+        });
 
 
         function sConsole(event) {
             event.preventDefault();
             var data = document.getElementById('editor').innerHTML.toString();
-            console.log(data);
+            document.getElementById('Paper').value = data;
+            var title = document.getElementById('title').value;
+            var draft = document.getElementById('Draft').checked;
+            document.getElementById('Draft').value = draft;
+            var hashTags = document.getElementById('hashTags').value;
+            hashTags.replace(",", "");
+            hashTags.replace("#", "");
+            console.log("Title: " + title + "\nMessage:" + data + "\nDraft: " + draft + "\nHashTags: " + hashTags);
+
+           // let $form = this.event
+
+
+
+        }
+
+        function HashTagGenerator() {
 
         }
 
