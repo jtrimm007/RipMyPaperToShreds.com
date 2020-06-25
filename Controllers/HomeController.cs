@@ -176,6 +176,11 @@ namespace RipMyPaperToShreds.com.Controllers
             return View(papers);
         }
 
+        public async Task<IActionResult> PaperSubmitted()
+        {
+            return PartialView("_PaperSubmitted");
+        }
+
         #endregion
     }
 }
