@@ -368,3 +368,4 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\D
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.pdb
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.genruntimeconfig.cache
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csprojAssemblyReference.cache
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Razor\Views\Home\_NextPage.cshtml.g.cs

@@ -8,11 +8,15 @@ namespace RipMyPaperToShreds.com.Controllers
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.Extensions.Logging;
     using RipMyPaperToShreds.com.Models;
     using RipMyPaperToShreds.com.Services.Interfaces;
+    using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using System.Threading.Tasks;
+    using System.Web;
 
     /// <summary>
     /// Defines the <see cref="HomeController" />.
@@ -116,7 +120,62 @@ namespace RipMyPaperToShreds.com.Controllers
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         public async Task<IActionResult> Papers()
         {
+            var papers = await _paperRepo.ReadAll();
+
+            var takeThree = papers.Where(x => x.Draft != true).Take(5);
+
+            if(takeThree != null)
+            {
+                foreach(var paper in takeThree)
+                {
+                    paper.Paper = System.Text.RegularExpressions.Regex.Replace(paper.Paper, "<[^>]*(>|$)", string.Empty);
+                    var length = paper.Paper.Length;
+                    
+                    if(length > 50)
+                    {
+                        paper.Paper = paper.Paper.ToString().Substring(0, 50);
+                    }
+                    else
+                    {
+                        paper.Paper = paper.Paper.ToString().Substring(0, length);
+
+                    }
+                }
+                
+                return View(takeThree);
+            }
             return View();
+        }
+
+        public async Task<IActionResult> NextPage(int id)
+        {
+            var papers = await _paperRepo.NextPage(id);
+
+            var takeThree = papers.Where(x => x.Draft != true).Take(5);
+
+            if (takeThree != null)
+            {
+                foreach (var paper in takeThree)
+                {
+                    paper.Paper = System.Text.RegularExpressions.Regex.Replace(paper.Paper, "<[^>]*(>|$)", string.Empty);
+                    var length = paper.Paper.Length;
+
+                    if (length > 50)
+                    {
+                        paper.Paper = paper.Paper.ToString().Substring(0, 50);
+                    }
+                    else
+                    {
+                        paper.Paper = paper.Paper.ToString().Substring(0, length);
+
+                    }
+                }
+
+                return PartialView("_NextPage", takeThree);
+            }
+
+
+            return PartialView("_NextPage");
         }
 
         /// <summary>
