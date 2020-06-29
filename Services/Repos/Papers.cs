@@ -10,6 +10,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
     using RipMyPaperToShreds.com.Data;
     using RipMyPaperToShreds.com.Services.Interfaces;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -74,6 +75,16 @@ namespace RipMyPaperToShreds.com.Services.Repos
                 await _db.SaveChangesAsync();
 
             }
+        }
+
+        public async Task<ICollection<Models.Papers>> NextPage(int pageNumber)
+        {
+            var numberOfListings = 5;
+            var numberToSkip = pageNumber * numberOfListings;
+
+            var getListing = await _db.Papers.Where(x => x.Draft != true).Skip(numberToSkip).Take(numberOfListings).ToListAsync();
+
+            return getListing;
         }
 
         /// <summary>

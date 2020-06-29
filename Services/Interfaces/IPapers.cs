@@ -46,6 +46,8 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
         /// <returns>The <see cref="Task{ICollection{Papers}}"/>.</returns>
         Task<ICollection<Papers>> ReadAll();
 
+        Task<ICollection<Papers>> NextPage(int pageNumber);
+
         /// <summary>
         /// The Update.
         /// </summary>

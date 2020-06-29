@@ -84,6 +84,11 @@ namespace RipMyPaperToShreds.com
                     name: "test",
                    pattern: "{controller}/{action}");
 
+                endpoints.MapControllerRoute(
+                    name: "test",
+                   pattern: "{controller=Home}/{action=NextPage}/{id}");
+
+
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ShredsHub>("/shredHub");
 
