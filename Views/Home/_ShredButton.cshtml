@@ -1,0 +1,17 @@
+﻿@{
+    string logic;
+
+    if (User.Identity.IsAuthenticated)
+    {
+        logic = "GetShredModual()";
+    }
+    else
+    {
+        logic = "GetAlartBox()";
+    }
+ }
+
+    <div id="addButton" class="col-12">
+        <button class="btn btn-outline-primary btn-sm" onclick="@logic ">Shred Paper</button>
+    </div>
+

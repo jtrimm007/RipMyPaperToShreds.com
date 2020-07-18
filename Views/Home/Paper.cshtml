@@ -1,180 +1,288 @@
-﻿@using Microsoft.AspNetCore.Identity
+﻿
+@model RipMyPaperToShreds.com.Models.ViewModels.PaperShredsCommentsVM
+@using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
-
+@inject SignInManager<ApplicationUser> SignInManger
 @{
     ViewData["Title"] = "Paper";
-    var UserObj = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name);
-   
+    ViewData["PaperAuthor"] = UserManager.Users.FirstOrDefault(x => x.Id == Model.Paper.ShrederId).ScreenName;
+
+    if (User.Identity.IsAuthenticated)
+    {
+        var currentUser = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
+
+        //var currentUserId = Model.ShredsAndComments.FirstOrDefault(x => x.Shred.ShrederId == currentUser);
+
+
+        ViewData["HasShred"] = Model.ShredsAndComments.FirstOrDefault(x => x.Shred.ShrederId == currentUser);
+    }
+
+
 }
 
 <main id="main">
     <section id="services" class="services mt-5">
-        <div class="container" >
+        <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>@ViewData["Title"]</h2>
-                <h3>@UserObj.ScreenName</h3>
+                <h2>@ViewData["Title"]: @Model.Paper.Title</h2>
+                <h3>@ViewData["PaperAuthor"]</h3>
             </div>
 
             <div id="holder" class="row content">
 
                 <!--Paper-->
                 <div id="quote" class="col-lg-8 select--highlight--active" data-aos="fade-up" data-aos-delay="150">
-                    <p><span style="color:gray;">Josh, I corrected a few scattered English errors, that would have cost you grade points. Like always you always have soul in your writing. Good teachers love that because it lets them give good writers extra scores. The few changes I made aren’t all that important but they are worth making for the extra grade you’ll get because of them.&nbsp; Love you, Josh.&nbsp; Grandpa</span></p><p><br data-cke-filler="true"></p><p>Studying computer science has not been an easy path. However, there are few things as rewarding. The reward of learning something complex, that few people in the world understand, has been a great boost to my mental ability to push through tough times. Knowing if time is spent studying and learning, there are very few goals that are not achievable in life. &nbsp;Without the disciplines I’ve learned in computer science, I’m not sure I would understand the concept that I was the only</p><p>thing keeping me from becoming better.&nbsp;</p><p><strong>Why Graduate School?</strong></p><p>There are several reasons for my desire to attend graduate school. The main reason, as rudimentary as it may be, I love computer science. This enjoyment gets me up every day and motivates me to learn something new. Whether it be, studying the newest version of Twitters API or watching YouTube videos learning more about software architecture. Computer Science is a part of me, and I could not be happier having the opportunity to study such a complex topic.&nbsp;</p><p>Apart from my love for Computer Science, I do enjoy teaching and helping people learn more about the topic.&nbsp;One of the best times I have had was helping Dr. Roach do lab check offs as a lab assistant.&nbsp; During the labs, I helped walk students through coding complications, helping them fix issues they were having problems with. This was super fun and opened me up to the idea that I could one day manage a team of developers or be a lecturer.&nbsp;</p><p>East Tennessee State University has become home for me. I enjoy being on campus, learning from my professors, and solving problems with my classmates. The atmosphere for learning on campus is awesome. If it was not, I probably would not be as interested in graduate school. Recently, ETSU tweeted an article about how they are a top institution for helping students with learning disabilities. I can attest to this. ETSU has made it possible for me, a person with dyslexia, to finish a degree. Therefore, I would like to continue my extended education on campus, because of the wonderful professors and their willingness to help.&nbsp;</p><p><strong>Career Goals</strong></p><p>As a computer science major, I have a few career goals. Some of my goals are simple and some more complex. A good summation for said goal would be, I want a steady job with a large corporation where I can learn to work with a team. While<a href="#_msocom_1">[JT1]</a> &nbsp;at said job, have side projects that generate revenue from something I have built with my software engineering skills. It has also crossed my mind that I could become a lecturer. However, I am thinking that the teaching job should come later in my career, but if the opportunity presents itself, I would evaluate the situation for consideration. &nbsp;</p><p>If a path for corporate work is opened, a graduate degree will help me become better equipped and well versed in the computer science field to help organizations solve their problems via Information Technology. With this knowledge, I can become well suited to manage a team of developers, helping them solve their problems.&nbsp;<a href="#_msocom_2">[JT2]</a>&nbsp;</p><p>Hopefully, my work experience at a good corporation combined with a graduate degree will give me the experience to one day start a tech company. I find it fascinating to build solutions for problems people did not know they had. I’ve always been the builder type, taking a mental concept and making it into a tangible product has an overwhelming appeal. Thus, my love for computer science</p><p>Simply put, I want to further my education because of my love for computer science and ETSU. Learning will always be a part of my profession but getting the opportunity to extend my education as a first-generation graduate student would be a great honor.&nbsp;Thank you for the consideration to allow me an opportunity to continue my education, studying my passion.&nbsp;</p><p><br data-cke-filler="true"></p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_1">[JT1]</a>Shorten area. Combine the corporate, tech, and teaching.</p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_2">[JT2]</a>Add this to the paragraph above about the corporate section.</p><p><br data-cke-filler="true"></p>
+                    @Html.Raw(Model.Paper.Paper)
+                    @*<p><span style="color:gray;">Josh, I corrected a few scattered English errors, that would have cost you grade points. Like always you always have soul in your writing. Good teachers love that because it lets them give good writers extra scores. The few changes I made aren’t all that important but they are worth making for the extra grade you’ll get because of them.&nbsp; Love you, Josh.&nbsp; Grandpa</span></p><p><br data-cke-filler="true"></p><p>Studying computer science has not been an easy path. However, there are few things as rewarding. The reward of learning something complex, that few people in the world understand, has been a great boost to my mental ability to push through tough times. Knowing if time is spent studying and learning, there are very few goals that are not achievable in life. &nbsp;Without the disciplines I’ve learned in computer science, I’m not sure I would understand the concept that I was the only</p><p>thing keeping me from becoming better.&nbsp;</p><p><strong>Why Graduate School?</strong></p><p>There are several reasons for my desire to attend graduate school. The main reason, as rudimentary as it may be, I love computer science. This enjoyment gets me up every day and motivates me to learn something new. Whether it be, studying the newest version of Twitters API or watching YouTube videos learning more about software architecture. Computer Science is a part of me, and I could not be happier having the opportunity to study such a complex topic.&nbsp;</p><p>Apart from my love for Computer Science, I do enjoy teaching and helping people learn more about the topic.&nbsp;One of the best times I have had was helping Dr. Roach do lab check offs as a lab assistant.&nbsp; During the labs, I helped walk students through coding complications, helping them fix issues they were having problems with. This was super fun and opened me up to the idea that I could one day manage a team of developers or be a lecturer.&nbsp;</p><p>East Tennessee State University has become home for me. I enjoy being on campus, learning from my professors, and solving problems with my classmates. The atmosphere for learning on campus is awesome. If it was not, I probably would not be as interested in graduate school. Recently, ETSU tweeted an article about how they are a top institution for helping students with learning disabilities. I can attest to this. ETSU has made it possible for me, a person with dyslexia, to finish a degree. Therefore, I would like to continue my extended education on campus, because of the wonderful professors and their willingness to help.&nbsp;</p><p><strong>Career Goals</strong></p><p>As a computer science major, I have a few career goals. Some of my goals are simple and some more complex. A good summation for said goal would be, I want a steady job with a large corporation where I can learn to work with a team. While<a href="#_msocom_1">[JT1]</a> &nbsp;at said job, have side projects that generate revenue from something I have built with my software engineering skills. It has also crossed my mind that I could become a lecturer. However, I am thinking that the teaching job should come later in my career, but if the opportunity presents itself, I would evaluate the situation for consideration. &nbsp;</p><p>If a path for corporate work is opened, a graduate degree will help me become better equipped and well versed in the computer science field to help organizations solve their problems via Information Technology. With this knowledge, I can become well suited to manage a team of developers, helping them solve their problems.&nbsp;<a href="#_msocom_2">[JT2]</a>&nbsp;</p><p>Hopefully, my work experience at a good corporation combined with a graduate degree will give me the experience to one day start a tech company. I find it fascinating to build solutions for problems people did not know they had. I’ve always been the builder type, taking a mental concept and making it into a tangible product has an overwhelming appeal. Thus, my love for computer science</p><p>Simply put, I want to further my education because of my love for computer science and ETSU. Learning will always be a part of my profession but getting the opportunity to extend my education as a first-generation graduate student would be a great honor.&nbsp;Thank you for the consideration to allow me an opportunity to continue my education, studying my passion.&nbsp;</p><p><br data-cke-filler="true"></p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_1">[JT1]</a>Shorten area. Combine the corporate, tech, and teaching.</p><p><br data-cke-filler="true"></p><p>&nbsp;<a href="#_msoanchor_2">[JT2]</a>Add this to the paragraph above about the corporate section.</p><p><br data-cke-filler="true"></p>*@
                 </div>
 
                 <!--Shred Section-->
                 <div id="shredSection" class="col-lg-4 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                    <partial name="_ShredSection" />
-                </div>               
+                    @if (ViewData["HasShred"] == null)
+                    {
+                        <partial name="_ShredButton" />
+
+                    }
+                    @if (Model.ShredsAndComments != null)
+                    {
+                        <partial name="_ShredSection" model="@Model.ShredsAndComments" />
+                    }
+                </div>
 
 
                 @*<div id="output" class="col-lg-4 pt-4 pt-lg-0 shred-fixed" data-aos="fade-up" data-aos-delay="300">
-            <p class="pt-5"><strong>Start Shredding:</strong></p><div contenteditable="true" class="border border-primary rounded p-3"></div>
-            <button class="btn btn-danger" type="reset">Clear</button><button class="btn btn-success" type="submit">Submit Shred</button>
-        </div>*@
+                        <p class="pt-5"><strong>Start Shredding:</strong></p><div contenteditable="true" class="border border-primary rounded p-3"></div>
+                        <button class="btn btn-danger" type="reset">Clear</button><button class="btn btn-success" type="submit">Submit Shred</button>
+                    </div>*@
             </div>
 
         </div>
     </section>
 </main>
-@section Scripts{ 
-<script src="~/js/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/site.js"></script>
-}
-<script>
-    function turnDownVoteRed() {
-        down1.style.fill = 'Crimson';
-        down2.style.fill = 'Crimson';
-        down3.style.fill = 'Crimson';
-    }
+@section Scripts{
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/site.js"></script>
 
-    function turnBackVotes() {
-        up1.style.fill = 'Gainsboro';
-        up2.style.fill = 'Gainsboro';
-        up3.style.fill = 'Gainsboro';
-
-    }
-
-    function turnBackDownVotes() {
-        down1.style.fill = 'Gainsboro';
-        down2.style.fill = 'Gainsboro';
-        down3.style.fill = 'Gainsboro';
-
-    }
-
-    function turnRed() {
-        up1.style.fill = 'Crimson';
-        up2.style.fill = 'Crimson';
-        up3.style.fill = 'Crimson';
-    }
-
-    function GetShredModual() {
-
-        var count = 0;
-
-        var element = document.getElementById('addButton');
-        var parent = element.parentNode;
-
-        while (parent.firstChild) {
-            parent.removeChild(parent.firstChild);
+    <script>
+        function turnDownVoteRed() {
+            down1.style.fill = 'Crimson';
+            down2.style.fill = 'Crimson';
+            down3.style.fill = 'Crimson';
         }
 
-        var modual = document.getElementById('shredSection');
+        function turnBackVotes() {
+            up1.style.fill = 'Gainsboro';
+            up2.style.fill = 'Gainsboro';
+            up3.style.fill = 'Gainsboro';
+        }
 
-        $(document).ready(function _ajax() {
-            $.ajax({
-                url: "/Home/StartShred",
-                success: function _success(data) {
-                    modual.innerHTML += data;
+        function turnBackDownVotes() {
+            down1.style.fill = 'Gainsboro';
+            down2.style.fill = 'Gainsboro';
+            down3.style.fill = 'Gainsboro';
+        }
+
+        function turnRed() {
+            up1.style.fill = 'Crimson';
+            up2.style.fill = 'Crimson';
+            up3.style.fill = 'Crimson';
+        }
+
+        function GetAlartBox() {
+
+            alert("You need to sign in first");
+        }
+
+        function GetShredModual() {
+
+            var count = 0;
 
 
-                    var quotearea = document.getElementById('quote');
-                    var output = document.getElementById('output');
+
+            var addButton = document.getElementById('addButton');
+            //addButton.style.visibility = 'hidden';
+
+            //var shredCards = document.getElementById('shredCards');
+            //shredCards.style.visibility = 'hidden';
+            //shredCards.style.position = 'absolute';
+            var parent = addButton.parentNode;
+
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+
+            var modual = document.getElementById('shredSection');
+
+            $(document).ready(function _ajax() {
+                $.ajax({
+                    url: "/Home/StartShred/" + @Model.Paper.ID,
+                    success: function _success(data) {
+                        modual.innerHTML += data;
 
 
-                    quotearea.addEventListener('mouseup', function _getSelectedText() {
+                        var quotearea = document.getElementById('quote');
+                        var output = document.getElementById('output');
 
-                        if (!document.getElementById('selectedText')) {
-                            if (document.getSelection().anchorNode != document.getSelection().focusNode) {
-                                alert("Please choose within one paragraph.");
-                                document.getSelection().removeAllRanges();
-                            } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
-                                var selectedtext = document.getSelection();
-                                //var anchorOffset = document.getSelection();
-                                //var test = document.getElementById('quote').textContent.charAt(document.getSelection().anchorOffset + 1);
 
-                                if (selectedtext.anchorOffset != selectedtext.focusOffset) {
+                        quotearea.addEventListener('mouseup', function _getSelectedText() {
 
-                                    var span = document.createElement("span");
-                                    span.id = "selectedText";
-                                    span.prepend(selectedtext.toString());
+                            if (!document.getElementById('selectedText')) {
+                                if (document.getSelection().anchorNode != document.getSelection().focusNode) {
+                                    alert("Please choose within one paragraph.");
+                                    document.getSelection().removeAllRanges();
+                                } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
+                                    var selectedtext = document.getSelection();
+                                    //var anchorOffset = document.getSelection();
+                                    //var test = document.getElementById('quote').textContent.charAt(document.getSelection().anchorOffset + 1);
 
-                                    output.prepend(span);
+                                    if (selectedtext.anchorOffset != selectedtext.focusOffset) {
+
+                                        var span = document.createElement("span");
+                                        span.id = "selectedText";
+                                        span.prepend(selectedtext.toString());
+
+                                        output.prepend(span);
+                                    }
                                 }
                             }
+                        }, false);
+                    }
+                });
+            });
+        }
+
+        function SubmitShred() {
+            //Shreder review
+            var shredDiv = document.getElementById('StartingShred');
+            var context = shredDiv.innerText;
+
+            //Shredy text being reviewed
+            var shredText = document.getElementById('selectedText');
+            var quotedText = shredText.innerHTML;
+
+            if (quotedText == null || quotedText == '') {
+                alert("You must write something about the selected text.");
+                return;
+            }
+
+            if (context == null || context == '') {
+                alert("You must select text to shred. Please highlight the section you want to shred. ");
+                return;
+            }
+
+            //Set form values
+            document.getElementById('Shred').value = quotedText;
+            document.getElementById('Context').value = context;
+
+            $(document).ready(function _ajaxShredForm() {
+
+                let $form = $('#SubmitShredForm');
+
+                $.ajax({
+                    url: $form.attr('action'),
+                    type: $form.attr('method'),
+                    data: $form.serialize(),
+                    success: function _success(response) {
+                        console.log(response);
+
+                        //Get the output div
+                        var modual = document.getElementById('output');
+
+                        //Get the parent div of the output, shredSection.
+                        var parent = modual.parentNode;
+
+                        //Remove everything the section
+                        while (parent.firstChild) {
+                            parent.removeChild(parent.firstChild);
                         }
-                    }, false);
-                }
+
+                        //Remove all data from the selection object. (What is used to highlight text)
+                        document.getSelection().removeAllRanges();
+
+                        //Add the response data to the innerHtml
+                        parent.innerHTML += response;
+                    },
+                    error: function _error(response) {
+                        console.error("Opps! Something didn't work: " + response.responseText);
+                    }
+                });
+
             });
-        });
-    }
+        }
 
-    function RemoveShredModual() {
-        var element = document.getElementById('output');
-        element.parentNode.removeChild(element);
+        function RemoveShredModual() {
+            var element = document.getElementById('output');
+            element.parentNode.removeChild(element);
 
-        var modual = document.getElementById('shredSection');
+            var modual = document.getElementById('shredSection');
 
-        $(document).ready(function _ajax() {
-            $.ajax({
-                url: "/Home/ShredSection",
-                success: function _success(data) {
-                    modual.innerHTML += data;
-                    document.getSelection().removeAllRanges();
+            $(document).ready(function _ajax() {
 
-                }
+                //This is for loading in the button
+                $.ajax({
+                    url: "/Home/ShredButton",
+                    success: function _success(data) {
+                        modual.innerHTML += data;
+
+                        //Remove all data from the selection object. (What is used to highlight text)
+                        document.getSelection().removeAllRanges();
+                    }
+                });
+
+                $.ajax({
+                    url: "/Home/ShredSection/" + @Model.Paper.ID,
+                    success: function _success(data) {
+                        modual.innerHTML += data;
+
+                        //Remove all data from the selection object. (What is used to highlight text)
+                        document.getSelection().removeAllRanges();
+                    },
+                    error: function _error(data) {
+                        console.error("Something when wrong: " + data);
+                    }
+                });
+
+
             });
-        });
-    }
+        }
 
-    function ClearSelected() {
-        document.getElementById('selectedText').remove();
-        
-    }
+        function ClearSelected() {
+            document.getElementById('selectedText').remove();
 
-    function Comment() {
+        }
 
-        $(document).ready(function _ajax() {
-            $.ajax({
-                url: "/Home/Comment",
-                success: function _success(data) {
-                    //parent.innerHTML += data;
-                    document.getElementById('commentButton').remove();
-                    document.getElementById('commentHolder').innerHTML += data;
-                }
+        function Comment() {
+
+            $(document).ready(function _ajax() {
+                $.ajax({
+                    url: "/Home/Comment",
+                    success: function _success(data) {
+                        //parent.innerHTML += data;
+                        document.getElementById('commentButton').remove();
+                        document.getElementById('commentHolder').innerHTML += data;
+                    }
+                });
             });
-        });
-    }
+        }
 
-    function GetCommentButton() {
+        function GetCommentButton() {
 
-        $(document).ready(function _ajax() {
-            $.ajax({
-                url: "/Home/CommentButton",
-                success: function _success(data) {
-                    //parent.innerHTML += data;
-                    document.getElementById('commentInput').remove();
-                    document.getElementById('commentHolder').innerHTML += data;
-                }
+            $(document).ready(function _ajax() {
+                $.ajax({
+                    url: "/Home/CommentButton",
+                    success: function _success(data) {
+                        //parent.innerHTML += data;
+                        document.getElementById('commentInput').remove();
+                        document.getElementById('commentHolder').innerHTML += data;
+                    }
+                });
             });
+        }
+
+        //Window Scroll
+        $(window).scroll(function () {
+            $(".shred-fixed").css({ "margin-top": ($(window).scrollTop()) + "px", "margin-left": ($(window).scrollLeft()) + "px" });
         });
-    }
+    </script>
 
-    //Window Scroll
-    $(window).scroll(function () {
-        $(".shred-fixed").css({ "margin-top": ($(window).scrollTop()) + "px", "margin-left": ($(window).scrollLeft()) + "px" });
-    });
-
-
-
-</script>
+}

@@ -11,7 +11,9 @@ namespace RipMyPaperToShreds.com.Controllers
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.Extensions.Logging;
     using RipMyPaperToShreds.com.Models;
+    using RipMyPaperToShreds.com.Models.ViewModels;
     using RipMyPaperToShreds.com.Services.Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
@@ -30,6 +32,8 @@ namespace RipMyPaperToShreds.com.Controllers
         /// </summary>
         private readonly ILogger<HomeController> _logger;
         private readonly IPapers _paperRepo;
+        private readonly IShreds _shredsRepo;
+        private readonly ISubShreds _subShredsRepo;
 
         #endregion
 
@@ -39,10 +43,12 @@ namespace RipMyPaperToShreds.com.Controllers
         /// Initializes a new instance of the <see cref="HomeController"/> class.
         /// </summary>
         /// <param name="logger">The logger<see cref="ILogger{HomeController}"/>.</param>
-        public HomeController(ILogger<HomeController> logger, IPapers paperRepo)
+        public HomeController(ILogger<HomeController> logger, IPapers paperRepo, IShreds shredsRepo, ISubShreds subShredsRepo)
         {
             _logger = logger;
             _paperRepo = paperRepo;
+            _shredsRepo = shredsRepo;
+            _subShredsRepo = subShredsRepo;
         }
 
         #endregion
@@ -108,10 +114,40 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The Paper.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        [Authorize]
-        public async Task<IActionResult> Paper()
+        public async Task<IActionResult> Paper(int id)
         {
-            return View();
+            var paper = await _paperRepo.Read(id);
+            
+            
+            if(paper != null)
+            {
+                var shreds = await _shredsRepo.GetAllShredsForPaper(id);
+
+                PaperShredsCommentsVM paperAndShredsAndSubShreds = new PaperShredsCommentsVM();
+                paperAndShredsAndSubShreds.Paper = paper;
+               
+                foreach(var shred in shreds)
+                {
+                    ShredCommentsVM shredCommentsVM = new ShredCommentsVM
+                    {
+                        Shred = shred,
+                        
+                    };
+                    var subShreds = await _subShredsRepo.GetAllSubShredsForShred(shred.ID);
+
+
+                    if(subShreds.Count() > 0)
+                    {
+
+                        shredCommentsVM.SubShreds = subShreds;
+                        
+                    }
+
+                    paperAndShredsAndSubShreds.ShredsAndComments.Add(shredCommentsVM);
+                }
+                return View(paperAndShredsAndSubShreds);
+            }
+            return RedirectToAction("Papers");
         }
 
         /// <summary>
@@ -200,8 +236,34 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The ShredSection.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> ShredSection()
+        public async Task<IActionResult> ShredSection(int id)
         {
+            var check = await _shredsRepo.GetAllShredsForPaper(id);
+
+
+            if(check != null)
+            {
+
+                List<ShredCommentsVM> shredCommentList = new List<ShredCommentsVM>();
+
+                foreach (var shred in check)
+                {
+                    ShredCommentsVM shredCommentsVM = new ShredCommentsVM();
+                    var subShredCheck = await _subShredsRepo.GetAllSubShredsForShred(shred.ID);
+
+                    shredCommentsVM.Shred = shred;
+
+                    if(subShredCheck != null)
+                    {
+                        shredCommentsVM.SubShreds = subShredCheck;
+                    }
+
+                    shredCommentList.Add(shredCommentsVM);
+
+                }
+                return PartialView("_ShredSection", shredCommentList);
+
+            }
             return PartialView("_ShredSection");
         }
 
@@ -209,9 +271,23 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The StartShred.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> StartShred()
+        public async Task<IActionResult> StartShred(int id)
         {
-            return PartialView("_StartShred");
+            var getPaperCreator = await _paperRepo.Read(id);
+
+            if(getPaperCreator != null)
+            {
+                Shreds newShred = new Shreds
+                {
+                    Date = DateTime.UtcNow,
+                    PaperId = id,
+                    ShredyId = getPaperCreator.ShrederId
+
+                };
+
+                return PartialView("_StartShred", newShred);
+            }
+            return RedirectToAction("Index");
         }
 
         /// <summary>
@@ -221,6 +297,10 @@ namespace RipMyPaperToShreds.com.Controllers
         public IActionResult SubmitPaper()
         {
             return View();
+        }
+        public async Task<IActionResult> ShredButton()
+        {
+            return PartialView("_ShredButton");
         }
 
         [HttpPost]
@@ -238,6 +318,32 @@ namespace RipMyPaperToShreds.com.Controllers
         public async Task<IActionResult> PaperSubmitted()
         {
             return PartialView("_PaperSubmitted");
+        }
+
+        [HttpPost, Authorize]
+        public async Task<IActionResult> SubmitShred(Shreds shredCreated)
+        {
+            var shredCheck = await _shredsRepo.GetAllShredsForPaper(shredCreated.PaperId);
+
+            if(shredCheck != null)
+            {
+                //check to see if the user has already submitted a shred.
+                var check = shredCheck.Where(x => x.ShrederId == shredCreated.ShrederId);
+                
+                if(check.Count() == 0)
+                {
+                    var create = await _shredsRepo.Create(shredCreated);
+
+                    return RedirectToAction("ShredSection", new { id = shredCreated.PaperId });
+                }
+                else
+                {
+
+                }
+
+                return RedirectToAction("ShredSection", new { id = shredCreated.PaperId });
+            }
+            return RedirectToAction("ShredSection", new { id = shredCreated.PaperId });
         }
 
         #endregion

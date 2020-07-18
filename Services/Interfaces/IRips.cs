@@ -15,7 +15,7 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
     /// <summary>
     /// Defines the <see cref="IRips" />.
     /// </summary>
-    interface IRips
+    public interface IRips
     {
         #region Methods
 

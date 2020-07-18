@@ -15,7 +15,7 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
     /// <summary>
     /// Defines the <see cref="IHashTags" />.
     /// </summary>
-    interface IHashTags
+    public interface IHashTags
     {
         #region Methods
 

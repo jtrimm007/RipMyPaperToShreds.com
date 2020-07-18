@@ -81,12 +81,24 @@ namespace RipMyPaperToShreds.com
                     pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
-                    name: "test",
+                    name: "Setdefault",
                    pattern: "{controller}/{action}");
 
                 endpoints.MapControllerRoute(
-                    name: "test",
+                    name: "PassingID",
+                   pattern: "{controller}/{action}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "SetVariables",
+                   pattern: "{controller=Home}/{action=SubmitShred}/{id}");
+
+                endpoints.MapControllerRoute(
+                    name: "NextPage",
                    pattern: "{controller=Home}/{action=NextPage}/{id}");
+
+                endpoints.MapControllerRoute(
+                    name: "NextPage",
+                   pattern: "{controller=Home}/{action=SubmitShred}/{id}");
 
 
                 endpoints.MapRazorPages();

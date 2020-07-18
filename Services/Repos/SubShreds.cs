@@ -10,6 +10,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
     using RipMyPaperToShreds.com.Data;
     using RipMyPaperToShreds.com.Services.Interfaces;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -75,6 +76,13 @@ namespace RipMyPaperToShreds.com.Services.Repos
                 _db.SubShreds.Remove(subShred);
                 await _db.SaveChangesAsync();
             }
+        }
+
+        public async Task<ICollection<Models.SubShreds>> GetAllSubShredsForShred(int shredId)
+        {
+            var check = await _db.SubShreds.Where(x => x.ShredId == shredId).ToListAsync();
+
+            return check;
         }
 
         /// <summary>
