@@ -32,6 +32,12 @@ namespace RipMyPaperToShreds.com.Models
         public int ID { get; set; }
 
         /// <summary>
+        /// Gets or sets the PaperId.
+        /// </summary>
+        [ForeignKey("Papers")]
+        public int PaperId { get; set; }
+
+        /// <summary>
         /// Gets or sets the Shred.
         /// </summary>
         public string Shred { get; set; }
@@ -47,6 +53,8 @@ namespace RipMyPaperToShreds.com.Models
         /// </summary>
         [ForeignKey("AspNetUser")]
         public string ShredyId { get; set; }
+
+        public string Context { get; set; }
 
         #endregion
     }

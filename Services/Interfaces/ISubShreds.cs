@@ -15,7 +15,7 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
     /// <summary>
     /// Defines the <see cref="ISubShreds" />.
     /// </summary>
-    interface ISubShreds
+    public interface ISubShreds
     {
         #region Methods
 
@@ -52,6 +52,8 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
         /// <param name="subShred">The subShred<see cref="SubShreds"/>.</param>
         /// <returns>The <see cref="Task{SubShreds}"/>.</returns>
         Task<SubShreds> Update(SubShreds subShred);
+
+        Task<ICollection<SubShreds>> GetAllSubShredsForShred(int shredId);
 
         #endregion
     }

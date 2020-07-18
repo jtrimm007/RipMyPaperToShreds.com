@@ -15,7 +15,7 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
     /// <summary>
     /// Defines the <see cref="IPaperHashes" />.
     /// </summary>
-    interface IPaperHashes
+    public interface IPaperHashes
     {
         #region Methods
 
