@@ -21,6 +21,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\assets\vendor\jquery\" />
+    <Folder Include="wwwroot\js\viewLogic\" />
   </ItemGroup>
 
 </Project>

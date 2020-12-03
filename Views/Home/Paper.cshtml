@@ -5,16 +5,18 @@
 @inject SignInManager<ApplicationUser> SignInManger
 @{
     ViewData["Title"] = "Paper";
-    ViewData["PaperAuthor"] = UserManager.Users.FirstOrDefault(x => x.Id == Model.Paper.ShrederId).ScreenName;
 
     if (User.Identity.IsAuthenticated)
     {
+        ViewData["PaperAuthor"] = UserManager.Users.FirstOrDefault(x => x.Id == Model.Paper.ShrederId).ScreenName;
+
         var currentUser = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
 
         //var currentUserId = Model.ShredsAndComments.FirstOrDefault(x => x.Shred.ShrederId == currentUser);
 
 
         ViewData["HasShred"] = Model.ShredsAndComments.FirstOrDefault(x => x.Shred.ShrederId == currentUser);
+        ViewData["PaperId"] = Model.Paper.ID;
     }
 
 
@@ -26,6 +28,13 @@
             <div class="section-title" data-aos="fade-up">
                 <h2>@ViewData["Title"]: @Model.Paper.Title</h2>
                 <h3>@ViewData["PaperAuthor"]</h3>
+
+                @if(User.Identity.IsAuthenticated && UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName
+                  == ViewData["PaperAuthor"].ToString())
+                {
+                   <button class="btn btn-sm btn-outline-info small">Edit Paper</button>
+                }
+
             </div>
 
             <div id="holder" class="row content">
@@ -60,229 +69,17 @@
     </section>
 </main>
 @section Scripts{
-    <script src="~/js/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/site.js"></script>
-
+    <script src="~/js/objects/rip.js"></script>
+    <script src="~/js/controller/paperController.js"></script>
     <script>
-        function turnDownVoteRed() {
-            down1.style.fill = 'Crimson';
-            down2.style.fill = 'Crimson';
-            down3.style.fill = 'Crimson';
-        }
 
-        function turnBackVotes() {
-            up1.style.fill = 'Gainsboro';
-            up2.style.fill = 'Gainsboro';
-            up3.style.fill = 'Gainsboro';
-        }
-
-        function turnBackDownVotes() {
-            down1.style.fill = 'Gainsboro';
-            down2.style.fill = 'Gainsboro';
-            down3.style.fill = 'Gainsboro';
-        }
-
-        function turnRed() {
-            up1.style.fill = 'Crimson';
-            up2.style.fill = 'Crimson';
-            up3.style.fill = 'Crimson';
-        }
-
-        function GetAlartBox() {
-
-            alert("You need to sign in first");
-        }
-
-        function GetShredModual() {
-
-            var count = 0;
-
-
-
-            var addButton = document.getElementById('addButton');
-            //addButton.style.visibility = 'hidden';
-
-            //var shredCards = document.getElementById('shredCards');
-            //shredCards.style.visibility = 'hidden';
-            //shredCards.style.position = 'absolute';
-            var parent = addButton.parentNode;
-
-            while (parent.firstChild) {
-                parent.removeChild(parent.firstChild);
-            }
-
-            var modual = document.getElementById('shredSection');
-
-            $(document).ready(function _ajax() {
-                $.ajax({
-                    url: "/Home/StartShred/" + @Model.Paper.ID,
-                    success: function _success(data) {
-                        modual.innerHTML += data;
-
-
-                        var quotearea = document.getElementById('quote');
-                        var output = document.getElementById('output');
-
-
-                        quotearea.addEventListener('mouseup', function _getSelectedText() {
-
-                            if (!document.getElementById('selectedText')) {
-                                if (document.getSelection().anchorNode != document.getSelection().focusNode) {
-                                    alert("Please choose within one paragraph.");
-                                    document.getSelection().removeAllRanges();
-                                } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
-                                    var selectedtext = document.getSelection();
-                                    //var anchorOffset = document.getSelection();
-                                    //var test = document.getElementById('quote').textContent.charAt(document.getSelection().anchorOffset + 1);
-
-                                    if (selectedtext.anchorOffset != selectedtext.focusOffset) {
-
-                                        var span = document.createElement("span");
-                                        span.id = "selectedText";
-                                        span.prepend(selectedtext.toString());
-
-                                        output.prepend(span);
-                                    }
-                                }
-                            }
-                        }, false);
-                    }
-                });
-            });
-        }
-
-        function SubmitShred() {
-            //Shreder review
-            var shredDiv = document.getElementById('StartingShred');
-            var context = shredDiv.innerText;
-
-            //Shredy text being reviewed
-            var shredText = document.getElementById('selectedText');
-            var quotedText = shredText.innerHTML;
-
-            if (quotedText == null || quotedText == '') {
-                alert("You must write something about the selected text.");
-                return;
-            }
-
-            if (context == null || context == '') {
-                alert("You must select text to shred. Please highlight the section you want to shred. ");
-                return;
-            }
-
-            //Set form values
-            document.getElementById('Shred').value = quotedText;
-            document.getElementById('Context').value = context;
-
-            $(document).ready(function _ajaxShredForm() {
-
-                let $form = $('#SubmitShredForm');
-
-                $.ajax({
-                    url: $form.attr('action'),
-                    type: $form.attr('method'),
-                    data: $form.serialize(),
-                    success: function _success(response) {
-                        console.log(response);
-
-                        //Get the output div
-                        var modual = document.getElementById('output');
-
-                        //Get the parent div of the output, shredSection.
-                        var parent = modual.parentNode;
-
-                        //Remove everything the section
-                        while (parent.firstChild) {
-                            parent.removeChild(parent.firstChild);
-                        }
-
-                        //Remove all data from the selection object. (What is used to highlight text)
-                        document.getSelection().removeAllRanges();
-
-                        //Add the response data to the innerHtml
-                        parent.innerHTML += response;
-                    },
-                    error: function _error(response) {
-                        console.error("Opps! Something didn't work: " + response.responseText);
-                    }
-                });
-
-            });
-        }
-
-        function RemoveShredModual() {
-            var element = document.getElementById('output');
-            element.parentNode.removeChild(element);
-
-            var modual = document.getElementById('shredSection');
-
-            $(document).ready(function _ajax() {
-
-                //This is for loading in the button
-                $.ajax({
-                    url: "/Home/ShredButton",
-                    success: function _success(data) {
-                        modual.innerHTML += data;
-
-                        //Remove all data from the selection object. (What is used to highlight text)
-                        document.getSelection().removeAllRanges();
-                    }
-                });
-
-                $.ajax({
-                    url: "/Home/ShredSection/" + @Model.Paper.ID,
-                    success: function _success(data) {
-                        modual.innerHTML += data;
-
-                        //Remove all data from the selection object. (What is used to highlight text)
-                        document.getSelection().removeAllRanges();
-                    },
-                    error: function _error(data) {
-                        console.error("Something when wrong: " + data);
-                    }
-                });
-
-
-            });
-        }
-
-        function ClearSelected() {
-            document.getElementById('selectedText').remove();
-
-        }
-
-        function Comment() {
-
-            $(document).ready(function _ajax() {
-                $.ajax({
-                    url: "/Home/Comment",
-                    success: function _success(data) {
-                        //parent.innerHTML += data;
-                        document.getElementById('commentButton').remove();
-                        document.getElementById('commentHolder').innerHTML += data;
-                    }
-                });
-            });
-        }
-
-        function GetCommentButton() {
-
-            $(document).ready(function _ajax() {
-                $.ajax({
-                    url: "/Home/CommentButton",
-                    success: function _success(data) {
-                        //parent.innerHTML += data;
-                        document.getElementById('commentInput').remove();
-                        document.getElementById('commentHolder').innerHTML += data;
-                    }
-                });
-            });
-        }
 
         //Window Scroll
         $(window).scroll(function () {
             $(".shred-fixed").css({ "margin-top": ($(window).scrollTop()) + "px", "margin-left": ($(window).scrollLeft()) + "px" });
         });
     </script>
+
+
 
 }

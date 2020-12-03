@@ -5,30 +5,42 @@
     //var SubShred = Model.SubShreds;
     ViewData["ShrederAuthor"] = UserManager.Users.FirstOrDefault(x => x.Id == Model.Shred.ShrederId).ScreenName;
 
+    if(User.Identity.IsAuthenticated)
+    {
+        string screenName = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName;
+    }
 }
 
 <!--Start Shred Card-->
 
-<div id="cardHolder" class="shadow p-2 mt-5 container-fluid">
+<div id="cardHolder-@Model.Shred.ID" class="shadow p-2 mt-5 container-fluid">
 
     <div class="row m-3 border-bottom">
         <!--Up and Down Vote Buttons-->
         <div id="rip-vote-container" class="col-2 pl-0 ml-0">
             <p title="Number of up votes" class="m-0 p-0">123</p>
-            <span id="upVoteButton" class="btn m-0 p-0" title="Up Vote" onclick="turnRed()">
+            <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID)">
                 <svg class="bi bi-arrow-up-square mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" title="Up Vote">
-                    <path id="up1" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path id="up2" fill="Gainsboro" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
-                    <path id="up3" fill="Gainsboro" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
+                    <path id="up1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path id="up2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
+                    <path id="up3-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
                 </svg>
             </span>
-            <span id="downVoteButton" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed()">
+            <span id="downVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed(@Model.Shred.ID)">
                 <svg class="bi bi-arrow-down-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path id="down1" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                    <path id="down2" fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
-                    <path id="down3" fill="Gainsboro" fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
+                    <path id="down1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
+                    <path id="down2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
+                    <path id="down3-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
                 </svg>
             </span>
+
+            <!--Up and down vote form-->
+            <form id="RipForm-@Model.Shred.ID" hidden>
+                <input name="ID" value=""/>
+                <input name="Rip" value="" />
+                <input name="ShrederId" value="" />
+                <input name="ShredId" value="" />
+            </form>
 
             <span id="fixedButton" class="btn m-0 p-0" title="Improved Paper">
                 <svg class="bi bi-check2-square mt-3 mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
@@ -53,26 +65,79 @@
         <div class="col">
             <p>@Model.Shred.Context</p>
         </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == ViewData["ShrederAuthor"].ToString())
+            {
+                <div class="small">
+                    <p><a href="">edit</a></p>
+                </div>
+            }
+
+        }
     </div>
+
     <div class="row m-3">
         <div>
             <p class="small"><strong>Sub-Shreds</strong></p>
         </div>
     </div>
-    <div class="row  mt-3 mr-3 ml-3 mb-0">
-        <div class="col">
-            <p class="small"><em>Shreder</em></p>
-        </div>
-        <div class="col">
-            <p class="small">12/13/12 12:12 pm</p>
-        </div>
+    <div id="commentSection-@Model.Shred.ID" class="row ">
+        @foreach (var sub in Model.SubShreds)
+        {
+
+            <div class="row mt-3 mr-3 ml-3 mb-0">
+                <div class="col">
+                    <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName</em></p>
+                </div>
+                <div class="col">
+                    <p class="small">@sub.Date</p>
+                </div>
+            </div>
+            <div class="mr-3 ml-3">
+                <div class="col">
+                    <p class="small">@sub.SubShred</p>
+                </div>
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName)
+                {
+                    <div class="small">
+                        <p><a href="">edit</a></p>
+                    </div>
+                }
+
+            }
+
+        }
     </div>
-    <div class="row mr-3 ml-3">
-        <div class="col">
-            <p class="small">I don't agree with putting an apostrophe there.</p>
-        </div>
+    <div id="commentHolder-@Model.Shred.ID" class="row mr-3 ml-3">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="commentInput-@Model.Shred.ID" class="col" hidden style="position:absolute">
+                <form name="submitComment-@Model.Shred.ID" method="POST" id="CommentForm-@Model.Shred.ID" asp-action="SubmitComment" enctype="multipart/form-data">
+                    <input name="SubShred" id="SubShred-@Model.Shred.ID" class="rounded small mb-1" size="30" type="text" maxlength="150" min="1" placeholder="comment here" />
+                    <input name="Date" id="Date-@Model.Shred.ID" hidden value="@DateTime.UtcNow" />
+                    <input name="ShredId" id="ShredId-@Model.Shred.ID" hidden value="@Model.Shred.ID" />
+                    <input name="ShrederId" id="ShrederId-@Model.Shred.ID" hidden value="@UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id" />
+                    <input name="ID" id="ID-@Model.Shred.ID" hidden value="0" />
+
+
+                </form>
+
+                <button id="submitComment" onclick="submitComment(@Model.Shred.ID, '@UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName')" class="btn btn-sm btn-success small">Submit</button>
+
+                <button id="cancelComment" onclick="getCommentButton(@Model.Shred.ID)" class="btn btn-sm btn-danger small">x</button>
+            </div>
+
+
+            <div id="commentButton-@Model.Shred.ID" class="col">
+                <p class="small"><em><button class="small btn btn-sm btn-link" onclick="comment(@Model.Shred.ID)">comment</button></em></p>
+            </div>
+
+
+        }
+
     </div>
-    <div id="commentHolder" class="row mr-3 ml-3">
-        <partial name="_CommentButton" />
     </div>
-</div>

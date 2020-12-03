@@ -52,6 +52,8 @@ namespace RipMyPaperToShreds.com.Models
 
         public string Title { get; set; }
 
+       
+
         #endregion
     }
 }
