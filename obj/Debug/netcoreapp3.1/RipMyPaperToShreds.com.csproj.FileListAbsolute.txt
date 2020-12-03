@@ -182,9 +182,6 @@ C:\Users\Stephen\Desktop\Repos\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Ra
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\libman.json
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.json
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\Properties\serviceDependencies.local.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\RipMyPaperToShreds.com.StaticWebAssets.xml
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\RipMyPaperToShreds.com.exe
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\bin\Debug\netcoreapp3.1\RipMyPaperToShreds.com.deps.json
@@ -371,3 +368,4 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\D
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.pdb
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.genruntimeconfig.cache
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csprojAssemblyReference.cache
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\scopedcss\bundle\RipMyPaperToShreds.com.styles.css

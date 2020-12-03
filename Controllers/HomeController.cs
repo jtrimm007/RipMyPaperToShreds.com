@@ -68,18 +68,18 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The Comment.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> Comment()
+        public async Task<IActionResult> Comment(int id)
         {
-            return PartialView("_Comment");
+            return PartialView("_Comment", new { ID = id });
         }
 
         /// <summary>
         /// The CommentButton.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> CommentButton()
+        public IActionResult CommentButton(int id)
         {
-            return PartialView("_CommentButton");
+            return PartialView("_CommentButton", new { ID = id });
         }
 
         /// <summary>
@@ -158,11 +158,11 @@ namespace RipMyPaperToShreds.com.Controllers
         {
             var papers = await _paperRepo.ReadAll();
 
-            var takeThree = papers.Where(x => x.Draft != true).Take(5);
+            var takeFive = papers.Where(x => x.Draft != true).OrderByDescending(x => x.Date.Date).ThenByDescending(x => x.Date.Year).ThenByDescending(x => x.Date.TimeOfDay).Take(5);
 
-            if(takeThree != null)
+            if (takeFive != null)
             {
-                foreach(var paper in takeThree)
+                foreach(var paper in takeFive)
                 {
                     paper.Paper = System.Text.RegularExpressions.Regex.Replace(paper.Paper, "<[^>]*(>|$)", string.Empty);
                     var length = paper.Paper.Length;
@@ -178,7 +178,7 @@ namespace RipMyPaperToShreds.com.Controllers
                     }
                 }
                 
-                return View(takeThree);
+                return View(takeFive);
             }
             return View();
         }
@@ -187,11 +187,11 @@ namespace RipMyPaperToShreds.com.Controllers
         {
             var papers = await _paperRepo.NextPage(id);
 
-            var takeThree = papers.Where(x => x.Draft != true).Take(5);
+            var takeFive = papers.Where(x => x.Draft != true).OrderByDescending(x => x.Date.Date).ThenByDescending(x => x.Date.Year).ThenByDescending(x => x.Date.TimeOfDay).Take(5);
 
-            if (takeThree != null)
+            if (takeFive != null)
             {
-                foreach (var paper in takeThree)
+                foreach (var paper in takeFive)
                 {
                     paper.Paper = System.Text.RegularExpressions.Regex.Replace(paper.Paper, "<[^>]*(>|$)", string.Empty);
                     var length = paper.Paper.Length;
@@ -207,7 +207,7 @@ namespace RipMyPaperToShreds.com.Controllers
                     }
                 }
 
-                return PartialView("_NextPage", takeThree);
+                return PartialView("_NextPage", takeFive);
             }
 
 
@@ -344,6 +344,19 @@ namespace RipMyPaperToShreds.com.Controllers
                 return RedirectToAction("ShredSection", new { id = shredCreated.PaperId });
             }
             return RedirectToAction("ShredSection", new { id = shredCreated.PaperId });
+        }
+
+        [HttpPost, Authorize]
+        public async Task<IActionResult> SubmitComment(SubShreds sub)
+        {
+            if (ModelState.IsValid)
+            {
+                await _subShredsRepo.Create(sub);
+                return Json(sub);
+            }
+
+            return Json(sub);
+            
         }
 
         #endregion

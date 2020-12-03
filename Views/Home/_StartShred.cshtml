@@ -9,9 +9,9 @@
 <div id="output" class="col pt-4 pb-3 rounded shred-fixed shadow" data-aos="fade-up" data-aos-delay="300">
     <p class="pt-5"> <strong>Start Shredding:</strong></p><p class="small">You can start by selecting text, just like highlighting. </p>
     <div id="StartingShred" contenteditable="true" class="border border-primary rounded p-3"></div>
-    <button class="btn btn-sm btn-danger mr-1 mt-1" type="reset" onclick="ClearSelected()">Clear</button>
-    <button class="btn btn-sm btn-success mr-1 mt-1" onclick="SubmitShred()">Submit Shred</button>
-    <button class="btn mt-1 btn-sm btn-outline-danger" onclick="RemoveShredModual()">Cancel Shred</button>
+    <button class="btn btn-sm btn-danger mr-1 mt-1" type="reset" onclick="clearSelected()">Clear</button>
+    <button class="btn btn-sm btn-success mr-1 mt-1" onclick="submitShred()">Submit Shred</button>
+    <button class="btn mt-1 btn-sm btn-outline-danger" onclick="removeShredModual()">Cancel Shred</button>
 </div>
 
 <form id="SubmitShredForm" asp-action="SubmitShred" method="POST" hidden>
