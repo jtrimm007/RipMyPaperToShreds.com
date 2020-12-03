@@ -82,7 +82,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
             var numberOfListings = 5;
             var numberToSkip = pageNumber * numberOfListings;
 
-            var getListing = await _db.Papers.Where(x => x.Draft != true).Skip(numberToSkip).Take(numberOfListings).ToListAsync();
+            var getListing = await _db.Papers.Where(x => x.Draft != true).OrderByDescending(x => x.Date.Date).ThenByDescending(x => x.Date.Year).ThenByDescending(x => x.Date.TimeOfDay).Skip(numberToSkip).Take(numberOfListings).ToListAsync();
 
             return getListing;
         }
