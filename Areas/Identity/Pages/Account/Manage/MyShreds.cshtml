@@ -5,4 +5,52 @@
     ViewData["ActivePage"] = ManageNavPages.MyShreds;
 }
 
-    <h4>@ViewData["Title"]</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Date
+            </th>
+            <th>
+                Shredding
+            </th>
+            @*<th>
+                    Paper
+                </th>*@
+            @*<th>
+                    Shreder ID
+                </th>*@
+            <th>
+                Context
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Shreds)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shred)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Paper)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ShrederId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Context)
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="Paper" asp-route-id="@item.ID">Edit</a> @*|
+        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

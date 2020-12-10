@@ -1,0 +1,22 @@
+﻿@model RipMyPaperToShreds.com.Models.Shreds
+
+<div id="output" class="col pt-4 pb-3 rounded shred-fixed shadow" data-aos="fade-up" data-aos-delay="300">
+    <span id="selectedText">@Model.Shred</span>
+    <p class="pt-5"> <strong>Start Shredding:</strong></p><p class="small">You can start by selecting text, just like highlighting. </p>
+    <div id="StartingShred" contenteditable="true" class="border border-primary rounded p-3">@Model.Context</div>
+    <button class="btn btn-sm btn-danger mr-1 mt-1" type="reset" onclick="clearSelected()">Clear</button>
+    <button class="btn btn-sm btn-success mr-1 mt-1" onclick="updateShred()">Update Shred</button>
+    <button class="btn mt-1 btn-sm btn-outline-danger" onclick="removeShredModual(); deleteShred(@Model.ID);">Delete Shred</button>
+    <button class="btn mt-1 btn-sm btn-dark" onclick="removeShredModual()">X</button>
+</div>
+
+<form id="UpdateShredForm" asp-action="UpdateShred" method="POST" hidden>
+        <input asp-for="Date" value="@DateTime.UtcNow" class="form-control" />
+        <input class="form-check-input" asp-for="Fixed" value="false" />
+        <input asp-for="ID" class="form-control" value="@Model.ID" />
+        <input asp-for="PaperId" value="@Model.PaperId" class="form-control" />
+        <input id="Shred" asp-for="Shred" class="form-control" />
+        <input asp-for="ShrederId" value="@Model.ShrederId" class="form-control" />
+        <input asp-for="ShredyId" value="@Model.ShredyId" class="form-control" />
+        <input id="Context" asp-for="Context" class="form-control" />
+    </form>

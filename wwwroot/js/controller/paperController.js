@@ -22,45 +22,99 @@ function getShredModual(paperId) {
         $.ajax({
             url: "/Home/StartShred/" + paperId,
             success: function _success(data) {
-                getSelectedText(data);
+                modual.innerHTML += data;
+
+
+                var quotearea = document.getElementById('quote');
+                var output = document.getElementById('output');
+
+
+                quotearea.addEventListener('mouseup', function _getSelectedText() {
+
+                    if (!document.getElementById('selectedText')) {
+                        if (document.getSelection().anchorNode != document.getSelection().focusNode) {
+                            alert("Please choose within one paragraph.");
+                            document.getSelection().removeAllRanges();
+                        } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
+                            var selectedtext = document.getSelection();
+
+
+                            if (selectedtext.anchorOffset != selectedtext.focusOffset) {
+
+                                var span = document.createElement("span");
+                                span.id = "selectedText";
+                                span.prepend(selectedtext.toString());
+
+                                output.prepend(span);
+                            }
+                        }
+                    }
+                }, false);
         }
         });
     });
 }
 
-function getSelectedText(data) {
+function getEditShredModual(paperId) {
 
-    modual.innerHTML += data;
+    var addButton = document.getElementById('addButton');
+    var shredCards = document.getElementById('shredCards');
+
+    if (addButton !== null) {
+        var parent = addButton.parentNode;
+        addButton.hidden = true;
+        addButton.setAttribute("style", " position: fixed;");
+    }
+
+   
+    shredCards.hidden = true;
+    shredCards.setAttribute("style", " position: fixed;");
+
+    //while (parent.firstChild) {
+    //    parent.removeChild(parent.firstChild);
+    //}
+
+    var modual = document.getElementById('shredSection');
+
+    $(document).ready(function _ajax() {
+        $.ajax({
+            url: "/Home/EditShred/" + paperId,
+            success: function _success(data) {
+                modual.innerHTML += data;
 
 
-    var quotearea = document.getElementById('quote');
-    var output = document.getElementById('output');
+                var quotearea = document.getElementById('quote');
+                var output = document.getElementById('output');
 
 
-    quotearea.addEventListener('mouseup', function _getSelectedText() {
+                quotearea.addEventListener('mouseup', function _getSelectedText() {
 
-        if (!document.getElementById('selectedText')) {
-            if (document.getSelection().anchorNode != document.getSelection().focusNode) {
-                alert("Please choose within one paragraph.");
-                document.getSelection().removeAllRanges();
-            } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
-                var selectedtext = document.getSelection();
+                    if (!document.getElementById('selectedText')) {
+                        if (document.getSelection().anchorNode != document.getSelection().focusNode) {
+                            alert("Please choose within one paragraph.");
+                            document.getSelection().removeAllRanges();
+                        } else if (document.getSelection() && output.innerHTML != document.getSelection()) {
+                            var selectedtext = document.getSelection();
 
 
-                if (selectedtext.anchorOffset != selectedtext.focusOffset) {
+                            if (selectedtext.anchorOffset != selectedtext.focusOffset) {
 
-                    var span = document.createElement("span");
-                    span.id = "selectedText";
-                    span.prepend(selectedtext.toString());
+                                var span = document.createElement("span");
+                                span.id = "selectedText";
+                                span.prepend(selectedtext.toString());
 
-                    output.prepend(span);
-                }
+                                output.prepend(span);
+                            }
+                        }
+                    }
+                }, false);
             }
-        }
-    }, false);
+        });
+    });
 }
 
-function removeShredModual(paperId) {
+
+function removeShredModual() {
     var element = document.getElementById('output');
     element.parentNode.removeChild(element);
 
@@ -69,9 +123,12 @@ function removeShredModual(paperId) {
     var addButton = document.getElementById('addButton');
     var shredCards = document.getElementById('shredCards');
 
-    var parent = addButton.parentNode;
-    addButton.hidden = false;
-    addButton.setAttribute("style", "");
+    if (addButton !== null) {
+        var parent = addButton.parentNode;
+        addButton.hidden = false;
+        addButton.setAttribute("style", "");
+    }
+
     shredCards.hidden = false;
     shredCards.setAttribute("style", "");
 
@@ -84,6 +141,83 @@ function clearSelected() {
 
     document.getElementById('selectedText').remove();
 
+}
+
+function updateShred() {
+    //Shreder review
+    var shredDiv = document.getElementById('StartingShred');
+    var context = shredDiv.innerText;
+
+    //Shredy text being reviewed
+    var shredText = document.getElementById('selectedText');
+    var quotedText = shredText.innerHTML;
+
+    if (quotedText == null || quotedText == '') {
+        alert("You must write something about the selected text.");
+        return;
+    }
+
+    if (context == null || context == '') {
+        alert("You must select text to shred. Please highlight the section you want to shred. ");
+        return;
+    }
+
+    //Set form values
+    document.getElementById('Shred').value = quotedText;
+    document.getElementById('Context').value = context;
+
+    $(document).ready(function _ajaxShredForm() {
+
+        let $form = $('#UpdateShredForm');
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            data: $form.serialize(),
+            success: function _success(response) {
+                console.log(response);
+
+                //Get the output div
+                var modual = document.getElementById('output');
+
+                //Get the parent div of the output, shredSection.
+                var parent = modual.parentNode;
+
+                //Remove everything the section
+                while (parent.firstChild) {
+                    parent.removeChild(parent.firstChild);
+                }
+
+                //Remove all data from the selection object. (What is used to highlight text)
+                document.getSelection().removeAllRanges();
+
+                //Add the response data to the innerHtml
+                parent.innerHTML += response;
+            },
+            error: function _error(response) {
+                console.error("Opps! Something didn't work: " + response.responseText);
+            }
+        });
+
+    });
+}
+
+function deleteShred(shredId) {
+    $.ajax({
+        url: "/Home/DeleteShred/" + shredId,
+        type: "POST",
+        success: function _success(response) {
+            console.log(response);
+
+            var cardHolder = document.getElementById('cardHolder-' + shredId);
+
+            cardHolder.hidden = true;
+
+        },
+        error: function _error(response) {
+            console.error("Opps! Something didn't work: " + response.responseText);
+        }
+    });
 }
 
 function submitShred() {
@@ -145,6 +279,124 @@ function submitShred() {
     });
 }
 
+function editComment(commentId) {
+
+    var commentContainer = document.getElementById('commentContainer-' + commentId);
+    commentContainer.hidden = true;
+    commentContainer.setAttribute("style", " position: fixed;");
+
+    //var commentInput = document.getElementById('commentInput-' + shredId);
+    //commentInput.hidden = false;
+    //commentInput.setAttribute("style", "");
+
+    var editComment = document.getElementById('editComment-' + commentId);
+
+    if (editComment === null) {
+        $.ajax({
+            url: "/Home/EditComment/" + commentId,
+            success: function _success(data) {
+                console.log(data);
+                var commentSection = document.getElementById('comment-' + commentId);
+                commentSection.innerHTML += data;
+            }
+
+        });
+    } else {
+        var commentSection = document.getElementById('editComment-' + commentId);
+        commentSection.hidden = false;
+        commentSection.setAttribute("style", "");
+    }
+
+
+}
+
+function updateComment(commentId, screenName) {
+    $(document).ready(function _ajaxCommentForm() {
+
+        let $form = $('#updateCommentForm-' + commentId);
+        var updatedCommentText = document.getElementById('editCommentText-' + commentId).value;
+        var originalCommentText = document.getElementById('SubShred-' + commentId).value;
+        var date = document.getElementById('Date-' + commentId).value;
+        var shredId = document.getElementById('ShredId-' + commentId).value;
+        var shrederId = document.getElementById('ShrederId-' + commentId).value;
+
+        if (updatedCommentText !== originalCommentText) {
+            document.getElementById('SubShred-' + commentId).value = updatedCommentText;
+            document.getElementById('commentText-' + commentId).innerText = updatedCommentText;
+        }
+
+
+       //console.log("Form Action: " + $form.attr('action') + " subshred value: " + subshred);
+        console.log(document.getElementById('SubShred-' + commentId).value);
+        console.log(shredId);
+        console.log($form.serialize());
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            data: $form.serialize(),
+            success: function _success(response) {
+                console.log(response);
+
+                var commentContainer = document.getElementById('commentContainer-' + commentId);
+                commentContainer.hidden = false;
+                commentContainer.setAttribute("style", "");
+
+                var editComment = document.getElementById('editComment-' + commentId);
+                editComment.hidden = true;
+                editComment.setAttribute("style", " position: fixed;");
+
+               
+            },
+            error: function _error(response) {
+                console.error("Opps! Something didn't work: " + response.responseText);
+            }
+        });
+
+    });
+
+}
+
+function deleteComment(commentId) {
+
+    var commentContainer = document.getElementById('editComment-' + commentId);
+
+    if (commentContainer !== null) {
+        commentContainer.hidden = true;
+        commentContainer.setAttribute("style", "position: fixed;");
+    }
+
+
+    $.ajax({
+        url: "/Home/DeleteComment/" + commentId,
+        type: "POST",
+        success: function _success(data) {
+            console.log(data);
+
+            var commentContainer = document.getElementById('commentContainer-' + commentId);
+            commentContainer.hidden = true;
+            commentContainer.setAttribute("style", "position: fixed;");
+
+            var editComment = document.getElementById('editComment-' + commentId);
+            editComment.hidden = true;
+            editComment.setAttribute("style", "position: fixed;");
+
+        }
+
+    });
+}
+
+function cancelCommentEdit(commentId) {
+    var commentContainer = document.getElementById('editComment-' + commentId);
+    commentContainer.hidden = true;
+    commentContainer.setAttribute("style", " position: fixed;");
+
+    var commentContainer = document.getElementById('commentContainer-' + commentId);
+    commentContainer.hidden = false;
+    commentContainer.setAttribute("style", "");
+}
+
+
 function getAlartBox() {
 
     alert("You need to sign in first");
@@ -180,16 +432,16 @@ function submitComment(shredId, screenName) {
 
     $(document).ready(function _ajaxCommentForm() {
 
-        let $form = $('#CommentForm-' + shredId);
-        var subshred = document.getElementById('SubShred-' + shredId).value;
+        var $form = $('#CommentForm-' + shredId);
+        var newComment = document.getElementById('SubShred-' + shredId).value;
         var date = document.getElementById('Date-' + shredId).value;
-        var shredIdTe = document.getElementById('ShredId-' + shredId).value;
+        var formShredId = document.getElementById('ShredId-' + shredId).value;
         var shrederId = document.getElementById('ShrederId-' + shredId).value;
 
 
-        console.log("Form Action: " + $form.attr('action') + " subshred value: " + subshred);
+        console.log("Form Action: " + $form.attr('action') + " subshred value: " + newComment);
         console.log(date);
-        console.log(shredIdTe);
+        console.log(shredId);
         console.log($form.serialize());
 
         $.ajax({
@@ -207,8 +459,8 @@ function submitComment(shredId, screenName) {
                                         '</div>'+
                                    '</div>'+
                         ' <div class="mr-3 ml-3">'+
-                          '<div class="col">'+
-                    '<p class="small">' + subshred+'</p>'+
+                    '<div class="col">' +
+                    '<p class="small">' + response["subShred"] + '</p>' +
                     ' </div>' +
                     '</div>' +
                     ' <div class="small">' +
@@ -216,6 +468,9 @@ function submitComment(shredId, screenName) {
                     ' </div>';
 
                 document.getElementById('commentSection-' + shredId).innerHTML += commentHtml;
+                var commentInputSection = document.getElementById('commentInput-' + shredId);
+                commentInputSection.hidden = true;
+                commentInputSection.setAttribute("style", " position: fixed;");
 
                 getCommentButton(shredId);
 
@@ -230,52 +485,55 @@ function submitComment(shredId, screenName) {
 
 function sendUpVote(shredId, voterId) {
 
-    var cardHolder = document.getElementById("cardHolder-" + shredId);
-    //var ripVote = cardHolder.getElementById('RipVote-' + cardHolderId);
-    var ripValue = cardHolder.getElementById("RipValue-" + shredId);
+    $(document).ready(function _upVote() {
+        document.getElementById('Rip-' + shredId).setAttribute("value", "true");
+        document.getElementById('RipVoter-' + shredId).setAttribute("value", voterId);
 
-    if (ripValue.value === "true") {
+        var id = "#RipForm-" + shredId;
 
-        alert("You have already upvoted this shred.");
-        return;
-    } else if (ripValue.value === 'false' || ripValue.value === "") {
+        var $form = $('#RipForm-' + shredId);
 
-        $(document).ready(function _submitVote() {
+        console.log($form);
 
-            ripValue.value = true;
-
-            var shrederId = cardHolder.getElementById('ShrederId');
-            var shredId = cardHolder.getElementById('ShredId');
-            shredId.value = Number(shredId.value);
-
-            console.log("Shred Id: " + shredId.value);
-            console.log("Shreder ID: " + shrederId.value);
-            console.log("SetUpVote: " + ripValue.value);
-
-            var id = "#RipVote-" + shredId;
-
-            let $formRip = $(id);
-
-            console.log($formRip);
-
-            $.ajax({
-                url: $formRip.attr('action'),
-                type: $formRip.attr('method'),
-                data: $formRip.serialize(),
-                success: function _success(response) {
-                    console.log(response);
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            data: $form.serialize(),
+            success: function _success(response) {
+                console.log(response);
 
 
-                },
-                error: function _error(response) {
-                    console.error("Opps! Something didn't work: " + response.responseText);
-                }
-            });
-
+            },
+            error: function _error(response) {
+                console.error("Opps! Something didn't work: " + response.responseText);
+            }
         });
+    });
+}
 
-    } else {
+function sendDownVote(shredId, voterId) {
 
-    }
+    $(document).ready(function _upVote() {
+        document.getElementById('Rip-' + shredId).setAttribute("value", "false");
+        document.getElementById('RipVoter-' + shredId).setAttribute("value", voterId);
+        var id = "#RipForm-" + shredId;
 
+        var $form = $('#RipForm-' + shredId);
+
+        console.log($form);
+
+        $.ajax({
+            url: $form.attr('action'),
+            type: $form.attr('method'),
+            data: $form.serialize(),
+            success: function _success(response) {
+                console.log(response);
+
+
+            },
+            error: function _error(response) {
+                console.error("Opps! Something didn't work: " + response.responseText);
+            }
+        });
+    });
 }

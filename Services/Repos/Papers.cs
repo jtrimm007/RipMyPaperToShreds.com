@@ -6,6 +6,7 @@
 
 namespace RipMyPaperToShreds.com.Services.Repos
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.EntityFrameworkCore;
     using RipMyPaperToShreds.com.Data;
     using RipMyPaperToShreds.com.Services.Interfaces;
@@ -16,6 +17,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
     /// <summary>
     /// Defines the <see cref="Papers" />.
     /// </summary>
+  
     public class Papers : IPapers
     {
         #region Fields
@@ -82,7 +84,9 @@ namespace RipMyPaperToShreds.com.Services.Repos
             var numberOfListings = 5;
             var numberToSkip = pageNumber * numberOfListings;
 
-            var getListing = await _db.Papers.Where(x => x.Draft != true).OrderByDescending(x => x.Date.Date).ThenByDescending(x => x.Date.Year).ThenByDescending(x => x.Date.TimeOfDay).Skip(numberToSkip).Take(numberOfListings).ToListAsync();
+            var getListing = await _db.Papers.Where(x => x.Draft != true).OrderByDescending(x => x.Date.Date)
+                .ThenByDescending(x => x.Date.Year).ThenByDescending(x => x.Date.TimeOfDay)
+                .Skip(numberToSkip).Take(numberOfListings).ToListAsync();
 
             return getListing;
         }
@@ -111,18 +115,36 @@ namespace RipMyPaperToShreds.com.Services.Repos
         /// </summary>
         /// <param name="paper">The paper<see cref="Models.Papers"/>.</param>
         /// <returns>The <see cref="Task{Models.Papers}"/>.</returns>
-        public async Task<Models.Papers> Update(Models.Papers paper)
+        public async Task<Models.Papers> Update(Models.Papers papers)
         {
-            var check = await Read(paper.ID);
+            var check = await Read(papers.ID);
 
             if (check != null)
             {
-                _db.Papers.Update(paper);
+                check.Title = papers.Title;
+                check.HashTags = papers.HashTags;
+                check.Paper = papers.Paper;
+                check.Draft = papers.Draft;
+
+                //_db.Papers.Update(papers);
                 await _db.SaveChangesAsync();
-                return paper;
+                return papers;
             }
-            return paper;
+            return papers;
         }
+
+        public async Task<bool> IsObject(int id)
+        {
+            var check = await _db.Papers.FirstOrDefaultAsync(x => x.ID == id);
+
+            if(check != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
 
         #endregion
     }

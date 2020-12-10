@@ -8,6 +8,7 @@ namespace RipMyPaperToShreds.com.Models.ViewModels
     public class ShredCommentsVM
     {
         public Shreds Shred { get; set; }
+        public int NumberOfRips { get; set; }
         public ICollection<SubShreds> SubShreds { get; set; } = new List<SubShreds>();
 
     }
