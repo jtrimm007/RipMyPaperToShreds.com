@@ -105,7 +105,8 @@ namespace RipMyPaperToShreds.com.Services.Repos
 
             if (check != null)
             {
-                _db.Rips.Update(rip);
+                check.Rip = rip.Rip;
+                //_db.Rips.Update(rip);
                 await _db.SaveChangesAsync();
                 return rip;
             }

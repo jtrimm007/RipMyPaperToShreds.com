@@ -69,7 +69,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
         /// <returns>The <see cref="Task"/>.</returns>
         public async Task Delete(Models.SubShreds subShred)
         {
-            var check = Read(subShred.ID);
+            var check = await Read(subShred.ID);
 
             if (check != null)
             {
@@ -112,11 +112,13 @@ namespace RipMyPaperToShreds.com.Services.Repos
         /// <returns>The <see cref="Task{Models.SubShreds}"/>.</returns>
         public async Task<Models.SubShreds> Update(Models.SubShreds subShred)
         {
-            var check = Read(subShred.ID);
+            var check = await Read(subShred.ID);
 
             if (check != null)
             {
-                _db.SubShreds.Update(subShred);
+                check.SubShred = subShred.SubShred;
+                
+                //_db.SubShreds.Update(subShred);
                 await _db.SaveChangesAsync();
                 return subShred;
             }

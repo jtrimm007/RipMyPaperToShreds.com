@@ -18,15 +18,15 @@
     <div class="row m-3 border-bottom">
         <!--Up and Down Vote Buttons-->
         <div id="rip-vote-container" class="col-2 pl-0 ml-0">
-            <p title="Number of up votes" class="m-0 p-0">123</p>
-            <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID)">
+            <p title="Number of up votes" class="m-0 p-0">@Model.NumberOfRips</p>
+            <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID); sendUpVote(@Model.Shred.ID, '@UserManager.Users.FirstOrDefault(x=>x.Email == User.Identity.Name).Id');">
                 <svg class="bi bi-arrow-up-square mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" title="Up Vote">
                     <path id="up1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                     <path id="up2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
                     <path id="up3-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
                 </svg>
             </span>
-            <span id="downVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed(@Model.Shred.ID)">
+            <span id="downVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed(@Model.Shred.ID); sendDownVote(@Model.Shred.ID, '@UserManager.Users.FirstOrDefault(x=>x.Email == User.Identity.Name).Id');">
                 <svg class="bi bi-arrow-down-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path id="down1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                     <path id="down2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
@@ -34,12 +34,13 @@
                 </svg>
             </span>
 
+           
             <!--Up and down vote form-->
-            <form id="RipForm-@Model.Shred.ID" hidden>
-                <input name="ID" value=""/>
-                <input name="Rip" value="" />
-                <input name="ShrederId" value="" />
-                <input name="ShredId" value="" />
+            <form asp-action="Vote" method="POST" id="RipForm-@Model.Shred.ID" hidden>
+                <input name="ID" value="0"/>
+                <input id="Rip-@Model.Shred.ID" name="Rip" value="" />
+                <input id="RipVoter-@Model.Shred.ID" name="ShrederId" value="" />
+                <input name="ShredId" value="@Model.Shred.ID" />
             </form>
 
             <span id="fixedButton" class="btn m-0 p-0" title="Improved Paper">
@@ -69,9 +70,10 @@
         {
             @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == ViewData["ShrederAuthor"].ToString())
             {
-                <div class="small">
-                    <p><a href="">edit</a></p>
-                </div>
+    <div class="small">
+        <button class="btn btn-sm" onclick="getEditShredModual(@Model.Shred.ID);">edit</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteShred(@Model.Shred.ID);">delete</button>
+    </div>
             }
 
         }
@@ -86,30 +88,35 @@
         @foreach (var sub in Model.SubShreds)
         {
 
-            <div class="row mt-3 mr-3 ml-3 mb-0">
-                <div class="col">
-                    <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName</em></p>
-                </div>
-                <div class="col">
-                    <p class="small">@sub.Date</p>
-                </div>
-            </div>
-            <div class="mr-3 ml-3">
-                <div class="col">
-                    <p class="small">@sub.SubShred</p>
-                </div>
-            </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName)
-                {
-                    <div class="small">
-                        <p><a href="">edit</a></p>
+            <div id="comment-@sub.ID">
+                <div id="commentContainer-@sub.ID">
+                    <div class="row mt-3 mr-3 ml-3 mb-0">
+                        <div class="col">
+                            <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName</em></p>
+                        </div>
+                        <div class="col">
+                            <p class="small">@sub.Date</p>
+                        </div>
                     </div>
-                }
+                    <div class="mr-3 ml-3">
+                        <div class="col">
+                            <p id="commentText-@sub.ID" class="small">@sub.SubShred</p>
+                        </div>
+                    </div>
 
-            }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName)
+                        {
+                            <div class="small">
+                                <button class="btn btn-sm btn-dark" onclick="editComment(@sub.ID)">edit</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteComment(@sub.ID)">delete</button>
+                            </div>
+                        }
 
+                    }
+                </div>
+            </div>
         }
     </div>
     <div id="commentHolder-@Model.Shred.ID" class="row mr-3 ml-3">

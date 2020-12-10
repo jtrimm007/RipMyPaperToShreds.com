@@ -100,6 +100,10 @@ namespace RipMyPaperToShreds.com
                     name: "NextPage",
                    pattern: "{controller=Home}/{action=SubmitShred}/{id}");
 
+                //endpoints.MapControllerRoute(
+                //    name: "Dashboard",
+                //   pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+
 
                 endpoints.MapRazorPages();
                 endpoints.MapHub<ShredsHub>("/shredHub");
@@ -126,6 +130,8 @@ namespace RipMyPaperToShreds.com
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
 
             services.AddSignalR();
 

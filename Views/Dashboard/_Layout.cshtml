@@ -1,0 +1,33 @@
+﻿@{
+    if (ViewData.TryGetValue("ParentLayout", out var parentLayout))
+    {
+        Layout = (string)parentLayout;
+    }
+    else
+    {
+        Layout = "~/Areas/Identity/Pages/_Layout.cshtml";
+    }
+}
+    <main id="main">
+        <section id="services" class="services mt-5">
+            <div class="container-fluid">
+
+                <div class="section-title">
+                    <h2>@ViewData["Title"]</h2>
+                    
+                </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <partial name="~/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml" />
+                        </div>
+                        <div class="col-md-9">
+                            @RenderBody()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+                @section Scripts {
+                    @RenderSection("Scripts", required: false)
+                }

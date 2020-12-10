@@ -55,6 +55,8 @@ namespace RipMyPaperToShreds.com.Services.Interfaces
         /// <returns>The <see cref="Task{Papers}"/>.</returns>
         Task<Papers> Update(Papers paper);
 
+        Task<bool> IsObject(int id);
+
         #endregion
     }
 

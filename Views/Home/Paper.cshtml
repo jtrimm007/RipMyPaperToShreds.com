@@ -32,7 +32,7 @@
                 @if(User.Identity.IsAuthenticated && UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName
                   == ViewData["PaperAuthor"].ToString())
                 {
-                   <button class="btn btn-sm btn-outline-info small">Edit Paper</button>
+                   <a href="/Home/EditPaper/@Model.Paper.ID" class="btn btn-sm btn-outline-info small" onclick="">Edit Paper</a>
                 }
 
             </div>

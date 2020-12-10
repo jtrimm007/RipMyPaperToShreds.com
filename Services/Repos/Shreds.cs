@@ -114,7 +114,10 @@ namespace RipMyPaperToShreds.com.Services.Repos
 
             if (check != null)
             {
-                _db.Shreds.Update(shred);
+                check.Context = shred.Context;
+                check.Shred = shred.Shred;
+
+                //_db.Shreds.Update(shred);
                 await _db.SaveChangesAsync();
                 return shred;
             }

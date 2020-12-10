@@ -1,0 +1,20 @@
+﻿@model RipMyPaperToShreds.com.Models.SubShreds
+@inject UserManager<ApplicationUser> UserManager
+@{ 
+    string screenName = @UserManager.Users.FirstOrDefault(x => x.Id == Model.ShrederId).ScreenName;
+}
+
+<div id="editComment-@Model.ID" class="col">
+    <input id="editCommentText-@Model.ID" class="rounded small mb-1" size="30" type="text" maxlength="150" min="1" placeholder="comment here" value="@Model.SubShred" />
+    <button id="submitComment" class="btn btn-sm btn-success small" onclick="updateComment(@Model.ID, '@screenName');">Update</button> <button id="submitComment" class="btn btn-sm btn-danger small" onclick="deleteComment(@Model.ID)">Delete</button><button id="cancelComment" onclick="cancelCommentEdit(@Model.ID)" class="btn btn-sm btn-dark small">x</button>
+</div>
+
+<form hidden style="position: fixed;" name="updateComment-@Model.ID" method="POST" id="updateCommentForm-@Model.ID" asp-action="UpdateComment" enctype="multipart/form-data">
+    <input name="SubShred" id="SubShred-@Model.ID" class="rounded small mb-1" size="30" type="text" maxlength="150" min="1" value="@Model.SubShred" />
+    <input name="Date" id="Date-@Model.ID" hidden value="@Model.Date" />
+    <input name="ShredId" id="ShredId-@Model.ID" hidden value="@Model.ShredId" />
+    <input name="ShrederId" id="ShrederId-@Model.ID" hidden value="@Model.ShrederId" />
+    <input name="ID" id="ID-@Model.ID" hidden value="@Model.ID" />
+
+
+</form>
