@@ -26,7 +26,7 @@
     <section id="services" class="services mt-5">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <h2>@ViewData["Title"]: @Model.Paper.Title</h2>
+                <h2>@Model.Paper.Title</h2>
                 <h3>@ViewData["PaperAuthor"]</h3>
 
                 @if(User.Identity.IsAuthenticated && UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName
@@ -70,14 +70,24 @@
 </main>
 @section Scripts{
     <script src="~/js/objects/rip.js"></script>
+    <script src="~/js/objects/shred.js"></script>
     <script src="~/js/controller/paperController.js"></script>
     <script>
 
 
-        //Window Scroll
-        $(window).scroll(function () {
-            $(".shred-fixed").css({ "margin-top": ($(window).scrollTop()) + "px", "margin-left": ($(window).scrollLeft()) + "px" });
-        });
+        window.onresize = reportWindowSize;
+
+
+        if (window.innerWidth > 768) {
+            //Window Scroll
+            $(window).scroll(function () {
+                $("#output").css({
+                    "margin-top": ($(window).scrollTop()) + "px", "margin-left":
+                        ($(window).scrollLeft()) + "px"
+                });
+            });
+        } 
+
     </script>
 
 

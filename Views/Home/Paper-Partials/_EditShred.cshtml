@@ -1,6 +1,6 @@
 ﻿@model RipMyPaperToShreds.com.Models.Shreds
 
-<div id="output" class="col pt-4 pb-3 rounded shred-fixed shadow" data-aos="fade-up" data-aos-delay="300">
+<div id="output" class="col pt-4 pb-3 rounded shadow" data-aos="fade-up" data-aos-delay="300">
     <span id="selectedText">@Model.Shred</span>
     <p class="pt-5"> <strong>Start Shredding:</strong></p><p class="small">You can start by selecting text, just like highlighting. </p>
     <div id="StartingShred" contenteditable="true" class="border border-primary rounded p-3">@Model.Context</div>
@@ -11,7 +11,7 @@
 </div>
 
 <form id="UpdateShredForm" asp-action="UpdateShred" method="POST" hidden>
-        <input asp-for="Date" value="@DateTime.UtcNow" class="form-control" />
+        <input asp-for="Date" value="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")" class="form-control" />
         <input class="form-check-input" asp-for="Fixed" value="false" />
         <input asp-for="ID" class="form-control" value="@Model.ID" />
         <input asp-for="PaperId" value="@Model.PaperId" class="form-control" />

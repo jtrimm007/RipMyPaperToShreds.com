@@ -5,54 +5,88 @@
     //var SubShred = Model.SubShreds;
     ViewData["ShrederAuthor"] = UserManager.Users.FirstOrDefault(x => x.Id == Model.Shred.ShrederId).ScreenName;
 
+    var fixedButtonColor = "Gainsboro";
+
+
+    if(Model.Shred.Fixed == true)
+    {
+        fixedButtonColor = "LimeGreen";
+
+    }
+
+    string fixedButtonOnClick;
+    string userId;
+
+
     if(User.Identity.IsAuthenticated)
     {
         string screenName = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName;
+        userId = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
+
+        if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id == Model.Shred.ShredyId)
+        {
+            fixedButtonOnClick = $"markFixedButton({Model.Shred.ID}); submitFixedButton({Model.Shred.ID});";
+        }
+        else
+        {
+            fixedButtonOnClick = "unauthorizedFixedButtonClick()";
+        }
+    }
+    else
+    {
+        userId = "";
+        fixedButtonOnClick = "unauthorizedFixedButtonClick()";
     }
 }
 
 <!--Start Shred Card-->
 
-<div id="cardHolder-@Model.Shred.ID" class="shadow p-2 mt-5 container-fluid">
+<div id="cardHolder-@Model.Shred.ID" class="shadow mt-5 card">
 
-    <div class="row m-3 border-bottom">
+    <div class="card-header pt-5">
         <!--Up and Down Vote Buttons-->
-        <div id="rip-vote-container" class="col-2 pl-0 ml-0">
-            <p title="Number of up votes" class="m-0 p-0">@Model.NumberOfRips</p>
-            <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID); sendUpVote(@Model.Shred.ID, '@UserManager.Users.FirstOrDefault(x=>x.Email == User.Identity.Name).Id');">
-                <svg class="bi bi-arrow-up-square mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" title="Up Vote">
+        <div id="rip-vote-container" class="float-left col-2 pl-0 ml-0">
+
+            <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID); sendUpVote(@Model.Shred.ID, '@userId');">
+                <svg class="bi bi-arrow-up-square mb-1" width="1.8em" height="1.8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" title="Up Vote">
                     <path id="up1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                     <path id="up2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 8.354a.5.5 0 0 0 .708 0L8 5.707l2.646 2.647a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 0 0 0 .708z" />
                     <path id="up3-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M8 11.5a.5.5 0 0 0 .5-.5V6a.5.5 0 0 0-1 0v5a.5.5 0 0 0 .5.5z" />
                 </svg>
             </span>
-            <span id="downVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed(@Model.Shred.ID); sendDownVote(@Model.Shred.ID, '@UserManager.Users.FirstOrDefault(x=>x.Email == User.Identity.Name).Id');">
-                <svg class="bi bi-arrow-down-square" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <p title="Number of up votes" class="m-0 p-0 font-weight-bold text-center">@Model.NumberOfRips</p>
+            <span id="downVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Down Vote" onclick="turnDownVoteRed(@Model.Shred.ID); sendDownVote(@Model.Shred.ID, '@userId');">
+                <svg class="bi bi-arrow-down-square" width="1.8em" height="1.8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path id="down1-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
                     <path id="down2-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M4.646 7.646a.5.5 0 0 1 .708 0L8 10.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z" />
                     <path id="down3-@Model.Shred.ID" fill="Gainsboro" fill-rule="evenodd" d="M8 4.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5z" />
                 </svg>
             </span>
 
-           
+
             <!--Up and down vote form-->
             <form asp-action="Vote" method="POST" id="RipForm-@Model.Shred.ID" hidden>
-                <input name="ID" value="0"/>
+                <input name="ID" value="0" />
                 <input id="Rip-@Model.Shred.ID" name="Rip" value="" />
                 <input id="RipVoter-@Model.Shred.ID" name="ShrederId" value="" />
                 <input name="ShredId" value="@Model.Shred.ID" />
             </form>
 
-            <span id="fixedButton" class="btn m-0 p-0" title="Improved Paper">
-                <svg class="bi bi-check2-square mt-3 mb-1" width="2em" height="2em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="LimeGreen" fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                    <path fill="LimeGreen" fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
+            <span id="fixedButton-@Model.Shred.ID" class="btn m-0 p-0" title="Improved Paper" onclick="@fixedButtonOnClick">
+                <svg class="bi bi-check2-square mt-3 mb-1" width="1.8em" height="1.8em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
+                    <path id="fixed-1-@Model.Shred.ID" fill="@fixedButtonColor" fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+                    <path id="fixed-2-@Model.Shred.ID" fill="@fixedButtonColor" fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
                 </svg>
             </span>
+
+            <!--Fixed button form-->
+            <form asp-action="FixedButton" method="POST" id="FixedButton-@Model.Shred.ID" hidden>
+                <input id="FixedInput-@Model.Shred.ID" value="@Model.Shred.Fixed.ToString()" />
+            </form>
         </div>
-        <div class="col-10">
+        <div class="col-10 float-right">
             <blockquote class="blockquote text-right">
-                <p class="small"><em>"@Model.Shred.Shred"</em></p>
+                <p class="small break-word"><em>"@Model.Shred.Shred"</em></p>
                 <footer class="blockquote-footer"><cite title="Source Title">@ViewData["PaperAuthor"]</cite></footer>
             </blockquote>
 
@@ -70,7 +104,7 @@
         {
             @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == ViewData["ShrederAuthor"].ToString())
             {
-    <div class="small">
+    <div class="small btn-group">
         <button class="btn btn-sm" onclick="getEditShredModual(@Model.Shred.ID);">edit</button>
         <button class="btn btn-sm btn-danger" onclick="deleteShred(@Model.Shred.ID);">delete</button>
     </div>
@@ -84,17 +118,17 @@
             <p class="small"><strong>Sub-Shreds</strong></p>
         </div>
     </div>
-    <div id="commentSection-@Model.Shred.ID" class="row ">
+    <div id="commentSection-@Model.Shred.ID" class="">
         @foreach (var sub in Model.SubShreds)
         {
 
-            <div id="comment-@sub.ID">
+            <div id="comment-@sub.ID" class="card-body">
                 <div id="commentContainer-@sub.ID">
-                    <div class="row mt-3 mr-3 ml-3 mb-0">
-                        <div class="col">
+                    <div class="row">
+                        <div class="col-6 float-left">
                             <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName</em></p>
                         </div>
-                        <div class="col">
+                        <div class="col-6 float-right">
                             <p class="small">@sub.Date</p>
                         </div>
                     </div>
@@ -108,7 +142,7 @@
                     {
                         @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName)
                         {
-                            <div class="small">
+                            <div class="small btn-group float-right">
                                 <button class="btn btn-sm btn-dark" onclick="editComment(@sub.ID)">edit</button>
                                 <button class="btn btn-sm btn-danger" onclick="deleteComment(@sub.ID)">delete</button>
                             </div>
@@ -122,9 +156,9 @@
     <div id="commentHolder-@Model.Shred.ID" class="row mr-3 ml-3">
         @if (User.Identity.IsAuthenticated)
         {
-            <div id="commentInput-@Model.Shred.ID" class="col" hidden style="position:absolute">
+            <div id="commentInput-@Model.Shred.ID" class="pt-4 pb-4" hidden style="position:absolute">
                 <form name="submitComment-@Model.Shred.ID" method="POST" id="CommentForm-@Model.Shred.ID" asp-action="SubmitComment" enctype="multipart/form-data">
-                    <input name="SubShred" id="SubShred-@Model.Shred.ID" class="rounded small mb-1" size="30" type="text" maxlength="150" min="1" placeholder="comment here" />
+                    <input name="SubShred" id="SubShred-@Model.Shred.ID" class="rounded small mb-1" size="35" type="text" maxlength="150" min="1" placeholder="comment here" />
                     <input name="Date" id="Date-@Model.Shred.ID" hidden value="@DateTime.UtcNow" />
                     <input name="ShredId" id="ShredId-@Model.Shred.ID" hidden value="@Model.Shred.ID" />
                     <input name="ShrederId" id="ShrederId-@Model.Shred.ID" hidden value="@UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id" />

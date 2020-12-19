@@ -144,6 +144,22 @@ namespace RipMyPaperToShreds.com.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPost, Authorize]
+        public async Task<IActionResult> FixedButton(int shredid, bool fixedButton)
+        {
+            var check = await _shredsRepo.Read(shredid);
+
+            if(check != null)
+            {
+                check.Fixed = fixedButton;
+               var updated = await _shredsRepo.Update(check);
+
+                return Json(updated);
+            }
+
+            return Content("Shred not found.");
+        }
+
         /// <summary>
         /// The Index.
         /// </summary>
@@ -372,6 +388,7 @@ namespace RipMyPaperToShreds.com.Controllers
 
             if (getPaperCreator != null)
             {
+                
 
                 return PartialView("Paper-Partials/_EditShred", getPaperCreator);
             }
