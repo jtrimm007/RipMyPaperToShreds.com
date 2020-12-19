@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7P+ml7OBDUyNYaVL67c0ngAAAAACAAAAAAAQZgAAAAEAACAAAACKq5+9VFUic0Sk1Oa/px7Axxz50g6D85+24bwEMexDDgAAAAAOgAAAAAIAACAAAAD/qYPiYuOXkvYrWS1lxZMz9hNiM3yr07tzZLbEC0YrxYAAAABO008vx+yBtS5hQGNJhlenexGnVEgIOBnjbhkvVbVRg7gu7cWQBo6sKcQpyPMSX7OqTsZ/d//b3wkzLjAAn8sQOjp9va2wBgpz7nyrTB3goVvLF7RCTfVZibC2tjAcXX8UFsEzcuaQ5NpmxsAK90Xtw2XKfYY2uQXmwicZ3aOEWUAAAACuyF3Af8usP/bEP0dY8cj5IJ5p5tEkYMWTS1m5UIRgErKvFWfRCJVP88wsFMeDKj9UHGdgMJBsc8ZixWdvfxVD</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Data Source=tcp:ripmypapertoshredsdbserver.database.windows.net,1433%3bInitial Catalog=aspnet-RipMyPaperToShreds.com-2616A47D-35A8-4CB5-8723-02CB32CF8C5D%3bUser Id=trimmj%40ripmypapertoshredsdbserver%3bPassword=%29S%294k-x~SB:rES%29</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

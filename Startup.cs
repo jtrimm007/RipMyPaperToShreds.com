@@ -56,7 +56,7 @@ namespace RipMyPaperToShreds.com
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                //app.UseDatabaseErrorPage();
             }
             else
             {
@@ -99,6 +99,12 @@ namespace RipMyPaperToShreds.com
                 endpoints.MapControllerRoute(
                     name: "NextPage",
                    pattern: "{controller=Home}/{action=SubmitShred}/{id}");
+
+                endpoints.MapControllerRoute(
+                    name: "Route",
+                    pattern: "{controller}/{action}/{shredid}/{fixedButton}",
+                    new {controller = "Home", action = "FixedButton", shredid = "", fixedButton = "" }
+                    );
 
                 //endpoints.MapControllerRoute(
                 //    name: "Dashboard",

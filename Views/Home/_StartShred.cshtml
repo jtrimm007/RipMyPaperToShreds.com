@@ -6,7 +6,7 @@
     Model.ShrederId = UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).Id;
 }
 
-<div id="output" class="col pt-4 pb-3 rounded shred-fixed shadow" data-aos="fade-up" data-aos-delay="300">
+<div id="output" class="col pt-4 pb-3 position-sticky rounded shadow" data-aos="fade-up" data-aos-delay="300">
     <p class="pt-5"> <strong>Start Shredding:</strong></p><p class="small">You can start by selecting text, just like highlighting. </p>
     <div id="StartingShred" contenteditable="true" class="border border-primary rounded p-3"></div>
     <button class="btn btn-sm btn-danger mr-1 mt-1" type="reset" onclick="clearSelected()">Clear</button>
@@ -15,7 +15,7 @@
 </div>
 
 <form id="SubmitShredForm" asp-action="SubmitShred" method="POST" hidden>
-        <input asp-for="Date" value="@DateTime.UtcNow" class="form-control" />
+        <input asp-for="Date" value="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")" class="form-control" />
         <input class="form-check-input" asp-for="Fixed" value="false" />
         <input asp-for="ID" class="form-control" value="0" />
         <input asp-for="PaperId" value="@Model.PaperId" class="form-control" />
