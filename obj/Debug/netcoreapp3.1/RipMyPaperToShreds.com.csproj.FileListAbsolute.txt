@@ -179,9 +179,3 @@ C:\Users\Stephen\Desktop\Repos\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Ri
 C:\Users\Stephen\Desktop\Repos\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.genruntimeconfig.cache
 C:\Users\Stephen\Desktop\Repos\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\MyPapers.cshtml.g.cs
 C:\Users\Stephen\Desktop\Repos\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Manage\MyShreds.cshtml.g.cs
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.AssemblyInfoInputs.cache
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.AssemblyInfo.cs
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.csproj.CoreCompileInputs.cache
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.RazorAssemblyInfo.cache
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Debug\netcoreapp3.1\RipMyPaperToShreds.com.RazorAssemblyInfo.cs

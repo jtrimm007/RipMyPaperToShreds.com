@@ -32,13 +32,26 @@ function getShredModual(paperId) {
 
     var addButton = document.getElementById('addButton');
     var shredCards = document.getElementById('shredCards');
+    var topNav;
+    var bottomNav;
+    var startShredCard;
+
+    if (window.innerWidth > 768) {
+        topNav = document.getElementById('topNav')
+
+        // var parent = addButton.parentNode;
+        addButton.hidden = true;
+        addButton.setAttribute("style", " position: fixed;");
+        shredCards.hidden = true;
+        shredCards.setAttribute("style", " position: fixed;");
+    } else {
+        bottomNav = document.getElementById('bottomNav');
+        bottomNav.hidden = true;
+    }
 
 
-    var parent = addButton.parentNode;
-    addButton.hidden = true;
-    addButton.setAttribute("style", " position: fixed;");
-    shredCards.hidden = true;
-    shredCards.setAttribute("style", " position: fixed;");
+
+ 
 
     //while (parent.firstChild) {
     //    parent.removeChild(parent.firstChild);
@@ -52,16 +65,64 @@ function getShredModual(paperId) {
             success: function _success(data) {
                 modual.innerHTML += data;
 
+                if (window.innerWidth < 768) {
+
+                    //get the start shred card
+                    startShredCard = document.getElementById('output');
+
+                    //remove desktop classes
+                    startShredCard.classList.remove('position-sticky');
+                    startShredCard.classList.remove('shadow');
+                    startShredCard.classList.remove('rounded');
+
+                    //add mobile classes
+                    startShredCard.classList.add('bg-white');
+                    startShredCard.classList.add('shadow-lg');
+                    startShredCard.classList.add('fixed-bottom');
+                }
+
 
                 var quotearea = document.getElementById('quote');
                 var output = document.getElementById('output');
 
+                //quotearea.addEventListener('mouseup', function _testing() {
+                //    console.log();
+
+                //    var selectedText = document.getSelection();
+                //    console.log(selectedText);
+
+                //    var getOffset = selectedText.rangeCount;
+
+                //    var button = document.createElement('button');
+                //    button.setAttribute('value', 'Button');
+                //    button.textContent = 'button';
+                //    button.setAttribute('class', 'btn btn-success btn-sm');
+
+                //    console.log(getOffset);
+
+                //    selectedText.getRangeAt(0).insertNode(button);
+
+                //}, false);
+
+                if (window.innerWidth < 768) {
+
+                    var button = document.createElement('button');
+                    button.setAttribute('value', 'Button');
+                    button.textContent = 'Select Highlighted Text';
+                    button.setAttribute('class', 'btn btn-primary');
+                    button.setAttribute('onclick', 'inTextShredButton(event)');
+                    button.setAttribute('id', 'selectTextButton');
+
+                    output.prepend(button);
+                }
 
                 quotearea.addEventListener('mouseup', function _getSelectedText() {
+
 
                     if (!document.getElementById('selectedText')) {
 
                         var selectedtext = document.getSelection();
+
 
                         if (document.getSelection().anchorNode != document.getSelection().focusNode) {
 
@@ -87,11 +148,11 @@ function getShredModual(paperId) {
                                 output.prepend(span);
 
                                 document.getSelection().removeAllRanges();
-                            }
+                            } 
                         }
                     }
                 }, false);
-        }
+            }
         });
     });
 }
@@ -124,9 +185,28 @@ function getEditShredModual(paperId) {
                 //console.log(data);
                 modual.innerHTML += data;
 
+                if (window.innerWidth < 768) {
+                    //hide the bottom menu
+                    var bottomNav = document.getElementById('bottomNav');
+                    bottomNav.hidden = true;
+
+                    //get the start shred card
+                   var startShredCard = document.getElementById('output');
+
+                    //remove desktop classes
+                    startShredCard.classList.remove('position-sticky');
+                    startShredCard.classList.remove('shadow');
+                    startShredCard.classList.remove('rounded');
+
+                    //add mobile classes
+                    startShredCard.classList.add('bg-white');
+                    startShredCard.classList.add('shadow-lg');
+                    startShredCard.classList.add('fixed-bottom');
+                }
 
                 var quotearea = document.getElementById('quote');
                 var output = document.getElementById('output');
+
 
 
                 quotearea.addEventListener('mouseup', function _getSelectedText() {
@@ -160,6 +240,18 @@ function removeShredModual() {
     var element = document.getElementById('output');
     element.parentNode.removeChild(element);
 
+
+    var topNav;
+    var bottomNav;
+    
+
+    if (window.innerWidth > 768) {
+        topNav = document.getElementById('topNav')
+    } else {
+        bottomNav = document.getElementById('bottomNav');
+        bottomNav.hidden = false;
+    }
+
     var modual = document.getElementById('shredSection');
 
     var addButton = document.getElementById('addButton');
@@ -183,6 +275,19 @@ function clearSelected() {
 
     document.getElementById('selectedText').remove();
 
+    if (window.innerWidth < 768) {
+
+        var button = document.createElement('button');
+        button.setAttribute('value', 'Button');
+        button.textContent = 'Select Highlighted Text';
+        button.setAttribute('class', 'btn btn-primary');
+        button.setAttribute('onclick', 'inTextShredButton(event)');
+        button.setAttribute('id', 'selectTextButton');
+
+        output.prepend(button);
+    }
+
+
 }
 
 function updateShred() {
@@ -202,6 +307,12 @@ function updateShred() {
     if (context == null || context == '') {
         alert("You must select text to shred. Please highlight the section you want to shred. ");
         return;
+    }
+
+    if (window.innerWidth < 768) {
+        //hide the bottom menu
+        var bottomNav = document.getElementById('bottomNav');
+        bottomNav.hidden = false;
     }
 
     //Set form values
@@ -244,7 +355,7 @@ function updateShred() {
     });
 }
 
-function deleteShred(shredId) {
+function deleteShred(shredId, paperId) {
     $.ajax({
         url: "/Home/DeleteShred/" + shredId,
         type: "POST",
@@ -254,6 +365,18 @@ function deleteShred(shredId) {
             var cardHolder = document.getElementById('cardHolder-' + shredId);
 
             cardHolder.hidden = true;
+
+            if (window.innerWidth < 768) {
+
+                var button = document.createElement('button');
+                button.setAttribute('value', 'Button');
+                button.textContent = 'Start Shred';
+                button.setAttribute('class', 'btn btn-outline-primary btn-sm');
+                button.setAttribute('onclick', 'getShredModual(' + paperId+')');
+                button.setAttribute('id', 'addButton');
+
+                document.getElementById('bottomNav').append(button);
+            }
 
         },
         error: function _error(response) {
@@ -294,7 +417,7 @@ function submitShred() {
             type: $form.attr('method'),
             data: $form.serialize(),
             success: function _success(response) {
-                console.log(response);
+                //console.log(response);
 
                 //Get the output div
                 var modual = document.getElementById('output');
@@ -312,6 +435,10 @@ function submitShred() {
 
                 //Add the response data to the innerHtml
                 parent.innerHTML += response;
+
+                //unhide the bottom nav and remove the shred button
+                document.getElementById('bottomNav').hidden = false;
+                document.getElementById('addButton').remove();
             },
             error: function _error(response) {
                 console.error("Opps! Something didn't work: " + response.responseText);
@@ -352,7 +479,7 @@ function editComment(commentId) {
 
 }
 
-function updateComment(commentId, screenName) {
+function updateComment(commentId) {
     $(document).ready(function _ajaxCommentForm() {
 
         let $form = $('#updateCommentForm-' + commentId);
@@ -401,6 +528,8 @@ function updateComment(commentId, screenName) {
 
 function deleteComment(commentId) {
 
+
+    
     var commentContainer = document.getElementById('editComment-' + commentId);
 
     if (commentContainer !== null) {
@@ -415,12 +544,14 @@ function deleteComment(commentId) {
         success: function _success(data) {
             console.log(data);
 
-            var commentContainer = document.getElementById('commentContainer-' + commentId);
+            var commentContainer = document.getElementById('comment-' + commentId);
             commentContainer.hidden = true;
             commentContainer.setAttribute("style", "position: fixed;");
 
             var editComment = document.getElementById('editComment-' + commentId);
             editComment.hidden = true;
+            
+
             editComment.setAttribute("style", "position: fixed;");
 
         }
@@ -491,30 +622,8 @@ function submitComment(shredId, screenName) {
             type: $form.attr('method'),
             data: $form.serialize(),
             success: function _success(response) {
-                console.log(response);
-                var commentHtml = '<div  class="card-body" id="comment-' + response.id + '">' +
-                    '<div id="commentContainer-' + response.id + '">' +
-                    '<div class="row">' +
-                    '<div class="col-6 float-left">' +
-                    '<p class="small"><em>' + screenName + '</em></p>' +
-                    '</div>' +
-                    '<div class="col-6 float-right">' +
-                    '<p class="small">' + date + '</p>' +
-                    '</div>' +
-                    '</div>' +
-                    ' <div class="mr-3 ml-3">' +
-                    '<div class="col">' +
-                    '<p id="commentText-' + response.id + '" class="small">' + response["subShred"] + '</p>' +
-                    ' </div>' +
-                    '</div>' +
-                    '<div class="small btn-group float-right">' +
-                    '<button class="btn btn-sm btn-dark" onclick="editComment(' + response.id + ')">edit</button>' +
-                    '<button class="btn btn-sm btn-danger" onclick="deleteComment(' + response.id + ')" >delete</button>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-
-                document.getElementById('commentSection-' + shredId).innerHTML += commentHtml;
+                //console.log(response);
+                document.getElementById('commentSection-' + shredId).innerHTML += response;
                 var commentInputSection = document.getElementById('commentInput-' + shredId);
                 commentInputSection.hidden = true;
                 commentInputSection.setAttribute("style", " position: fixed;");
@@ -588,4 +697,8 @@ function sendDownVote(shredId, voterId) {
 
 function reportWindowSize() {
     console.log(window.innerWidth);
+}
+
+function getWindowSize() {
+
 }

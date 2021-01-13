@@ -8,26 +8,25 @@
         Layout = "/Areas/Identity/Pages/_Layout.cshtml";
     }
 }
-    <main id="main">
-        <section id="services" class="services mt-5">
+        <section id="services" class="pt-5 mt-5">
             <div class="container-fluid">
 
                 <div class="section-title">
                     <h2>@ViewData["Title"]</h2>
                     
                 </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <partial name="_ManageNav" />
-                        </div>
-                        <div class="col-md-9">
-                            @RenderBody()
-                        </div>
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <partial name="_ManageNav" />
+                    </div>
+                    <div class="col-md-9">
+                        @RenderBody()
                     </div>
                 </div>
+                
             </div>
         </section>
-    </main>
+
                 @section Scripts {
                     @RenderSection("Scripts", required: false)
                 }

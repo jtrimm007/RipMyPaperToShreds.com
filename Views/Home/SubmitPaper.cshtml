@@ -1,4 +1,4 @@
-﻿@model RipMyPaperToShreds.com.Models.Papers
+﻿@model RipMyPaperToShreds.com.Models.ViewModels.PaperVM
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
@@ -14,139 +14,241 @@
 
 
 
-<main id="main">
-    <section id="services" class="services mt-5">
-        <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>@ViewData["Title"]</h2>
-                @if (SignInManager.IsSignedIn(User))
-                {
-                    <p>Submit your paper for shredding (proofreading).</p>
-
-                    <div class="row">
-                        <div id="formDiv" class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
-                            <form id="form" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
-                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group">
-                                    <label hidden asp-for="Date" class="control-label"></label>
-                                    <input hidden asp-for="Date" value="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")" class="form-control" />
-                                    <span asp-validation-for="Date" class="text-danger"></span>
-                                </div>
+<section id="services" class="pt-5 mt-5">
+    <div class="container">
+        <div class="text-center">
+            <h2>@ViewData["Title"]</h2>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <p>Submit your paper for shredding (proofreading).</p>
 
 
-                                <div class="form-group">
-                                    <label hidden asp-for="ID" class="control-label"></label>
-                                    <input hidden asp-for="ID" value="0" class="form-control" />
-                                    <span asp-validation-for="ID" class="text-danger"></span>
-                                </div>
+                <partial name="SubmitPaper-Partials/_UploadFile" />
 
-                                <div class="form-group">
-                                    <label hidden asp-for="Title" class="control-label"></label>
-                                    <input type="text" name="Title" class="form-control" id="title" asp-for="Title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                    <span asp-validation-for="Title" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <label hidden asp-for="ShrederId" class="control-label"></label>
-                                    <input hidden asp-for="ShrederId" value="@UserObj.Id" class="form-control" />
-                                    <span asp-validation-for="ShrederId" class="text-danger"></span>
-                                </div>
-                                <div class="form-group">
-                                    <!-- The toolbar will be rendered in this container. -->
-                                    <div id="toolbar-container"></div>
-                                    <div id="editor" class="border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></div>
-                                    <input hidden name="Paper" id="Paper" value="" />
-                                    <div class="validate"></div>
-                                </div>
 
-                                <div class="form-group form-check">
-                                    <label class="form-check-label">
-                                        <input id="Draft" class="form-check-input" name="Draft" type="checkbox" value="true"/> @Html.DisplayNameFor(model => model.Draft)
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" oninput="HashTagGenerator()"/>
-                                    <div class="validate"></div>
-                                </div>
+                <div class="row">
+                    <div id="formDiv" class="col-lg-8 mx-auto col-md-12 pt-5">
+                        <form id="form" asp-action="SubmitPaper" asp-controller="Home" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group">
+                                <label hidden asp-for="Date" class="control-label"></label>
+                                <input hidden asp-for="Date" value="@DateTime.UtcNow.ToString("yyyy-MM-ddTHH\\:mm\\:ss")" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
 
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-success">Submit for Proofreading</button>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input id="Draft" class="form-check-input" name="Draft" type="checkbox" value="true" /> @Html.DisplayNameFor(model => model.Draft)
+                                </label>
+                            </div>
 
+                            <div class="form-group">
+                                <label hidden asp-for="ID" class="control-label"></label>
+                                <input hidden asp-for="ID" value="0" class="form-control" />
+                                <span asp-validation-for="ID" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label hidden asp-for="Title" class="control-label"></label>
+                                <input type="text" name="Title" class="form-control" id="title" asp-for="Title" placeholder="Title" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                <span asp-validation-for="Title" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label hidden asp-for="ShrederId" class="control-label"></label>
+                                <input hidden asp-for="ShrederId" value="@UserObj.Id" class="form-control" />
+                                <span asp-validation-for="ShrederId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <!-- The toolbar will be rendered in this container. -->
+                                <div id="toolbar-container"></div>
+                                <input hidden name="Paper" id="Paper" value="" />
+                                <div class="validate"></div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" />
+                                <div class="validate"></div>
+                                <div class="results">
                                 </div>
-                            </form>
+                                <div class="deneme"></div>
+                            </div>
+
+
+                        </form>
+                        <div id="editor" class="editor border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></div>
+                        <div class="text-center">
+                            <button onclick="submitPaper(event);" class="btn btn-success">Submit for Proofreading</button>
+
                         </div>
                     </div>
+                </div>
 
-                }
-                else
-                {
-                    <p>Please login or create an account to submit a paper for shredding (proofreading)</p>
-                    <div class="p-2" data-aos="fade-up" data-aos-delay="800">
-                        <a href="~/Identity/Account/Register" class="btn btn-success">Registar</a>
-                    </div>
-                    <div class="p-2" data-aos="fade-up" data-aos-delay="800">
-                        <a href="~/Identity/Account/Login" class="btn btn-success">Login</a>
-                    </div>
-                }
+            }
+            else
+            {
+                <p>Register NOW for someone to shred (proofread) your paper TODAY! Or login if you already have an account.</p>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="800">
+                    <a href="~/Identity/Account/Register" class="btn btn-success">Register</a>
+                </div>
+                <div class="p-2" data-aos="fade-up" data-aos-delay="800">
+                    <a href="~/Identity/Account/Login" class="btn btn-success">Login</a>
+                </div>
+            }
 
-            </div>
         </div>
+    </div>
 
 
-    </section>
+</section>
 
 
-</main>
+
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <script>
 
-        DecoupledEditor
-            .create(document.querySelector('#editor'))
-            .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container');
 
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
-            })
-            .catch(error => {
-                console.error(error);
+
+    @section scripts{
+        <script src="~/lib/ckeditor5/build/ckeditor.js"></script>
+        <script>
+
+
+            $(document).ready(function () {
+
+                $('#hashTags').keyup(function (e) {
+
+                    if (e.keyCode === 32) {
+                        var hash = $('#hashTags').val().split(' ');
+
+                        document.getElementById('hashTags').value = "";
+
+                        for (var a = 0; a < hash.length; a++) {
+
+
+                            if (hash[a] !== "") {
+
+                                document.getElementById('hashTags').value += '#' + hash[a].replace("#", "").replace(",", "") + ' ';
+
+
+                            }
+                        }
+                    }
+
+                    if ($('#hashTags').val().length === 0) {
+
+                        $('.deneme').text('Write Something');
+                        $('.results span').remove();
+                    }
+                    else if (e.keyCode != 32) {
+                        //var values = $('#hashTags').val().split(' ');
+
+
+                        //$('.results .resultwords').remove();
+
+
+                        //for (var i = 0; i < values.length; i++) {
+                        //    $('.results').append('<span class="resultwords">' + '#' + values[i].replace("#", "").replace(",","") + ' ' + '</span>');
+                        //    $('.deneme').text($('.results span').length + ' Total Words');
+                        //}
+
+
+
+                    }
+                });
             });
 
-        $('form').on('submit', function _submitForm(submitEvent) {
-            event.preventDefault();
 
-            let $form = $(this);
 
-            $.ajax({
-                url: $form.attr('action'),
-                type: $form.attr('method'),
-                data: $form.serialize(),
-                success: function _success(response) {
-                    console.log(response);
-                    document.getElementById('form').remove();
-                    document.getElementById('formDiv').innerHTML = response;
-                },
-                error: function _error() {
-                    console.log(_error);
+            ClassicEditor
+                    .create( document.querySelector( '.editor' ), {
 
-                }
-            }).done(console.log($form.serialize()));
-        });
+                    toolbar: {
+                    items: [
+                                'heading',
+                                '|',
+                                'bold',
+                                'italic',
+                                'link',
+                                'bulletedList',
+                                'numberedList',
+                                '|',
+                                'indent',
+                                'outdent',
+                                '|',
+                                'imageUpload',
+                                'blockQuote',
+                                'insertTable',
+                                'mediaEmbed',
+                                'undo',
+                                'redo',
+                                'htmlEmbed'
+                            ]
+                        },
+                        language: 'en',
+                        image: {
+                    toolbar: [
+                                'imageTextAlternative',
+                                'imageStyle:full',
+                                'imageStyle:side'
+                            ]
+                        },
+                        table: {
+                    contentToolbar: [
+                                'tableColumn',
+                                'tableRow',
+                                'mergeTableCells'
+                            ]
+                        },
+                        htmlEmbed: { showPreviews: true},
+                        licenseKey: '',
+
+                    } )
+                    .then( editor => {
+                    window.editor = editor;
+
+
+                    } )
+                    .catch( error => {
+                    console.error('Oops, something went wrong!');
+                        console.error( 'Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:' );
+                        console.warn( 'Build id: bn7d8qc7oxbf-7r6y2z6jltxq' );
+                        console.error( error );
+                    } );
+        
+
+
+
+
+        //DecoupledEditor
+        //    .create(document.querySelector('#editor'))
+        //        .then(editor => {
+        //            const toolbarContainer = document.querySelector('#toolbar-container');
+
+        //            toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
+        //        })
+        //        .catch(error => {
+        //            console.error(error);
+        //        });
+
+
 
 
         function sConsole(event) {
-            event.preventDefault();
-            var data = document.getElementById('editor').innerHTML.toString();
-            document.getElementById('Paper').value = data;
-            var title = document.getElementById('title').value;
-            var draft = document.getElementById('Draft').checked;
-            document.getElementById('Draft').value = draft;
-            var hashTags = document.getElementById('hashTags').value;
-            hashTags.replace(",", "");
-            hashTags.replace("#", "");
-            console.log("Title: " + title + "\nMessage:" + data + "\nDraft: " + draft + "\nHashTags: " + hashTags);
+        event.preventDefault();
+        var data = document.getElementById('editor').innerHTML.toString();
+        document.getElementById('Paper').value = data;
+        var title = document.getElementById('title').value;
+        var draft = document.getElementById('Draft').checked;
+        document.getElementById('Draft').value = draft;
+        var hashTags = document.getElementById('hashTags').value;
+        hashTags.replace(",", "");
+        hashTags.replace("#", "");
+        console.log("Title: " + title + "\nMessage:" + data + "\nDraft: " + draft + "\nHashTags: " + hashTags);
 
-           // let $form = this.event
+        // let $form = this.event
 
 
 
@@ -158,7 +260,10 @@
 
 
 
-    </script>
+        </script>
+
+        <script src="~/js/controller/submitPaperController.js"></script>
+    }
 }
 
 

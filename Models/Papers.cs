@@ -31,7 +31,7 @@ namespace RipMyPaperToShreds.com.Models
         /// <summary>
         /// Gets or sets the HashTags.
         /// </summary>
-        public ICollection<HashTags> HashTags { get; set; }
+        //public ICollection<HashTags> PaperHashes { get; set; }
 
         /// <summary>
         /// Gets or sets the ID.
@@ -51,8 +51,9 @@ namespace RipMyPaperToShreds.com.Models
         public string ShrederId { get; set; }
 
         public string Title { get; set; }
+        //public List<HashTags> HashTags { get; internal set; }
 
-       
+
 
         #endregion
     }

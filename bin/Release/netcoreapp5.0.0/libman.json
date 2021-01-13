@@ -29,6 +29,11 @@
       "provider": "cdnjs",
       "library": "twitter-bootstrap@4.5.3",
       "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "ckeditor5@24.0.0",
+      "destination": "wwwroot/lib/ckeditor5/"
     }
   ]
 }

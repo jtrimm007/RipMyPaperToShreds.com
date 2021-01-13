@@ -70,7 +70,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
 
             if (check != null)
             {
-                _db.PaperHashes.Remove(paperHashes);
+                _db.PaperHashes.Remove(check);
                 await _db.SaveChangesAsync();
 
             }

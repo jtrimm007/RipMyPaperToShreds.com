@@ -122,7 +122,7 @@ namespace RipMyPaperToShreds.com.Services.Repos
             if (check != null)
             {
                 check.Title = papers.Title;
-                check.HashTags = papers.HashTags;
+                //check.HashTags = papers.HashTags;
                 check.Paper = papers.Paper;
                 check.Draft = papers.Draft;
 

@@ -1,0 +1,35 @@
+﻿@model RipMyPaperToShreds.com.Models.SubShreds
+@inject UserManager<ApplicationUser> UserManager
+@{
+}
+
+
+<li id="comment-@Model.ID" class="list-group-item">
+    <div id="commentContainer-@Model.ID">
+        <div class="row">
+            <div class="col-6 float-left">
+                <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == Model.ShrederId).ScreenName</em></p>
+            </div>
+            <div class="col-6 float-right">
+                <p class="small">@Model.Date</p>
+            </div>
+        </div>
+        <div class="mr-3 ml-3">
+            <div class="col">
+                <p id="commentText-@Model.ID" class="small">@Model.SubShred</p>
+            </div>
+        </div>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == Model.ShrederId).ScreenName)
+            {
+                <div class="small btn-group float-right">
+                    <button class="btn btn-sm btn-dark" onclick="editComment(@Model.ID)">edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteComment(@Model.ID)">delete</button>
+                </div>
+            }
+
+        }
+    </div>
+</li>

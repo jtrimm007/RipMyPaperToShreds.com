@@ -4,20 +4,28 @@
 // Written by: Joshua Trimm <trimmj@etsu.edu>, 6/18/2020
 // File Name: HomeController.cs
 
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RipMyPaperToShreds.com.Models;
+using RipMyPaperToShreds.com.Models.ViewModels;
+using RipMyPaperToShreds.com.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using WordEngine;
+
 namespace RipMyPaperToShreds.com.Controllers
 {
-    using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-    using RipMyPaperToShreds.com.Models;
-    using RipMyPaperToShreds.com.Models.ViewModels;
-    using RipMyPaperToShreds.com.Services.Interfaces;
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     /// <summary>
     /// Defines the <see cref="HomeController" />.
     /// </summary>
@@ -46,6 +54,12 @@ namespace RipMyPaperToShreds.com.Controllers
         private readonly ISubShreds _subShredsRepo;
 
         private readonly IRips _ripsRepo;
+        private readonly IWebHostEnvironment _hostEnv;
+        private readonly IPaperUpload _paperUploadRepo;
+        private readonly IHashTags _hashTagsRepo;
+        private readonly IPaperHashes _paperHashesRepo;
+
+
 
         #endregion
 
@@ -58,13 +72,17 @@ namespace RipMyPaperToShreds.com.Controllers
         /// <param name="paperRepo">The paperRepo<see cref="IPapers"/>.</param>
         /// <param name="shredsRepo">The shredsRepo<see cref="IShreds"/>.</param>
         /// <param name="subShredsRepo">The subShredsRepo<see cref="ISubShreds"/>.</param>
-        public HomeController(ILogger<HomeController> logger, IRips ripsRepo, IPapers paperRepo, IShreds shredsRepo, ISubShreds subShredsRepo)
+        public HomeController(ILogger<HomeController> logger, IHashTags hashTagsRepo, IPaperHashes paperHashesRepo, IPaperUpload paperUploadRepo, IWebHostEnvironment hostEnv, IRips ripsRepo, IPapers paperRepo, IShreds shredsRepo, ISubShreds subShredsRepo)
         {
             _logger = logger;
             _paperRepo = paperRepo;
             _shredsRepo = shredsRepo;
             _subShredsRepo = subShredsRepo;
             _ripsRepo = ripsRepo;
+            _hostEnv = hostEnv;
+            _paperUploadRepo = paperUploadRepo;
+            _hashTagsRepo = hashTagsRepo;
+            _paperHashesRepo = paperHashesRepo;
         }
 
         #endregion
@@ -85,7 +103,7 @@ namespace RipMyPaperToShreds.com.Controllers
         /// </summary>
         /// <param name="id">The id<see cref="int"/>.</param>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> Comment(int id)
+        public IActionResult Comment(int id)
         {
             return PartialView("_Comment", new { ID = id });
         }
@@ -115,7 +133,41 @@ namespace RipMyPaperToShreds.com.Controllers
 
             if (paper != null)
             {
-                return View(paper);
+                var paperHashes = await _paperHashesRepo.ReadAll();
+                //var test = paperHashes.Join(HashTags;
+
+                
+                PaperVM papersVM = new PaperVM
+                {
+                    ID = paper.ID,
+                    Date = paper.Date,
+                    Draft = paper.Draft,
+                    Paper = paper.Paper,
+                    ShrederId = paper.ShrederId,
+                    Title = paper.Title
+                };
+
+                if (paperHashes != null)
+                {
+                    var getPaperHashes = await _paperHashesRepo.ReadAll();
+                    var getHashes = await _hashTagsRepo.ReadAll();
+
+                    var found = getHashes.Join(getPaperHashes, hashTag => hashTag.ID, paperHashes => paperHashes.HashTagId, 
+                        (paperHashes, hashTag) => new { HashTag = paperHashes.HashTag, PaperId = hashTag.PaperId })
+                        .Where(x => x.PaperId == id).ToList();
+
+                    StringBuilder stbuilder = new StringBuilder();
+
+                    foreach(var item in found)
+                    {
+                        stbuilder.Append("#" + item.HashTag + " ");
+                    }
+
+                    papersVM.HashTags = stbuilder.ToString();
+
+                }
+
+                return View(papersVM);
             }
 
             return View();
@@ -123,11 +175,72 @@ namespace RipMyPaperToShreds.com.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditPaper(Papers papers)
+        public async Task<IActionResult> EditPaper(PaperVM papers)
         {
+
             if (ModelState.IsValid)
             {
-                await _paperRepo.Update(papers);
+                var checkPaperHashes = await _paperHashesRepo.ReadAll();
+                var checkHashes = await _hashTagsRepo.ReadAll();
+
+                var found = checkHashes.Join(checkPaperHashes, hashTag => hashTag.ID, paperHashes => paperHashes.HashTagId,
+                    (paperHashes, hashTag) => new PaperHashes { HashTagId = paperHashes.ID, PaperId = hashTag.PaperId })
+                    .Where(x => x.PaperId == papers.ID).ToList();
+
+
+
+               
+
+                var getHashes = papers.HashTags.ToString();
+
+                getHashes = getHashes.Replace("#", string.Empty);
+
+                var convert = JsonConvert.DeserializeObject<List<HashTags>>(getHashes);
+
+                List<HashTags> newTagList = new List<HashTags>();
+
+                foreach(var tag in convert)
+                {
+                   
+                   var newtag = await _hashTagsRepo.Create(tag);
+                    newTagList.Add(newtag);
+                }
+
+
+                ICollection<PaperHashes> newPaperHashList = new List<PaperHashes>();
+                foreach(var item in newTagList)
+                {
+                    PaperHashes newPaperHash = new PaperHashes
+                    {
+                        HashTagId = item.ID,
+                        PaperId = papers.ID
+                    };
+                    var paperHashes = await _paperHashesRepo.Create(newPaperHash);
+
+                    newPaperHashList.Add(paperHashes);
+                }
+
+                foreach (var relation in found)
+                {
+                    var check = newPaperHashList.FirstOrDefault(x => x.HashTagId == relation.HashTagId);
+                    if (check == null)
+                    {
+                       await _paperHashesRepo.Delete(relation);
+                    }
+                }
+
+                Papers newPaper = new Papers
+                {
+                    ID = papers.ID,
+                    Date = papers.Date,
+                    Draft = papers.Draft,
+                    //HashTags = newTagList,
+                    Paper = papers.Paper,
+                    ShrederId = papers.ShrederId,
+                    Title = papers.Title
+                };
+
+                await _paperRepo.Update(newPaper);
                 return Content("Page successfully updated!");
             }
 
@@ -219,8 +332,16 @@ namespace RipMyPaperToShreds.com.Controllers
             {
                 var shreds = await _shredsRepo.GetAllShredsForPaper(id);
 
+
+
                 PaperShredsCommentsVM paperAndShredsAndSubShreds = new PaperShredsCommentsVM();
                 paperAndShredsAndSubShreds.Paper = paper;
+
+                var upload = await _paperUploadRepo.ReadAll();
+                if (upload != null)
+                {
+                    paperAndShredsAndSubShreds.PaperUpload = upload.FirstOrDefault(x => x.PaperId == paper.ID);
+                }
 
                 foreach (var shred in shreds)
                 {
@@ -290,7 +411,7 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The PaperSubmitted.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> PaperSubmitted()
+        public IActionResult PaperSubmitted()
         {
             return PartialView("_PaperSubmitted");
         }
@@ -308,7 +429,7 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The ShredButton.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> ShredButton()
+        public IActionResult ShredButton()
         {
             return PartialView("_ShredButton");
         }
@@ -317,7 +438,7 @@ namespace RipMyPaperToShreds.com.Controllers
         /// The ShredCard.
         /// </summary>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
-        public async Task<IActionResult> ShredCard()
+        public IActionResult ShredCard()
         {
             return PartialView("_ShredCard");
         }
@@ -406,7 +527,7 @@ namespace RipMyPaperToShreds.com.Controllers
             if (ModelState.IsValid)
             {
                 await _subShredsRepo.Create(sub);
-                return Json(sub);
+                return PartialView("Paper-Partials/_SubShred", sub);
             }
 
             return Json(sub);
@@ -427,15 +548,63 @@ namespace RipMyPaperToShreds.com.Controllers
         /// <param name="papers">The papers<see cref="Papers"/>.</param>
         /// <returns>The <see cref="Task{IActionResult}"/>.</returns>
         [HttpPost]
-        public async Task<IActionResult> SubmitPaper(Papers papers)
+        public async Task<IActionResult> SubmitPaper(PaperVM papersVM)
         {
+            
             if (ModelState.IsValid)
             {
-                await _paperRepo.Create(papers);
+                Papers newPaper = new Papers
+                {
+                    ID = papersVM.ID,
+                    Date = papersVM.Date,
+                    Draft = papersVM.Draft,
+                    //HashTags = newTagList,
+                    Paper = papersVM.Paper,
+                    ShrederId = papersVM.ShrederId,
+                    Title = papersVM.Title
+                };
+
+                var replaceNewPaper = await _paperRepo.Create(newPaper);
+
+                var getHashes = papersVM.HashTags.ToString();
+
+                getHashes = getHashes.Replace("#", string.Empty).Trim();
+
+                var convert = JsonConvert.DeserializeObject<List<HashTags>>(getHashes);
+
+                List<HashTags> newTagList = new List<HashTags>();
+
+                foreach (var tag in convert)
+                {
+                    if(!tag.HashTag.Equals(" "))
+                    {
+                        var newtag = await _hashTagsRepo.Create(tag);
+                        newTagList.Add(newtag);
+                    }
+
+                }
+
+                ICollection<PaperHashes> newPaperHashList = new List<PaperHashes>();
+                foreach (var item in newTagList)
+                {
+                    
+                    PaperHashes newPaperHash = new PaperHashes
+                    {
+                        HashTagId = item.ID,
+                        PaperId = replaceNewPaper.ID
+                    };
+
+                    
+                    var paperHashes = await _paperHashesRepo.Create(newPaperHash);
+
+                    newPaperHashList.Add(paperHashes);
+                }
+
+
 
                 return PartialView("_PaperSubmitted");
             }
-            return View(papers);
+            return View(papersVM);
         }
 
         /// <summary>
@@ -557,6 +726,117 @@ namespace RipMyPaperToShreds.com.Controllers
             }
             
             return Json(newRip);
+        }
+
+        [HttpPost]
+        [RequestFormLimits(ValueLengthLimit = int.MaxValue, MultipartBodyLengthLimit = int.MaxValue)]
+        public async Task<IActionResult> UploadFile(UploadFormVM form)
+        {
+            //get the file
+            //var file = Request.Form.Files[0];
+            if (ModelState.IsValid)
+            {
+                var file = form.File;
+
+                //check if the file is there and make sure it has content
+                if (file != null && file.Length > 0)
+                {
+                    //get the uploaded file name. 
+                    var fileName = Path.GetFileName(file.FileName);
+
+                    var setGuid = Guid.NewGuid();
+
+                    //get the wwwroot path and append the guid dir
+                    var filePath = _hostEnv.WebRootPath + "\\uploads\\" + setGuid + "\\";
+
+                    //create the dir
+                    Directory.CreateDirectory(filePath);
+
+                    //create img dir
+                    Directory.CreateDirectory(filePath + "\\imgs\\");
+
+                    //create the path for the uploaded file
+                    var path = Path.Combine(filePath, fileName);
+
+                    //copy the uploaded file to the dir
+                    using (var stream = System.IO.File.Create(path))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    //convert the uploaded file into html and make picture dir
+
+                    ConvertDocToHtml newConverter = new ConvertDocToHtml(path, fileName, filePath);
+                    newConverter.SetConverterSettings();
+                    newConverter.Convert();
+                    newConverter.CustomizeCss("quote", "span");
+
+                    //
+                    PaperUpload newUpload = new PaperUpload
+                    {
+                        FilePath = filePath,
+                        UniqueFileName = fileName,
+                        UploadDate = DateTime.UtcNow,
+                        GuidId = setGuid,
+                        Css = newConverter.Css
+                    };
+
+                    Papers newPaper = new Papers
+                    {
+                        Paper = newConverter.Html
+
+                    };
+
+                    PaperUploadVM newVM = new PaperUploadVM
+                    {
+                        PaperUpload = newUpload,
+                        Paper = newPaper
+                    };
+
+
+
+                    return Json(newVM);
+                }
+            }
+
+            return Json("error");
+        }
+
+        [HttpPost, Authorize]
+        public async Task<IActionResult> DocxInsertedForm(SubmitPaperVM submitPaperVM)
+        {
+            if (ModelState.IsValid)
+            {
+                Papers newPaper = new Papers
+                {
+                    Date = submitPaperVM.Date,
+                    Draft = submitPaperVM.Draft,
+                    //HashTags = (ICollection<PaperHashes>)submitPaperVM.HashTags,
+                    ID = 0,
+                    Paper = submitPaperVM.Paper,
+                    ShrederId = submitPaperVM.ShrederId,
+                    Title = submitPaperVM.Title
+                };
+
+                var createdPaper = await _paperRepo.Create(newPaper);
+
+                
+
+                PaperUpload newUpload = new PaperUpload
+                {
+                    Css = submitPaperVM.Css,
+                    FilePath = submitPaperVM.FilePath,
+                    GuidId = submitPaperVM.GuidId,
+                    ID = 0,
+                    PaperId = createdPaper.ID
+                };
+
+                var createdPaperUpload = await _paperUploadRepo.Create(newUpload);
+
+                return PartialView("_PaperSubmitted");
+            }
+
+            return View(submitPaperVM);
         }
 
         #endregion

@@ -18,7 +18,7 @@
                <p>You can stay on the page by clicking in the gray area or close.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button onclick="stayOnPage();" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 
                     <button type="button" class="btn btn-primary" >@Html.ActionLink("Done Editing", "Paper", "Home", new { id = ViewData["PaperId"]}, new { @class = "text-white" })</button>
                

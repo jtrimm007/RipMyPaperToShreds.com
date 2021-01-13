@@ -1,4 +1,4 @@
-﻿@model RipMyPaperToShreds.com.Models.Papers
+﻿@model RipMyPaperToShreds.com.Models.ViewModels.PaperVM
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<ApplicationUser> UserManager
 @inject SignInManager<ApplicationUser> SignInManager
@@ -16,10 +16,10 @@
 
 
 
-<main id="main">
-    <section id="services" class="services mt-5">
+
+    <section id="services" class="pt-5 mt-5">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
+            <div class="text-center" >
                 <h2>@ViewData["Title"]</h2>
                 @if (SignInManager.IsSignedIn(User))
                 {
@@ -27,7 +27,7 @@
 
                     <div class="row">
                         <div id="formDiv" class="col-lg-8 mx-auto col-md-12 pt-5" data-aos="fade-up" data-aos-delay="300">
-                            <form id="form" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
+                            <form id="form" asp-action="EditPaper" method="post" role="form" class="mx-auto" onsubmit="sConsole(event)">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
                                     <label hidden asp-for="Date" class="control-label"></label>
@@ -55,9 +55,8 @@
                                 <div class="form-group">
                                     <!-- The toolbar will be rendered in this container. -->
                                     <div id="toolbar-container"></div>
-                                    <div id="editor" class="border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message">@Html.Raw(Model.Paper)</div>
                                     <input hidden name="Paper" id="Paper" />
-                                    
+
                                     <div class="validate"></div>
                                 </div>
 
@@ -67,15 +66,21 @@
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="hashTags" id="hashTags" placeholder="Hash Tags" oninput="HashTagGenerator()" />
+                                    <input type="text" class="form-control" name="HashTags" id="hashTags" placeholder="Hash Tags" value="@Model.HashTags"/>
                                     <div class="validate"></div>
+                                    <div class="results">
+                                    </div>
+                                    <div class="deneme"></div>
                                 </div>
 
-                                <div class="text-center">
-                                    <button type="submit" data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Submit for Proofreading</button>
 
-                                </div>
                             </form>
+                            <div id="editor" class="editor border overflow-auto" name="message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message">@Html.Raw(Model.Paper)</div>
+
+                            <div class="text-center">
+                                <button onclick="updatePaper(event)" data-toggle="modal" data-target="#exampleModal" class="btn btn-success">Submit for Proofreading</button>
+
+                            </div>
                         </div>
                     </div>
 
@@ -93,63 +98,144 @@
 
             </div>
         </div>
-
-
     </section>
 
-
-</main>
-
-<partial name="Partials/_PopupConfirm" view-data="ViewData"/>
+<partial name="Partials/_PopupConfirm" view-data="ViewData" />
 
 @if (SignInManager.IsSignedIn(User))
 {
+    <script src="~/lib/ckeditor5/build/ckeditor.js"></script>
+    <script src="~/js/controller/editPaperController.js"></script>
+
     <script>
+        console.log("User Agent: " + navigator.userAgent);
+        console.log("Media Devices" + navigator.mediaDevices);
 
-        DecoupledEditor
-            .create(document.querySelector('#editor'))
+        for (var each in navigator.mediaDevices) {
+            console.log(each);
+        }
+        //document.addEventListener('keyup', (event) => {
+        //    console.log(event);
+
+        //    var inputHashTags = document.getElementById('hashTags');
+
+        //    for (var each of inputHashTags.value) {
+
+        //        if (each === " ") {
+        //            console.log("Space Found! ");
+        //        }
+        //        //console.log(each);
+        //    }
+
+
+        //}, false);
+
+
+
+        $(document).ready(function () {
+           
+           $('#hashTags').keyup(function (e) {
+
+                if (e.keyCode === 32) {
+                    var hash = $('#hashTags').val().split(' ');
+
+                    document.getElementById('hashTags').value = "";
+
+                    for (var a = 0; a < hash.length; a++) {
+                       
+
+                        if (hash[a] !== "") {
+                          
+                            document.getElementById('hashTags').value += '#' + hash[a].replace("#", "").replace(",", "") + ' ';
+
+                        
+                        }
+                    }
+                }
+
+                if ($('#hashTags').val().length === 0) {
+                    
+                    $('.deneme').text('Write Something');
+                    $('.results span').remove();
+                }
+                else if (e.keyCode != 32) {
+                    //var values = $('#hashTags').val().split(' ');
+
+
+                    //$('.results .resultwords').remove();
+                   
+
+                    //for (var i = 0; i < values.length; i++) {
+                    //    $('.results').append('<span class="resultwords">' + '#' + values[i].replace("#", "").replace(",","") + ' ' + '</span>');
+                    //    $('.deneme').text($('.results span').length + ' Total Words');
+                    //}
+
+
+
+                }
+            });
+        });
+
+        ClassicEditor
+            .create(document.querySelector('.editor'), {
+
+                toolbar: {
+                    items: [
+                        'heading',
+                        '|',
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletedList',
+                        'numberedList',
+                        '|',
+                        'indent',
+                        'outdent',
+                        '|',
+                        'imageUpload',
+                        'blockQuote',
+                        'insertTable',
+                        'mediaEmbed',
+                        'undo',
+                        'redo',
+                        'htmlEmbed'
+                    ]
+                },
+                language: 'en',
+                image: {
+                    toolbar: [
+                        'imageTextAlternative',
+                        'imageStyle:full',
+                        'imageStyle:side'
+                    ]
+                },
+                table: {
+                    contentToolbar: [
+                        'tableColumn',
+                        'tableRow',
+                        'mergeTableCells'
+                    ]
+                },
+                htmlEmbed: { showPreviews: true },
+                licenseKey: '',
+
+            })
             .then(editor => {
-                const toolbarContainer = document.querySelector('#toolbar-container');
+                window.editor = editor;
 
-                toolbarContainer.appendChild(editor.ui.view.toolbar.element);
+
             })
             .catch(error => {
+                console.error('Oops, something went wrong!');
+                console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
+                console.warn('Build id: bn7d8qc7oxbf-7r6y2z6jltxq');
                 console.error(error);
             });
 
-  
-
-        $('form').on('submit', function _submitForm(submitEvent) {
-            event.preventDefault();
-
-            let $form = $(this);
-
-            $('#myModal').on('shown.bs.modal', function () {
-                $('#myInput').trigger('focus')
-            })
-
-            $.ajax({
-                url: $form.attr('action'),
-                type: $form.attr('method'),
-                data: $form.serialize(),
-                success: function _success(response) {
-                    console.log(response);
-                    console.log(window.location.origin + "/" + response);
-                    console.log(window.location.href);
-
-                    
-                    //document.getElementById('form').remove();
-                    //document.getElementById('formDiv').innerHTML = response;
 
 
-                    
-                },
-                error: function _error() {
-                    console.log(_error);
 
-                }
-            }).done(console.log($form.serialize()));
-        });
+
 
         function sConsole(event) {
             event.preventDefault();
@@ -163,7 +249,7 @@
             hashTags.replace("#", "");
             console.log("Title: " + title + "\nMessage:" + data + "\nDraft: " + draft + "\nHashTags: " + hashTags);
 
-           // let $form = this.event
+            // let $form = this.event
 
 
 

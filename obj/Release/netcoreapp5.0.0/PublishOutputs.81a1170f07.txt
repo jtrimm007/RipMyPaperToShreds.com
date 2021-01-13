@@ -1,5 +1,4 @@
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\RipMyPaperToShreds.com.exe
-C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\assets\css\style.css
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\assets\img\apple-touch-icon.png
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\assets\img\art\education-3420037_1920.png
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\assets\img\art\question-2309040_1920.jpg
@@ -40,7 +39,9 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\assets\js\main.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\css\site.css
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\favicon.ico
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\controller\editPaperController.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\controller\paperController.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\controller\submitPaperController.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\model\paper.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\model\rip.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\js\model\shred.js
@@ -75,6 +76,77 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\bootstrap\LICENSE
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\ckeditor.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\ckeditor.js.map
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\af.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ar.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ast.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\az.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\bg.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ca.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\cs.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\da.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\de-ch.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\de.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\el.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\en-au.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\en-gb.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\eo.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\es.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\et.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\eu.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\fa.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\fi.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\fr.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\gl.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\gu.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\he.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\hi.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\hr.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\hu.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\id.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\it.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ja.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\km.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\kn.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ko.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ku.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\lt.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\lv.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ms.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\nb.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ne.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\nl.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\no.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\oc.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\pl.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\pt-br.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\pt.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ro.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ru.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\si.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sk.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sl.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sq.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sr-latn.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sr.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\sv.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\th.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\tk.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\tr.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\tt.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\ug.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\uk.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\vi.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\zh-cn.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\build\translations\zh.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\LICENSE.md
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\package.json
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\README.md
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\sample\index.html
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\sample\styles.css
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\src\ckeditor.js
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\ckeditor5\webpack.config.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery-validate\additional-methods.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery-validate\additional-methods.min.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery-validate\jquery.validate.js
@@ -215,6 +287,118 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.js
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery\dist\jquery.min.map
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\jquery\LICENSE.txt
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\lib\package-lock.json
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\0677becb-6d7a-4de3-ba0a-2a32e35be3fd\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\0677becb-6d7a-4de3-ba0a-2a32e35be3fd\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\081ac3a3-f687-4684-9b63-31d2e26440b6\quiz 12, week 14 - Brinkman and Kirschner - Joshua Trimm.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\11f4219b-3571-400f-8193-56b8f5a50124\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\1585d884-5e97-4206-9197-434c5e7214c7\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\1585d884-5e97-4206-9197-434c5e7214c7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\1585d884-5e97-4206-9197-434c5e7214c7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\1585d884-5e97-4206-9197-434c5e7214c7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\1585d884-5e97-4206-9197-434c5e7214c7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\19b29928-a819-40b6-afb8-8ca2700764b2\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\22efad14-de63-45ce-9b02-0e042ac7f92e\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\22efad14-de63-45ce-9b02-0e042ac7f92e\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\2469ad5d-7892-4b32-a796-0976eba8569a\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\398625eb-bab9-445b-aeec-a4e2d3aec4fa\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\398625eb-bab9-445b-aeec-a4e2d3aec4fa\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\398625eb-bab9-445b-aeec-a4e2d3aec4fa\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\398625eb-bab9-445b-aeec-a4e2d3aec4fa\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\398625eb-bab9-445b-aeec-a4e2d3aec4fa\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\3c1ec882-0aeb-4876-9e90-333aec270118\Regular Expressions-Metacharacters.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\Assignment 2 - Joshua Trimm.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_10.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_11.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_12.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_13.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_14.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_15.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_16.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_17.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_18.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_19.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_20.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_21.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_22.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_23.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_24.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_25.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_26.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_27.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_28.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_5.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_6.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_7.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_8.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4424f2c4-89ab-4a0d-9ad1-31a29634d4d2\imgs\Assignment_2_-_Joshua_Trimm.docx_9.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\443d5c2a-3c26-4b30-80ef-2e69878382b7\2020 08 11 Overview of lectures, readings, assignments, and course policies.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4531765f-ea91-4033-a685-39f917fb1fba\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4531765f-ea91-4033-a685-39f917fb1fba\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4531765f-ea91-4033-a685-39f917fb1fba\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4531765f-ea91-4033-a685-39f917fb1fba\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\4531765f-ea91-4033-a685-39f917fb1fba\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\5f6b802c-69f6-40bd-bcd4-c81e58bd3ce0\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\5f6b802c-69f6-40bd-bcd4-c81e58bd3ce0\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\605ed112-6f58-48da-b3ff-a3083e099937\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\6b87015b-b183-4266-8230-e93bd8a5b3dd\2020 08 11 Overview of lectures, readings, assignments, and course policies.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\Assignment 2 - Joshua Trimm.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_10.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_11.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_12.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_13.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_14.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_15.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_16.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_17.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_18.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_19.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_20.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_21.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_22.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_23.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_24.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_25.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_26.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_27.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_28.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_5.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_6.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_7.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_8.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\7f825dce-6129-44fa-b622-b856483a1a3f\imgs\Assignment_2_-_Joshua_Trimm.docx_9.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\81cb51a5-a89c-4797-8e07-ad37cfcde454\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\81cb51a5-a89c-4797-8e07-ad37cfcde454\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\81cb51a5-a89c-4797-8e07-ad37cfcde454\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\81cb51a5-a89c-4797-8e07-ad37cfcde454\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\81cb51a5-a89c-4797-8e07-ad37cfcde454\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\877c42ff-196a-4ca6-ad60-f99da588d1e4\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0a5ec25-be1b-424c-b377-212ed13fd128\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0c9c994-a4a2-46f8-9f23-279aa21c5df7\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0c9c994-a4a2-46f8-9f23-279aa21c5df7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0c9c994-a4a2-46f8-9f23-279aa21c5df7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_2.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0c9c994-a4a2-46f8-9f23-279aa21c5df7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_3.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a0c9c994-a4a2-46f8-9f23-279aa21c5df7\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_4.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a9096d71-1c3f-4a96-8886-a039037943a3\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\a9f71053-c941-4b21-854b-52a8f7095d8a\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\ad2b203a-8cbf-4f5f-adb7-32aa326825f9\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\ca828e4a-0ced-4c3d-8888-ad0f21a37928\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\cbd3bcd0-cd3d-43f1-95b9-569d9cf7130c\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\ccb6e847-4545-4239-98fb-2f30bac33466\Assignment 2 - Joshua Trimm.docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\cf34383b-75a1-4e4e-b049-717254ec6ec8\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\d4a3059a-5572-4b36-8c93-24320488aa7c\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\dcb4389a-6e78-4fdf-87d5-5445cebbbb82\week 15 - final quiz.doc
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\e82ab7cc-b73c-4c95-ac63-913df8344723\2020 11 21 trimm - NLP Literature Review - markup (003).docx
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\e82ab7cc-b73c-4c95-ac63-913df8344723\imgs\2020_11_21_trimm_-_NLP_Literature_Review_-_markup_(003).docx_1.jpeg
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\uploads\ec3a0f08-ca3f-4f34-b898-24d819313a8d\Assignment 2 - Joshua Trimm.docx
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\appsettings.Development.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\appsettings.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\libman.json
@@ -222,6 +406,8 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\RipMyPaperToShreds.com.runtimeconfig.json
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\RipMyPaperToShreds.com.pdb
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Humanizer.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.AspNetCore.Identity.UI.Views.V4.dll
@@ -238,6 +424,10 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.Identity.Client.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -260,6 +450,7 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.Composition.TypedParts.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.IO.Packaging.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.Runtime.Caching.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\cs\Microsoft.CodeAnalysis.resources.dll
@@ -328,6 +519,13 @@ C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\R
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\WordEngine.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\OpenXmlPowerTools.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\DocumentFormat.OpenXml.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\System.Management.Automation.dll
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\WordEngine.pdb
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\WordEngine.dll.config
+C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\DocumentFormat.OpenXml.xml
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\Identity\css\site.css
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\Identity\favicon.ico
 C:\Users\Joshua\source\repos\RipMyPaperToShreds.com\RipMyPaperToShreds.com\obj\Release\netcoreapp5.0.0\PubTmp\Out\wwwroot\Identity\js\site.js

@@ -45,7 +45,7 @@
 
     <div class="card-header pt-5">
         <!--Up and Down Vote Buttons-->
-        <div id="rip-vote-container" class="float-left col-2 pl-0 ml-0">
+        <div id="rip-vote-container" class="float-left col-2 col-sm-1 p-0 m-0">
 
             <span id="upVoteButton-@Model.Shred.ID" class="btn m-0 p-0" title="Up Vote" onclick="turnUpVoteRed(@Model.Shred.ID); sendUpVote(@Model.Shred.ID, '@userId');">
                 <svg class="bi bi-arrow-up-square mb-1" width="1.8em" height="1.8em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" title="Up Vote">
@@ -72,7 +72,7 @@
                 <input name="ShredId" value="@Model.Shred.ID" />
             </form>
 
-            <span id="fixedButton-@Model.Shred.ID" class="btn m-0 p-0" title="Improved Paper" onclick="@fixedButtonOnClick">
+            <span id="fixedButton-@Model.Shred.ID" class="m-1 p-0" title="Improved Paper" onclick="@fixedButtonOnClick">
                 <svg class="bi bi-check2-square mt-3 mb-1" width="1.8em" height="1.8em" viewBox="0 0 16 16" fill="LimeGreen" xmlns="http://www.w3.org/2000/svg">
                     <path id="fixed-1-@Model.Shred.ID" fill="@fixedButtonColor" fill-rule="evenodd" d="M15.354 2.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L8 9.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
                     <path id="fixed-2-@Model.Shred.ID" fill="@fixedButtonColor" fill-rule="evenodd" d="M1.5 13A1.5 1.5 0 0 0 3 14.5h10a1.5 1.5 0 0 0 1.5-1.5V8a.5.5 0 0 0-1 0v5a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V3a.5.5 0 0 1 .5-.5h8a.5.5 0 0 0 0-1H3A1.5 1.5 0 0 0 1.5 3v10z" />
@@ -106,54 +106,25 @@
             {
     <div class="small btn-group">
         <button class="btn btn-sm" onclick="getEditShredModual(@Model.Shred.ID);">edit</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteShred(@Model.Shred.ID);">delete</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteShred(@Model.Shred.ID, @Model.Shred.PaperId);">delete</button>
     </div>
             }
 
         }
     </div>
 
-    <div class="row m-3">
+    <div class="bg-dark text-white pl-3 pt-2">
         <div>
             <p class="small"><strong>Sub-Shreds</strong></p>
         </div>
     </div>
-    <div id="commentSection-@Model.Shred.ID" class="">
+    <ul id="commentSection-@Model.Shred.ID" class="list-group list-group-flush">
         @foreach (var sub in Model.SubShreds)
         {
-
-            <div id="comment-@sub.ID" class="card-body">
-                <div id="commentContainer-@sub.ID">
-                    <div class="row">
-                        <div class="col-6 float-left">
-                            <p class="small"><em>@UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName</em></p>
-                        </div>
-                        <div class="col-6 float-right">
-                            <p class="small">@sub.Date</p>
-                        </div>
-                    </div>
-                    <div class="mr-3 ml-3">
-                        <div class="col">
-                            <p id="commentText-@sub.ID" class="small">@sub.SubShred</p>
-                        </div>
-                    </div>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        @if (UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName == UserManager.Users.FirstOrDefault(x => x.Id == sub.ShrederId).ScreenName)
-                        {
-                            <div class="small btn-group float-right">
-                                <button class="btn btn-sm btn-dark" onclick="editComment(@sub.ID)">edit</button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteComment(@sub.ID)">delete</button>
-                            </div>
-                        }
-
-                    }
-                </div>
-            </div>
+            <partial name="Paper-Partials/_SubShred" model="sub" />
         }
-    </div>
-    <div id="commentHolder-@Model.Shred.ID" class="row mr-3 ml-3">
+    </ul>
+    <div id="commentHolder-@Model.Shred.ID" class="card-footer">
         @if (User.Identity.IsAuthenticated)
         {
             <div id="commentInput-@Model.Shred.ID" class="pt-4 pb-4" hidden style="position:absolute">
@@ -173,9 +144,11 @@
             </div>
 
 
-            <div id="commentButton-@Model.Shred.ID" class="col">
+            <partial name="Paper-Partials/_CommentButton" view-data='@new ViewDataDictionary(ViewData) {{"ShredId", @Model.Shred.ID  }}' />
+
+            @*<div id="commentButton-@Model.Shred.ID" class="col">
                 <p class="small"><em><button class="small btn btn-sm btn-link" onclick="comment(@Model.Shred.ID)">comment</button></em></p>
-            </div>
+            </div>*@
 
 
         }

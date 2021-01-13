@@ -18,14 +18,16 @@ namespace RipMyPaperToShreds.com.Models
         /// <summary>
         /// Gets or sets the HashTagId.
         /// </summary>
-        [ForeignKey("HashTags")]
+        
         public int HashTagId { get; set; }
 
         /// <summary>
         /// Gets or sets the PaperId.
         /// </summary>
-        [ForeignKey("Papers")]
+     
         public int PaperId { get; set; }
+
+        public int ID { get; set; }
 
         #endregion
     }

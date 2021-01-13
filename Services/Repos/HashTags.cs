@@ -49,8 +49,14 @@ namespace RipMyPaperToShreds.com.Services.Repos
         public async Task<Models.HashTags> Create(Models.HashTags hashTag)
         {
             var check = await Read(hashTag.ID);
+            var nameCheck = await ReabByHashTagName(hashTag.HashTag);
 
-            if (check == null)
+            if(hashTag.ID == 0 && nameCheck != null)
+            {
+                return nameCheck;
+            }
+
+            if (check == null && nameCheck == null)
             {
                 await _db.HashTags.AddAsync(hashTag);
                 await _db.SaveChangesAsync();
@@ -84,6 +90,11 @@ namespace RipMyPaperToShreds.com.Services.Repos
         public async Task<Models.HashTags> Read(int id)
         {
             return await _db.HashTags.FirstOrDefaultAsync(x => x.ID == id);
+        }
+
+        public async Task<Models.HashTags> ReabByHashTagName(string name)
+        {
+            return await _db.HashTags.FirstOrDefaultAsync(x => x.HashTag.Equals(name));
         }
 
         /// <summary>

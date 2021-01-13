@@ -32,7 +32,11 @@
         "frameworks": {
           "net5.0": {
             "targetAlias": "netcoreapp5.0.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Joshua\\source\\repos\\RipMyPaperToShreds.com\\WordEngine\\WordEngine.csproj": {
+                "projectPath": "C:\\Users\\Joshua\\source\\repos\\RipMyPaperToShreds.com\\WordEngine\\WordEngine.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -47,27 +51,35 @@
           "dependencies": {
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.1, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "System.IO.Packaging": {
               "target": "Package",
               "version": "[5.0.0, )"
             }
@@ -92,6 +104,16 @@
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
+      }
+    },
+    "C:\\Users\\Joshua\\source\\repos\\RipMyPaperToShreds.com\\WordEngine\\WordEngine.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Joshua\\source\\repos\\RipMyPaperToShreds.com\\WordEngine\\WordEngine.csproj",
+        "projectName": "WordEngine",
+        "projectPath": "C:\\Users\\Joshua\\source\\repos\\RipMyPaperToShreds.com\\WordEngine\\WordEngine.csproj"
+      },
+      "frameworks": {
+        "net472": {}
       }
     }
   }

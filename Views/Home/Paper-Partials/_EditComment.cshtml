@@ -6,7 +6,7 @@
 
 <div id="editComment-@Model.ID" class="col">
     <input id="editCommentText-@Model.ID" class="rounded small mb-1" size="30" type="text" maxlength="150" min="1" placeholder="comment here" value="@Model.SubShred" />
-    <button id="submitComment" class="btn btn-sm btn-success small" onclick="updateComment(@Model.ID, '@screenName');">Update</button> <button id="submitComment" class="btn btn-sm btn-danger small" onclick="deleteComment(@Model.ID)">Delete</button><button id="cancelComment" onclick="cancelCommentEdit(@Model.ID)" class="btn btn-sm btn-dark small">x</button>
+    <button id="submitComment" class="btn btn-sm btn-success small" onclick="updateComment(@Model.ID);">Update</button> <button id="submitComment" class="btn btn-sm btn-danger small" onclick="deleteComment(@Model.ID)">Delete</button><button id="cancelComment" onclick="cancelCommentEdit(@Model.ID)" class="btn btn-sm btn-dark small">x</button>
 </div>
 
 <form hidden style="position: fixed;" name="updateComment-@Model.ID" method="POST" id="updateCommentForm-@Model.ID" asp-action="UpdateComment" enctype="multipart/form-data">

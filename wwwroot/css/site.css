@@ -87,6 +87,41 @@ body {
 
 }
 
+/* styles for the Shred Section */
 .break-word {
     word-wrap: break-word;
+}
+
+/* Header styles */
+
+/* Scroll To Top Button*/
+#scrollToTopButton {
+
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    
+}
+
+#scrollToTopButton:hover {
+        background-color: #555;
+}
+
+/* Carousel */
+.carousel-indicators {
+    position: unset;
+}
+.carousel-indicators .active{
+    background-color: #1861ac;
+    height: 20px;
+    width: 20px;
+
+    
+}
+
+.carousel-indicators li {
+    background-color: #fff;
+
+    height: 20px;
+    width: 20px;
 }

@@ -147,6 +147,7 @@ namespace RipMyPaperToShreds.com
             services.AddScoped<IPapers, Services.Repos.Papers>();
             services.AddScoped<IPaperHashes, Services.Repos.PaperHashes>();
             services.AddScoped<IHashTags, Services.Repos.HashTags>();
+            services.AddScoped<IPaperUpload, Services.Repos.PaperUpload>();
         }
 
         #endregion

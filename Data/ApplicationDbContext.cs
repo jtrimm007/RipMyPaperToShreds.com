@@ -59,6 +59,7 @@ namespace RipMyPaperToShreds.com.Data
         /// Gets or sets the SubShreds.
         /// </summary>
         public DbSet<SubShreds> SubShreds { get; set; }
+        public DbSet<PaperUpload> PaperUpload { get; set; }
 
         #endregion
 
@@ -72,10 +73,10 @@ namespace RipMyPaperToShreds.com.Data
         {
 
             base.OnModelCreating(builder);
-            builder.Entity<PaperHashes>(ph =>
-            {
-                ph.HasNoKey();
-            });
+            //builder.Entity<PaperHashes>(ph =>
+            //{
+            //    ph.HasNoKey();
+            //});
         }
 
         #endregion

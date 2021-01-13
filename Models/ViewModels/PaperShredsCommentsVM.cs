@@ -9,6 +9,7 @@ namespace RipMyPaperToShreds.com.Models.ViewModels
     public class PaperShredsCommentsVM
     {
         public Papers Paper { get; set; }
+        public PaperUpload PaperUpload { get; set; }
         public ICollection<ShredCommentsVM> ShredsAndComments { get; set; } = new List<ShredCommentsVM>();
     }
 }

@@ -1,0 +1,17 @@
+﻿@{
+    string logic;
+
+    if (User.Identity.IsAuthenticated)
+    {
+        logic = $"getShredModual({ViewData["PaperId"]})";
+    }
+    else
+    {
+        logic = "getAlartBox()";
+    }
+ }
+
+    
+        <button id="addButton" class="btn btn-outline-primary" onclick="@logic ">Shred Paper</button>
+    
+

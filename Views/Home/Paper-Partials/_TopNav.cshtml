@@ -1,0 +1,17 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
+
+
+<div id="topNav" class="">
+    @if (User.Identity.IsAuthenticated && UserManager.Users.FirstOrDefault(x => x.Email == User.Identity.Name).ScreenName
+== ViewData["PaperAuthor"].ToString())
+    {
+        <a href="/Home/EditPaper/@Model.Paper.ID" class="btn btn-sm btn-outline-info small" onclick="">Edit Paper</a>
+    }
+    
+    @if (ViewData["HasShred"] == null)
+    {
+        <partial name="Paper-Partials/_ShredButton" />
+
+    }
+</div>
